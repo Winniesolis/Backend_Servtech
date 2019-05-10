@@ -60,6 +60,9 @@ nav{
 .nav-icon i span{
     font-size: 25px !important;
 }
+.active{
+    color: #000000 !important;
+}
 nav li {
     list-style: none;
     text-align: center;
@@ -228,8 +231,8 @@ table tr:hover{
 table tr td a{
     color: #ffffff;
 }
-table tr td a:hover{
-    color: #3fdb9d;
+.fa-edit:hover{
+    color: #36f510;
 }
 /* altaproductos */
 fieldset h1{
@@ -253,13 +256,16 @@ fieldset h1{
 .form-alta button:hover{
     color: #06A3D3;
 }
+.form-srv label{
+    font-size: 25px;
+}
 .fa-save:hover{
     color: #3fdb9d;
 }
 .closse a{
     color: #ffffff;
 }
-.fa-times:hover, .closse a:hover{
+.fa-times:hover, .closse a:hover, .fa-trash-alt:hover{
     color: #d63636;
 }
 /* modal */
@@ -284,6 +290,7 @@ fieldset h1{
     top: -20px;
     font-size: 30px;
 }
+
 /* end modal */
 /* altaproductos */
 /* productos */

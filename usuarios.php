@@ -1,3 +1,20 @@
+<?php
+    include("conexion.php");
+    $query= mysqli_query($mysqli,"SELECT idProveedor, Nombre FROM proveedor ORDER BY `idProveedor` ASC");
+    if(isset($_POST['prov']))
+    {
+        $prov =$_POST['prov'];
+        echo $prov;
+    }
+    $queryS = mysqli_query($mysqli,"SELECT idTipoServicio, Nombre FROM tiposervicio ORDER BY `idTipoServicio` ASC");
+    if(isset($_POST['tipserv']))
+    {
+        $tipo =$_POST['tipserv'];
+        echo $tipo;
+    }
+    $queryE = mysqli_query($mysqli,"SELECT idEmpleado, Nombre FROM empleados ORDER BY `idEmpleado` ASC");
+// proveedor tiposerv empleado
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +31,7 @@
     <header>
         <section class="principal">
             <img src="img/logo-ST.PNG" alt="">
+            <h1>Usuarios</h1>
         </section>
         <section class="usuario">
             <img src="img/winnie.png" alt="">
@@ -21,66 +39,151 @@
             <p>Administrador</p>
         </section>
         <nav>
-            <ul>
-               <li><a href="index.php"><i class="fas fa-home p-ico">
-                <p>Inicio</p>
-               </i></a></li>
-               <li><a href="usuarios.php"><i class="fas fa-user">
-                <p>Usuarios</p>
-               </i></a></li>
-               <li><a href="productos.php"><i class="fas fa-laptop">
-                <p>Productos</p>
-               </i></a></li>
-               <li><a href="servicios.php"><i class="fas fa-handshake">
-                <p>Servicios</p>
-               </i></a></li>
-               <li><a href="ubicacion.php"><i class="fas fa-map-marker-alt">
-                <p>Ubicacion</p>
-               </i></a></li>
-               <li><a href="reportes.php"><i class="fas fa-file">
-                <p>Reportes</p>
-               </i></a></li>
+            <ul class="nav-icon">
+               <li><a href="2index.php"><i class="fas fa-home p-ico"><br><span>Inicio</span></i></a></li>
+               <li><a href="usuarios.php" ><i class="fas fa-user active"><br><span>Usuarios</span></i></a></li>
+               <li><a href="productos.php"><i class="fas fa-laptop"><br><span>Productos</span></i></a></li>
+               <li><a href="servicios.php"><i class="fas fa-handshake"><br><span>Servicios</span></i></a></li>
+               <li><a href="ubicacion.php"><i class="fas fa-map-marker-alt"><br><span>Ubicacion</span></i></a></li>
+               <li><a href="reportes.php"><i class="fas fa-file"><br><span>Reportes</span></i></a></li>
             </ul>
         </nav>
     </header>
     <section class="content">
-        <article class="bann-art">
-            <h2 class="usu">Usuarios</h2>
-            <section class="buttons">
-                <a href=""><i class="fas fa-plus-square"></i></a>
-                <a href=""><i class="fas fa-edit"></i></a>
-                <a href=""><i class="fas fa-trash-alt"></i></a>
+        <a href="javascript:Abrir()"><i class="fas fa-plus-square"> Nuevo</i></a> <!-- BOTON NUEVO QUE ABRE VENTANA  -->
+        <div class="ventana" id="vent">
+            <a href="javascript:Cerrar()"><i class="fas fa-times"></i></a>
+            <br>
+            <section class="form-srv">
+                <h3>Alta de usuarios</h3>
+                <form action="altaServ.php" METHOD="POST">
+                    <section class="form-alta">
+                       <label for="">Nombre(s)</label><br>
+                       <input type="text" name="nombreus" placeholder="Nombre(s)">
+                        <br><br>
+                        <label for="">Apellido(s)</label><br>
+                        <input type="text" name="apellido" placeholder="Apellidos(s)">
+                        <br><br>
+                        <label for="">Telefono</label><br>
+                        <input type="tel" name="telefono" placeholder="Telefono">
+                        <br><br>
+                        <label for="">Correo</label><br>
+                        <input type="email" name="correo" placeholder="Correo">
+                        <br><br>
+                        <label for="">Tipo de usuario</label><br>
+                        <select name="tipous">
+                            <?php
+                                while($datossrv = mysqli_fetch_array($queryS))
+                                {
+                            ?>
+                                <option value="<?php echo $datossrv['idTipoServicio ']?>"> <?php echo $datossrv['Nombre']?></option>
+                            <?php
+                                }
+                            ?>
+                        </select>
+                        <br><br><br>
+                        <label for="">Estado</label><br>
+                        <select name="estado">
+                            <?php
+                                while($datosE = mysqli_fetch_array($queryE))
+                                {
+                            ?>
+                                <option value="<?php echo $datosE['idEmpleado']?>"> <?php echo $datosE['Nombre']?></option>
+                            <?php
+                                }
+                            ?>
+                        </select>
+                        <br><br>
+                        <button type="submit" name="guardar"><i class="far fa-save"></i></button>
+                        <button type="reset" class="closse"><a  href="javascript:Cerrar()"><i href="" class="fas fa-window-close"></i></a></button>
+                        <br><br>
+                    </section>
+                </form>
+                <?php
+                if(isset($_POST['guardar']))
+                {
+                    include("conexion.php");
+                    $nombreserv = $_POST['nombreserv'];
+                    $descserv = $_POST['descserv'];
+                    $prov = $_POST['prov'];
+                    $tiposerv = $_POST['tiposerv'];
+                    $empleado = $_POST['empleado'];
+                    
+                    $table = 'altaserv';
+                    $conex->query("INSERT INTO $table (nombre, descripcion) VALUES ('$nombreserv','$descserv')");
+                    }
+                ?>
             </section>
-        </article>
-        <form action="">
-            <select>
-                <option value="">Winnie Solis</option>
-                <option value="">Julio Guillen</option>
-                <option value="">Manuel Noh</option>
-                <option value="">Jesus Nah</option>
-            </select> 
-            <br><br>
-            <input type="text" placeholder="Nombres">
-            <input type="text" placeholder="Apellidos">
-            <br>
-            <input type="tel" placeholder="Telefono">
-            <input type="email" name="" id="" placeholder="E-mail">
-            <br>
-            <input type="text" name="" id="" placeholder="Tipo de usuario">
-            <input type="text" name="" id="" Placeholder="Ubicación">
-        </form>
-        <div class="butn">
-            <button> Aceptar</button>
         </div>
-
-        
+        <section class="table1">
+            <table>
+                <tr class="tab-princ">
+                    <td>Imagen</td>
+                    <td>Nombre</td>
+                    <td>Descipción</td>
+                    <td>Precio</td>
+                    <td>Proveedor</td>
+                    <td>Tipo de Producto</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Imagen</td>
+                    <td>Switch</td>
+                    <td>Switch Administrable</td>
+                    <td>$5220</td>
+                    <td>Dell</td>
+                    <td>Redes</td>
+                    <td> 
+                        <a href=""><i class="fas fa-edit"></i></a>
+                        <a href=""><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Imagen</td>
+                    <td>Switch</td>
+                    <td>Switch Administrable</td>
+                    <td>$5220</td>
+                    <td>Dell</td>
+                    <td>Redes</td>
+                    <td> 
+                        <a href=""><i class="fas fa-edit"></i></a>
+                        <a href=""><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Imagen</td>
+                    <td>Switch</td>
+                    <td>Switch Administrable</td>
+                    <td>$5220</td>
+                    <td>Dell</td>
+                    <td>Redes</td>
+                    <td> 
+                        <a href=""><i class="fas fa-edit"></i></a>
+                        <a href=""><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Imagen</td>
+                    <td>Switch</td>
+                    <td>Switch Administrable</td>
+                    <td>$5220</td>
+                    <td>Dell</td>
+                    <td>Redes</td>
+                    <td> 
+                        <a href=""><i class="fas fa-edit"></i></a>
+                        <a href=""><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            </table>
+        </section>
     </section>
-
-
-
-
-
-
-
+<script>
+    function Abrir(){
+        document.getElementById("vent").style.display="block";
+    }
+    function Cerrar(){
+        document.getElementById("vent").style.display="none";
+    }
+</script>
 </body>
 </html>

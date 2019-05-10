@@ -40,10 +40,10 @@
         </section>
         <nav>
             <ul class="nav-icon">
-               <li><a href="index.php"><i class="fas fa-home p-ico"><br><span>Inicio</span></i></a></li>
+               <li><a href="2index.php"><i class="fas fa-home p-ico"><br><span>Inicio</span></i></a></li>
                <li><a href="usuarios.php"><i class="fas fa-user"><br><span>Usuarios</span></i></a></li>
                <li><a href="productos.php"><i class="fas fa-laptop"><br><span>Productos</span></i></a></li>
-               <li><a href="servicios.php"><i class="fas fa-handshake"><br><span>Servicios</span></i></a></li>
+               <li><a href="servicios.php"><i class="fas fa-handshake active"><br><span>Servicios</span></i></a></li>
                <li><a href="ubicacion.php"><i class="fas fa-map-marker-alt"><br><span>Ubicacion</span></i></a></li>
                <li><a href="reportes.php"><i class="fas fa-file"><br><span>Reportes</span></i></a></li>
             </ul>
@@ -58,6 +58,29 @@
                 <h3>Alta de servicios</h3>
                 <form action="altaServ.php" METHOD="POST">
                     <section class="form-alta">
+                      
+                        <!-- <input type="submit" value="Contestar"> -->
+                        <br><br>
+                        <label for="">Nombre</label><br>
+                        <input type="text" name="nombreserv" placeholder="Nombre del servicio" id="nom-serv">
+                        <br><br>
+                        <label for="">Descripcion</label><br>
+
+                        <textarea type="text" name="descserv" cols="3" rows="3" placeholder="Descripcion del servicio" id="desc-serv"></textarea>
+                        <br><br>
+                        <label for="">Tipo de servicio</label><br>
+                        <select name="tipserv">
+                            <?php
+                                while($datossrv = mysqli_fetch_array($queryS))
+                                {
+                            ?>
+                                <option value="<?php echo $datossrv['idTipoServicio ']?>"> <?php echo $datossrv['Nombre']?></option>
+                            <?php
+                                }
+                            ?>
+                        </select>
+                        <br><br>
+                        <label for="">Proveedor</label><br>
                         <select name="prov">
                             <?php
                                 while($datos = mysqli_fetch_array($query))
@@ -69,23 +92,8 @@
                                 }
                             ?>
                         </select>
-                        <!-- <input type="submit" value="Contestar"> -->
                         <br><br>
-                        <input type="text" name="nombreserv" placeholder="Nombre del servicio" id="nom-serv">
-                        <br><br>
-                        <textarea type="text" name="descserv" cols="3" rows="3" placeholder="Descripcion del servicio" id="desc-serv"></textarea>
-                        <br><br>
-                        <select name="tipserv">
-                            <?php
-                                while($datossrv = mysqli_fetch_array($queryS))
-                                {
-                            ?>
-                                <option value="<?php echo $datossrv['idTipoServicio ']?>"> <?php echo $datossrv['Nombre']?></option>
-                            <?php
-                                }
-                            ?>
-                        </select>
-                        <br><br><br>
+                        <label for="">Empleado</label><br>
                         <select name="empleado">
                             <?php
                                 while($datosE = mysqli_fetch_array($queryE))
@@ -108,6 +116,9 @@
                     include("conexion.php");
                     $nombreserv = $_POST['nombreserv'];
                     $descserv = $_POST['descserv'];
+                    $prov = $_POST['prov'];
+                    $tiposerv = $_POST['tiposerv'];
+                    $empleado = $_POST['empleado'];
                     
                     $table = 'altaserv';
                     $conex->query("INSERT INTO $table (nombre, descripcion) VALUES ('$nombreserv','$descserv')");
