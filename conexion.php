@@ -1,17 +1,11 @@
-<?php
-
- 
-    $host ="localhost";
-    $usuario = "root";
-    $clave = "";
-    $db = "servtech_v0";
-    
-    $conexion = mysqli_connect($host,$usuario,$clave,$bd);
-
-    if($conexion){
-        echo "Conectado correctamente";
-    }else{
-        echo "algo fallo";
-    }
-
+<!-- <?php
+       // $conex = new mysqli('localhost','root','','servtech_v0');
+    // if($conex->connect_errno){
+   // echo "fallo";
+   // }else{
+   //    echo "entramos";
+   // }  
+?> -->
+<?php 
+   $mysqli=mysqli_connect("localhost","root","","servtech_v0");
 ?>
