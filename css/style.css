@@ -47,10 +47,18 @@ header{
     width: 43%;
     margin: 20px 20px 20px 50px;
 }
+.principal h1{
+    font-size:40px;
+    margin: 30px;
+}
 nav{
     display: inline-block;
     vertical-align: top;
     margin-top: 50px;
+    margin-left: -150px;
+}
+.nav-icon i span{
+    font-size: 25px !important;
 }
 nav li {
     list-style: none;
@@ -75,7 +83,7 @@ nav li p{
     vertical-align: top;
     position: relative;
     top: 20px;
-    left: 7%;
+    left: 67%;
 }
 .usuario img{
     width: 50%;
@@ -92,6 +100,16 @@ nav li p{
     padding-top: 23px;
     margin-left:30px;
     font-size: 30px;
+}
+.fa-plus-square{
+    color: #074f73;
+    font-size: 30px;
+    margin-bottom: 30px;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+.fa-plus-square:hover{
+    color:#06A3D3;
 }
 form{
     margin-left: 80px;
@@ -112,7 +130,7 @@ select{
     padding-left: 10px;
     font-family: 'Quicksand', sans-serif;
     font-size: 20px;
-    margin: 0px 0px 0px 82px;
+    color: #ffffff;
 }
 input{
     width: 400px;
@@ -125,8 +143,8 @@ input{
     padding-left: 10px;
     font-family: 'Quicksand', sans-serif;
     font-size: 20px;
-    margin: 10px 30px 10px 114px;
-    }
+    color: #ffffff;
+}
 textarea{
     background: rgba(0,0,0,.2);
     border: none;
@@ -139,9 +157,11 @@ textarea{
     font-size: 20px;
     padding-left: 10px;
     padding-top: 10px;
-    margin-left: 80px;
     font-family: 'Quicksand', sans-serif;
-
+    color: #ffffff;
+}
+select option{
+    background: #074f73;
 }
 .bann-art{
     background: linear-gradient(to right, rgba(6,163,211,1) 0%, rgba(6,163,211,1) 14%, rgba(7,79,115,1) 100%);
@@ -221,15 +241,49 @@ fieldset h1{
 .form-alta{
     margin-top: 30px;
     text-align: center;
+    width: 88%;
 }
 .form-alta button{
     border: none;
     font-size: 40px;
-    color: #074f73;
+    color: #ffffff;
     margin-right: 30px;
+    background: none;
 }
 .form-alta button:hover{
     color: #06A3D3;
 }
+.fa-save:hover{
+    color: #3fdb9d;
+}
+.closse a{
+    color: #ffffff;
+}
+.fa-times:hover, .closse a:hover{
+    color: #d63636;
+}
+/* modal */
+.ventana{
+    background: linear-gradient(to right, rgba(6,163,211,1) 0%, rgba(6,163,211,1) 14%, rgba(7,79,115,1) 100%);
+    width: 50%;
+    color: rgba(255,255,255,1);
+    font-size: 18px;
+    text-align: center;
+    padding: 33px;
+    min-height: 250px;
+    border-radius: 22px;
+    position: absolute;
+    left: 22%;
+    top: 35%;
+    display: none;
+}
+.fa-times{
+    color: #ffffff;
+    position: relative;
+    left: 50%;
+    top: -20px;
+    font-size: 30px;
+}
+/* end modal */
 /* altaproductos */
 /* productos */
