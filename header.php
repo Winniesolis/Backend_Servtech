@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Backend │ ServTech</title>
     <!-- style -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style-header.css">
     <!-- font-awasome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
-<header>
+    <header>
     <section class="principal">
-        <img src="../img/logo-ST.PNG" alt="">
+        <img src="img/logo-ST.PNG" alt="">
     </section>
     <nav>
         <ul>
@@ -26,10 +26,18 @@
         </ul>
     </nav>
     <section class="usuario">
-        <img src="../img/winnie.png" alt="">
+        <img src="img/winnie.png" alt="">
         <p>Winnie Solis</p>
         <p>Administrador</p>
     </section>
+
+
+
     </header>
+
+
+
+
+
 </body>
 </html>
