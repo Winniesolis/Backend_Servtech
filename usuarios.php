@@ -1,19 +1,19 @@
 <?php
-    include("conexion.php");
-    $query= mysqli_query($mysqli,"SELECT idProveedor, Nombre FROM proveedor ORDER BY `idProveedor` ASC");
-    if(isset($_POST['prov']))
+    include('conexion.php');
+    $query = mysqli_query($mysqli,"SELECT idsucursal, nombre FROM sucursal ORDER BY `idsucursal` ASC");
+    if(isset($_POST['sucursal']))
     {
-        $prov =$_POST['prov'];
-        echo $prov;
+        $sucursal =$_POST['sucursal'];
+        // echo $sucursal;
     }
-    $queryS = mysqli_query($mysqli,"SELECT idTipoServicio, Nombre FROM tiposervicio ORDER BY `idTipoServicio` ASC");
-    if(isset($_POST['tipserv']))
+    // tipo de usuario
+    $query1 = mysqli_query($mysqli,"SELECT idtipousuario, nombreTU FROM tipousuario ORDER BY `idtipousuario` ASC");
+
+    if(isset($_POST['tipUs']))
     {
-        $tipo =$_POST['tipserv'];
-        echo $tipo;
+        $tipUs =$_POST['tipUs'];
+        // echo $tipUs;
     }
-    $queryE = mysqli_query($mysqli,"SELECT idEmpleado, Nombre FROM empleados ORDER BY `idEmpleado` ASC");
-// proveedor tiposerv empleado
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,137 +46,123 @@
                <li><a href="servicios.php"><i class="fas fa-handshake"><br><span>Servicios</span></i></a></li>
                <li><a href="ubicacion.php"><i class="fas fa-map-marker-alt"><br><span>Ubicacion</span></i></a></li>
                <li><a href="reportes.php"><i class="fas fa-file"><br><span>Reportes</span></i></a></li>
+               <li><a href="otros.php"><i class="fas fa-ad"><br><span>Otros</span></i></a></li>
+
             </ul>
         </nav>
     </header>
     <section class="content">
         <a href="javascript:Abrir()"><i class="fas fa-plus-square"> Nuevo</i></a> <!-- BOTON NUEVO QUE ABRE VENTANA  -->
         <div class="ventana" id="vent">
-            <a href="javascript:Cerrar()"><i class="fas fa-times"></i></a>
-            <br>
-            <section class="form-srv">
-                <h3>Alta de usuarios</h3>
-                <form action="altaServ.php" METHOD="POST">
-                    <section class="form-alta">
-                       <label for="">Nombre(s)</label><br>
-                       <input type="text" name="nombreus" placeholder="Nombre(s)">
-                        <br><br>
-                        <label for="">Apellido(s)</label><br>
-                        <input type="text" name="apellido" placeholder="Apellidos(s)">
-                        <br><br>
-                        <label for="">Telefono</label><br>
-                        <input type="tel" name="telefono" placeholder="Telefono">
-                        <br><br>
-                        <label for="">Correo</label><br>
-                        <input type="email" name="correo" placeholder="Correo">
-                        <br><br>
-                        <label for="">Tipo de usuario</label><br>
-                        <select name="tipous">
-                            <?php
-                                while($datossrv = mysqli_fetch_array($queryS))
-                                {
-                            ?>
-                                <option value="<?php echo $datossrv['idTipoServicio ']?>"> <?php echo $datossrv['Nombre']?></option>
-                            <?php
-                                }
-                            ?>
-                        </select>
-                        <br><br><br>
-                        <label for="">Estado</label><br>
-                        <select name="estado">
-                            <?php
-                                while($datosE = mysqli_fetch_array($queryE))
-                                {
-                            ?>
-                                <option value="<?php echo $datosE['idEmpleado']?>"> <?php echo $datosE['Nombre']?></option>
-                            <?php
-                                }
-                            ?>
-                        </select>
-                        <br><br>
-                        <button type="submit" name="guardar"><i class="far fa-save"></i></button>
-                        <button type="reset" class="closse"><a  href="javascript:Cerrar()"><i href="" class="fas fa-window-close"></i></a></button>
-                        <br><br>
-                    </section>
-                </form>
-                <?php
-                if(isset($_POST['guardar']))
-                {
-                    include("conexion.php");
-                    $nombreserv = $_POST['nombreserv'];
-                    $descserv = $_POST['descserv'];
-                    $prov = $_POST['prov'];
-                    $tiposerv = $_POST['tiposerv'];
-                    $empleado = $_POST['empleado'];
-                    
-                    $table = 'altaserv';
-                    $conex->query("INSERT INTO $table (nombre, descripcion) VALUES ('$nombreserv','$descserv')");
-                    }
-                ?>
-            </section>
-        </div>
+        <a href="javascript:Cerrar()"><i class="fas fa-times"></i></a>
+        <h3>Alta de Usuario</h3>
+        <a href="usuarios.php"></i></a>
+        <form action="usuarios.php" method="POST"  class="form1">
+                <label for="">Nombre(s):</label>
+                <input type="text" placeholder="Nombre(s)" name="nombres">
+                <br> <br>
+                <label for="">Apellido(s):</label>
+                <input type="text" placeholder="Apellido(s)" name="apellidos">
+                <br> <br>
+                <label for="">Correo</label>
+                <input type="text" placeholder="correo" name="correo">
+                <br> <br>
+                <label for="">Telefono:</label>
+                <input type="text" placeholder="telefono" name="telefono">
+                <br> <br>
+                <label for="">Contraseña:</label>
+                <input type="text" placeholder="Contraseña" name="contraseña">
+                <br> <br>
+                <label for="">Contraseña:</label>
+                <input type="text" placeholder="Confirme su contraseña" name="conf-contra">
+                <br> <br>
+                <label for="">Sucursal: </label>
+                <select name="sucursal" id="">
+                    <?php
+                        while ($datos = mysqli_fetch_array($query))
+                        {
+                    ?>
+                    <option value="<?php echo$datos['idsucursal']?>"><?php echo $datos['nombre']?></option>
+                    <?php
+                        }
+                    ?>
+                </select>
+                <br><br>
+                <label for="">Tipo de usuario: </label>
+                <select name="tipUs" id="">
+                    <?php
+                        while ($datos1 = mysqli_fetch_array($query1))
+                        {
+                    ?>
+                    <option value="<?php echo$datos1['idtipousuario']?>"><?php echo $datos1['nombreTU']?></option>
+                    <?php
+                        }
+                    ?>
+                </select>
+                <br><br>
+                <input type="submit" name="guardar_us" value="Guardar" class="btnform">
+                <input type="submit" href="javascript:Cerrar()" name="cerrar" value="Cerrar" class="btnform">
+            </center>
+        </form>
+    </div>
+    <div class="vent-us" id="vent-us">
+        <h2>probando</h2>
+
+    </div>
         <section class="table1">
             <table>
                 <tr class="tab-princ">
-                    <td>Imagen</td>
-                    <td>Nombre</td>
-                    <td>Descipción</td>
-                    <td>Precio</td>
-                    <td>Proveedor</td>
-                    <td>Tipo de Producto</td>
-                    <td></td>
+                    <td>ID</td>
+                    <td>Nombres</td>
+                    <td>Apellidos</td>
+                    <td>Correo</td>
+                    <td>Telefono</td>
+                    <td>Sucursal</td>
+                    <td>Tipo de usuario</td>
                 </tr>
-                <tr>
-                    <td>Imagen</td>
-                    <td>Switch</td>
-                    <td>Switch Administrable</td>
-                    <td>$5220</td>
-                    <td>Dell</td>
-                    <td>Redes</td>
-                    <td> 
-                        <a href=""><i class="fas fa-edit"></i></a>
-                        <a href=""><i class="fas fa-trash-alt"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Imagen</td>
-                    <td>Switch</td>
-                    <td>Switch Administrable</td>
-                    <td>$5220</td>
-                    <td>Dell</td>
-                    <td>Redes</td>
-                    <td> 
-                        <a href=""><i class="fas fa-edit"></i></a>
-                        <a href=""><i class="fas fa-trash-alt"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Imagen</td>
-                    <td>Switch</td>
-                    <td>Switch Administrable</td>
-                    <td>$5220</td>
-                    <td>Dell</td>
-                    <td>Redes</td>
-                    <td> 
-                        <a href=""><i class="fas fa-edit"></i></a>
-                        <a href=""><i class="fas fa-trash-alt"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Imagen</td>
-                    <td>Switch</td>
-                    <td>Switch Administrable</td>
-                    <td>$5220</td>
-                    <td>Dell</td>
-                    <td>Redes</td>
-                    <td> 
-                        <a href=""><i class="fas fa-edit"></i></a>
-                        <a href=""><i class="fas fa-trash-alt"></i></a>
-                    </td>
-                </tr>
+                <?php
+                    $query3 = mysqli_query($mysqli,"SELECT * FROM persona INNER JOIN usuario ON persona.idpersona = usuario.idpersona INNER JOIN sucursal ON sucursal.idsucursal = persona.idsucursal INNER JOIN tipousuario ON usuario.idtipousuario = tipousuario.idtipousuario  ");
+                    while($datostable = mysqli_fetch_array($query3))
+                    {
+                    ?>
+                    <tr>
+                        <td><?php echo $datostable['idpersona']?></td>
+                        <td><?php echo $datostable['nombres']?></td>
+                        <td><?php echo $datostable['apellidos']?></td>
+                        <td><?php echo $datostable['correo']?></td>
+                        <td><?php echo $datostable['telefono']?></td>
+                        <td><?php echo $datostable['nombre']?></td>
+                        <td><?php echo $datostable['nombreTU']?></td>
+                    </tr>
+                    <?php
+                    }
+                ?>
             </table>
         </section>
     </section>
+<?php
+    if(isset($_POST['guardar_us']))
+    {
+        echo"entro aqui"."\n";
+        $nombres =$_POST['nombres'];
+        $apellidos =$_POST['apellidos'];
+        $correo =$_POST['correo'];
+        $telefono =$_POST['telefono'];
+        $sucursal = $_POST['sucursal'];
+        $tipUs = $_POST['tipUs'];
+        $contraseña = $_POST['contraseña'];
+        // echo "imprimiendo sucursal"."\n";
+        // echo $sucursal;
+        $table2 = 'persona';
+        $table3 = 'usuario';
+        $mysqli->query("INSERT INTO $table2 (nombres, apellidos, correo, telefono, idsucursal) VALUES ('$nombres','$apellidos','$correo','$telefono' ,$sucursal)");
+        // echo"se incertaron correctamente";
+        $queryPer = mysqli_query($mysqli,"SELECT idpersona,correo FROM persona WHERE correo = '$correo' ");
+        $conperso = mysqli_fetch_array($queryPer);
+        $idprs = $conperso['idpersona'];
+        $mysqli->query("INSERT INTO $table3 (idpersona,contrase,idtipousuario) VALUES ($idprs,'$contraseña',$tipUs)") ;
+    }
+?>
 <script>
     function Abrir(){
         document.getElementById("vent").style.display="block";
@@ -184,6 +170,12 @@
     function Cerrar(){
         document.getElementById("vent").style.display="none";
     }
+    function AbTip(){
+        document.getElementById("vent").style.display="none";
+        document.getElementById("vent-us").style.display="block";
+
+    }
+   
 </script>
 </body>
 </html>

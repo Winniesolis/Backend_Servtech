@@ -7,51 +7,93 @@ body{
 }
 .ventana{
     background: linear-gradient(to right, rgba(6,163,211,1) 0%, rgba(6,163,211,1) 14%, rgba(7,79,115,1) 100%);
-    width: 50%;
+    width: 70%;
     color: rgba(255,255,255,1);
     font-size: 18px;
-    text-align: center;
     padding: 33px;
     min-height: 250px;
     border-radius: 22px;
     position: absolute;
-    left: 22%;
-    top: 35%;
+    left: 12%;
+    top: 15%;
     display: none;
 }
 .fa-times{
     color: #ffffff;
     position: relative;
-    left: 50%;
-    top: -20px;
+    left: 97%;
+    top: -80px;
     font-size: 30px;
 }
-header{
-    background: rgba(0,153,204,1);
-    width: 1000px;
-    height: 128px;
-    margin: auto;
-    border-radius: 22px 22px 0 0;
+.ventana h3{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 30px;
+    color: #000000;
+    margin-bottom: 30px;
+    text-align: center;
 }
-nav{
-    background:rgba(0,102,255,1);
-    width:1000px;
-    height:50px;
-    margin:auto;
+.form1, .form2{
+    display: inline-block;
+    vertical-align: top;
 }
-#contenedor{
+.form2{
+    margin-left: 100px;
+}
+.form1 select, .form2 select{
+    width: 180px;
+    height: 30px;
+    border-radius: 5px;
+    background: rgba(0,0,0,.2);
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #3fdb9d;
+    padding-left: 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
+    color: #ffffff;
+}
+.form1 input, .form2 input{
+    width: 180;
+    height: 30px;
+    border-radius: 5px;
+    background: rgba(0,0,0,.2);
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #3fdb9d;
+    padding-left: 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 17px;
+    color: #ffffff;
+   justify-content: center;
+
+}
+.form1 label, .form2 label{
+    font-size: 20px;
+}
+.btn-sv{
+    text-align: center;
+}
+.btn-sv button{
+    width: 100px;
+    height: 40px;
+    margin: 50px 30px 0px 0px;
+    text-align: center;
+    background: #074f73;
+    border: #3fdb9d 1px solid;
+    color: #ffffff;
+    font-size: 18px;
+    font-family: 'Quicksand', sans-serif;
+}
+.btn-sv button:hover{
+ background: #a7a5a5;
+ color: #000000;
+}
+
+/* #contenedor{
     background:rgba(255,255,255,1);
     padding:33px;
     box-sizing:border-box;
     width:1000px;
     height:700px;
     margin:auto;
-}
-
-footer{
-    background:rgba(0,0,0,1);
-    width:1000px;
-    height:128px;
-    margin:auto;
-    border-radius:0 0 22px 22px;
-}
+} */

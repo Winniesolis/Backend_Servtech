@@ -55,7 +55,7 @@ nav{
     display: inline-block;
     vertical-align: top;
     margin-top: 50px;
-    margin-left: -150px;
+    margin-left: -216px;
 }
 .nav-icon i span{
     font-size: 25px !important;
@@ -109,60 +109,20 @@ nav li p{
     font-size: 30px;
     margin-bottom: 30px;
     margin-left: 50px;
-    margin-top: 50px;
+    margin-top: 70px;
 }
 .fa-plus-square:hover{
     color:#06A3D3;
 }
 form{
-    margin-left: 80px;
+    margin-left: 44px;
     margin-bottom: 50px;
 }
 .combo{
     margin: 0px 0px 20px 30px;
     width: 410px;
 }
-select{
-    width: 412px;
-    height: 52px;
-    border-radius: 5px;
-    background: rgba(0,0,0,.2);
-    border: none;
-    outline: none;
-    border-bottom: 2px solid #3fdb9d;
-    padding-left: 10px;
-    font-family: 'Quicksand', sans-serif;
-    font-size: 20px;
-    color: #ffffff;
-}
-input{
-    width: 400px;
-    height: 52px;
-    border-radius: 5px;
-    background: rgba(0,0,0,.2);
-    border: none;
-    outline: none;
-    border-bottom: 2px solid #3fdb9d;
-    padding-left: 10px;
-    font-family: 'Quicksand', sans-serif;
-    font-size: 20px;
-    color: #ffffff;
-}
-textarea{
-    background: rgba(0,0,0,.2);
-    border: none;
-    outline: none;
-    border-bottom: 2px solid #3fdb9d;
-    width: 403px;
-    height:100px;
-    margin-bottom: 20px;border-radius: 10px;
-    font-size: 14px;
-    font-size: 20px;
-    padding-left: 10px;
-    padding-top: 10px;
-    font-family: 'Quicksand', sans-serif;
-    color: #ffffff;
-}
+
 select option{
     background: #074f73;
 }
@@ -271,25 +231,112 @@ fieldset h1{
 /* modal */
 .ventana{
     background: linear-gradient(to right, rgba(6,163,211,1) 0%, rgba(6,163,211,1) 14%, rgba(7,79,115,1) 100%);
-    width: 50%;
+    width: 65%;
     color: rgba(255,255,255,1);
     font-size: 18px;
-    text-align: center;
     padding: 33px;
     min-height: 250px;
     border-radius: 22px;
     position: absolute;
-    left: 22%;
-    top: 35%;
+    left: 15%;
+    top: 31%;
     display: none;
 }
 .fa-times{
     color: #ffffff;
     position: relative;
-    left: 50%;
-    top: -20px;
+    left: 97%;
+    top: -9px;
     font-size: 30px;
 }
+.ventana h3{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 30px;
+    color: #000000;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.form1{
+    display: inline-block;
+    vertical-align: top;
+    column-count: 2;
+    width: 730px;
+    column-gap: 30px;
+}
+.form1 select{
+    width: 204px;
+    height: 30px;
+    border-radius: 5px;
+    background: rgba(0,0,0,.2);
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #3fdb9d;
+    padding-left: 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 17px;
+    color: #ffffff;
+    float: right;
+}
+.form1 input{
+    width: 206px;
+    height: 30px;
+    border-radius: 5px;
+    background: rgba(0,0,0,.2);
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #3fdb9d;
+    padding-left: 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 17px;
+    color: #ffffff;
+    justify-content: center;
+    float: right;
+}
+.form1 label{
+    font-size: 20px;
+}
+.btn-sv{
+    text-align: center;
+}
+.btn-sv input {
+    width: 100px;
+    height: 40px;
+    margin: 10px 30px 0px 0px;
+    text-align: center;
+    background: #074f73;
+    border: #3fdb9d 1px solid;
+    color: #ffffff;
+    font-size: 18px;
+    font-family: 'Quicksand', sans-serif;
+}
+.btn-sv input:hover{
+ background: #a7a5a5;
+ color: #000000;
+}
+.btn-agr{
+    background: none;
+    border: none;
+}
+.fa-plus-circle{
+    font-size: 24px;
+    color: #3fdb9d;
+    position: absolute;
+    right: 100px;
+    top: 177px !important;
+}
+.circle:hover{
+    color: #a7a5a5;
+}
+
+.btnform{
+    display: inline-block !important;
+    margin: 10px 0px;
+}  
+.fa-plus-square{
+    margin-left: 80px;
+    font-size: 20px;
+}
+
 
 /* end modal */
 /* altaproductos */
