@@ -1,9 +1,11 @@
 
-
 *{
-    margin: 0;
     padding: 0;
+    margin: 0;
 }
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
 header{
     background: linear-gradient(to right, rgba(6,163,211,1) 0%, rgba(6,163,211,1) 14%, rgba(7,79,115,1) 100%);
     width: 100%;
@@ -17,27 +19,9 @@ header{
     width: 43%;
     margin: 20px 20px 20px 50px;
 }
-nav{
-    display: inline-block;
-    vertical-align: top;
-    margin-top: 50px;
-}
-nav li {
-    list-style: none;
-    text-align: center;
-    display: inline-block;
-    margin: 0px 20px;
-}
-nav li i{
-    color: #ffffff;
-    font-size: 35px;
-}
-nav li i:hover, nav li p:hover{
-    color: #3fdb9d;
-}
-nav li p{
-    color: #ffffff;
-    font-size: 25px;
+.principal h1{
+    font-size:40px;
+    margin: 30px;
 }
 .usuario{
     display: inline-block !important;
@@ -45,7 +29,7 @@ nav li p{
     vertical-align: top;
     position: relative;
     top: 20px;
-    left: 7%;
+    left: 67%;
 }
 .usuario img{
     width: 50%;
@@ -55,3 +39,45 @@ nav li p{
     font-family: 'Montserrat', sans-serif; 
     color: #ffffff
 }
+
+nav{
+    position: absolute;
+    background: #074f73;
+    width: 200px;
+    /* top: 100%; */
+    /* padding-left: 30px; */
+}
+.button-menu{
+    cursor: pointer;
+}
+nav ul{
+    width: 200px;
+    height: 100%;
+    position: absolute;
+}
+nav li a, nav li{
+    text-decoration: none;
+    list-style: none;
+}
+nav li{
+    background: #074f73;
+    width: 100%;
+    height: 50px;
+    border: #06A3D3 1px solid;
+    padding-left: 30px;
+}
+nav li:hover{
+    background: #3FDB9D;
+}
+nav li a{
+    position: relative;
+    top: 8px;
+    font-size: 26px;
+    font-family: oranienbaum;
+    color: #ffffff !important;
+    display: ruby;
+}
+nav li a i span{
+    padding-left: 10px;
+}
+nav .item-sub
