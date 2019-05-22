@@ -1,3 +1,9 @@
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,9 +40,101 @@
     </nav>
 </header>
 <section class="content">
-
-
-
+    <center>
+        <form action="otros.php" class="form-otros" method="POST">
+            <h1>Seleccione el que quiere agregar</h1>
+            <!-- <label for="">Seleccione el que quiere agregar</label><br><br> -->
+                <select name="tipUs" id="">
+                    <?php
+                        while ($datos1 = mysqli_fetch_array($query1))
+                        {
+                    ?>
+                    <option value="<?php echo$datos1['idtipousuario']?>"><?php echo $datos1['nombreTU']?></option>
+                    <?php
+                        }
+                    ?>
+                </select>
+        </form>
+    </center>
+    <section class="sec1">
+    <center>                
+        <section class="tipoUs">
+            <center>
+                <h1>Tipo de usuario</h1>
+                <form action="otros.php">
+                    <br>
+                    <input type="text" value="Nombre" >
+                    <br><br>
+                    <button type="submit">Guardar</button>
+                </form>
+            </center>
+        </section>
+        <section class="tiposerv">
+            <center>
+                <h1>Tipo de usuario</h1>
+                <form action="otros.php">
+                    <br>
+                    <input type="text" value="Nombre">
+                    <br><br>
+                    <button type="submit">Guardar</button>
+                </form>
+            </center>
+        </section>
+    </center> 
+    </section>
+    <section class="sec2">
+    <center>
+        <section class="sucursal_add">
+            <center>
+                <h1>Sucursal</h1>
+                <form action="otros.php">
+                    <br>
+                    <input type="text" value="Nombre" ><br><br>
+                    <input type="text" value="Direccion"><br><br>
+                    <input type="text" value="Telefono"><br><br>
+                    <input type="text" value="Codigo postal"><br><br>
+                    <select name="tipUs" id="">
+                        <?php
+                            while ($datos1 = mysqli_fetch_array($query1))
+                            {
+                        ?>
+                        <option value="<?php echo$datos1['idtipousuario']?>"><?php echo $datos1['nombreTU']?></option>
+                        <?php
+                            }
+                        ?>
+                    </select>
+                    <br><br>
+                    <button type="submit">Guardar</button>
+                </form>
+            </center>
+        </section>    
+        <section class="proveedir_add">
+            <center>
+                <h1>Proveedor</h1>
+                <form action="otros.php">
+                    <br>
+                    <input type="text" value="Nombre" ><br><br>
+                    <input type="text" value="Telefono"><br><br>
+                    <input type="text" value="Correo"><br><br>
+                    <input type="text" value="RFC"><br><br>
+                    <input type="text" value="Direccion"><br><br>
+                    <select name="estado" id="">
+                        <?php
+                            while ($datos1 = mysqli_fetch_array($query1))
+                            {
+                        ?>
+                        <option value="<?php echo$datos1['idtipousuario']?>"><?php echo $datos1['nombreTU']?></option>
+                        <?php
+                            }
+                        ?>
+                    </select>
+                    <br><br>
+                    <button type="submit">Guardar</button>
+                </form>
+            </center>
+        </section>
+    </center>
+    </section>                    
 </section>
 
 

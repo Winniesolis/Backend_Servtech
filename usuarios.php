@@ -47,7 +47,6 @@
                <li><a href="ubicacion.php"><i class="fas fa-map-marker-alt"><br><span>Ubicacion</span></i></a></li>
                <li><a href="reportes.php"><i class="fas fa-file"><br><span>Reportes</span></i></a></li>
                <li><a href="otros.php"><i class="fas fa-ad"><br><span>Otros</span></i></a></li>
-
             </ul>
         </nav>
     </header>
@@ -105,10 +104,6 @@
             </center>
         </form>
     </div>
-    <div class="vent-us" id="vent-us">
-        <h2>probando</h2>
-
-    </div>
         <section class="table1">
             <table>
                 <tr class="tab-princ">
@@ -119,9 +114,10 @@
                     <td>Telefono</td>
                     <td>Sucursal</td>
                     <td>Tipo de usuario</td>
+                    <td></td>
                 </tr>
                 <?php
-                    $query3 = mysqli_query($mysqli,"SELECT * FROM persona INNER JOIN usuario ON persona.idpersona = usuario.idpersona INNER JOIN sucursal ON sucursal.idsucursal = persona.idsucursal INNER JOIN tipousuario ON usuario.idtipousuario = tipousuario.idtipousuario  ");
+                    $query3 = mysqli_query($mysqli,"SELECT * FROM persona INNER JOIN usuario ON persona.idpersona = usuario.idpersona INNER JOIN sucursal ON sucursal.idsucursal = persona.idsucursal INNER JOIN tipousuario ON usuario.idtipousuario = tipousuario.idtipousuario");
                     while($datostable = mysqli_fetch_array($query3))
                     {
                     ?>
@@ -131,8 +127,12 @@
                         <td><?php echo $datostable['apellidos']?></td>
                         <td><?php echo $datostable['correo']?></td>
                         <td><?php echo $datostable['telefono']?></td>
-                        <td><?php echo $datostable['nombre']?></td>
+                        <td><?php echo $datostable['nombreSC']?></td>
                         <td><?php echo $datostable['nombreTU']?></td>
+                        <td class="btn-table">
+                            <button><i class="fas fa-edit"></i></button>
+                            <button><i class="fas fa-trash-alt"></i></button>
+                        </td>
                     </tr>
                     <?php
                     }

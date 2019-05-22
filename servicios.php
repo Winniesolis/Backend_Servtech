@@ -1,17 +1,17 @@
 <?php
     include('conexion.php');
-    $query = mysqli_query($mysqli,"SELECT idtiposervicio, nombre FROM servicio ORDER BY `idtiposervicio` ASC");
-    if(isset($_POST['sucursal']))
+    $query4 = mysqli_query($mysqli,"SELECT idtiposervicio, nombreTS FROM tiposervicio ORDER BY `idtiposervicio` ASC");
+    if(isset($_POST['tipserv']))
     {
-        $sucursal =$_POST['sucursal'];
+        $tipserv =$_POST['tipserv'];
         // echo $sucursal;
     }
     // tipo de usuario
-    $query1 = mysqli_query($mysqli,"SELECT idtipousuario, nombreTU FROM tipousuario ORDER BY `idtipousuario` ASC");
+    $query1 = mysqli_query($mysqli,"SELECT * FROM empleado INNER JOIN persona ON empleado.idpersona = persona.idpersona INNER JOIN departamento on departamento.iddepartamento = empleado.iddepartamento ");
 
-    if(isset($_POST['tipUs']))
+    if(isset($_POST['emple']))
     {
-        $tipUs =$_POST['tipUs'];
+        $emple =$_POST['emple'];
         // echo $tipUs;
     }
 ?>
@@ -40,12 +40,13 @@
         </section>
         <nav>
             <ul class="nav-icon">
-               <li><a href="2index.php"><i class="fas fa-home p-ico"><br><span>Inicio</span></i></a></li>
-               <li><a href="usuarios.php" ><i class="fas fa-user"><br><span>Usuarios</span></i></a></li>
-               <li><a href="productos.php"><i class="fas fa-laptop"><br><span>Productos</span></i></a></li>
-               <li><a href="servicios.php"><i class="fas fa-handshake active"><br><span>Servicios</span></i></a></li>
-               <li><a href="ubicacion.php"><i class="fas fa-map-marker-alt"><br><span>Ubicacion</span></i></a></li>
-               <li><a href="reportes.php"><i class="fas fa-file"><br><span>Reportes</span></i></a></li>
+                <li><a href="2index.php"><i class="fas fa-home p-ico"><br><span>Inicio</span></i></a></li>
+                <li><a href="usuarios.php" ><i class="fas fa-user"><br><span>Usuarios</span></i></a></li>
+                <li><a href="productos.php"><i class="fas fa-laptop"><br><span>Productos</span></i></a></li>
+                <li><a href="servicios.php"><i class="fas fa-handshake active"><br><span>Servicios</span></i></a></li>
+                <li><a href="ubicacion.php"><i class="fas fa-map-marker-alt"><br><span>Ubicacion</span></i></a></li>
+                <li><a href="reportes.php"><i class="fas fa-file"><br><span>Reportes</span></i></a>
+                </li>
             </ul>
         </nav>
     </header>
@@ -55,32 +56,32 @@
         <a href="javascript:Cerrar()"><i class="fas fa-times"></i></a>
         <h3>Alta de Servicios</h3>
         <a href="usuarios.php"></i></a>
-        <form action="usuarios.php" method="POST"  class="form1">
+        <form action="servicios.php" method="POST"  class="form1">
             <label for="">Tipo de servicio: </label>
-                <select name="sucursal" id="">
+                <select name="tipserv" id="">
                     <?php
-                        while ($datos = mysqli_fetch_array($query))
+                        while ($datos = mysqli_fetch_array($query4))
                         {
                     ?>
-                    <option value="<?php echo$datos['idsucursal']?>"><?php echo $datos['nombre']?></option>
+                    <option value="<?php echo$datos['idtiposervicio']?>"><?php echo $datos['nombreTS']?></option>
                     <?php
                         }
                     ?>
                 </select>
                 <br><br>
                 <label for="">Nombre:</label>
-                <input type="text" placeholder="Nombre(s)" name="nombres">
+                <input type="text" placeholder="Nombre" name="nombres">
                 <br> <br>
-                <label for="">Descrición:</label>
-                <input type="text" placeholder="Apellido(s)" name="apellidos">
+                <label for="">Descripción:</label>
+                <input type="text" placeholder="Descripcion" name="descripcion">
                 <br><br>
                 <label for="">Empleado: </label>
-                <select name="tipUs" id="">
+                <select name="emple" id="">
                     <?php
                         while ($datos1 = mysqli_fetch_array($query1))
                         {
                     ?>
-                    <option value="<?php echo$datos1['idtipousuario']?>"><?php echo $datos1['nombreTU']?></option>
+                    <option value="<?php echo$datos1['idempleado']?>"><?php echo $datos1['nombres']?></option>
                     <?php
                         }
                     ?>
@@ -95,28 +96,30 @@
             <table>
                 <tr class="tab-princ">
                     <td>ID</td>
-                    <td>Nombres</td>
-                    <td>Apellidos</td>
-                    <td>Correo</td>
-                    <td>Telefono</td>
-                    <td>Sucursal</td>
-                    <td>Tipo de usuario</td>
+                    <td>Tipo de servicio</td>
+                    <td>Nombre</td>
+                    <td>Descripcion</td>
+                    <td>Empleado</td>
+                    <td></td>
                 </tr>
                 <?php
-                    $query3 = mysqli_query($mysqli,"SELECT * FROM persona INNER JOIN usuario ON persona.idpersona = usuario.idpersona INNER JOIN sucursal ON sucursal.idsucursal = persona.idsucursal INNER JOIN tipousuario ON usuario.idtipousuario = tipousuario.idtipousuario  ");
-                    while($datostable = mysqli_fetch_array($query3))
+                    $query3 = mysqli_query($mysqli,"SELECT * FROM servicio INNER JOIN empleado ON servicio.idempleado = empleado.idempleado INNER JOIN persona ON empleado.idpersona = persona.idpersona INNER JOIN tiposervicio ON servicio.idtiposervicio = tiposervicio.idtiposervicio ORDER BY `idservicio` ASC");
+                    while($datostable2 = mysqli_fetch_array($query3))
                     {
-                    ?>
+                        ?>
                     <tr>
-                        <td><?php echo $datostable['idpersona']?></td>
-                        <td><?php echo $datostable['nombres']?></td>
-                        <td><?php echo $datostable['apellidos']?></td>
-                        <td><?php echo $datostable['correo']?></td>
-                        <td><?php echo $datostable['telefono']?></td>
-                        <td><?php echo $datostable['nombre']?></td>
-                        <td><?php echo $datostable['nombreTU']?></td>
+                        <td><?php echo $datostable2['idservicio']?></td>
+                        <td><?php echo $datostable2['nombreTS']?></td>
+                        <td><?php echo $datostable2['nombreSV']?></td>
+                        <td><?php echo $datostable2['descripcionSV']?></td>
+                        <td><?php echo $datostable2['nombres']?></td>
+                        <td class="btn-table">
+                            <button><i class="fas fa-edit"></i></button>
+                            <button><i class="fas fa-trash-alt"></i></button>
+                        </td>
                     </tr>
                     <?php
+
                     }
                 ?>
             </table>
@@ -126,23 +129,13 @@
     if(isset($_POST['guardar_us']))
     {
         echo"entro aqui"."\n";
+        $tipserv =$_POST['tipserv'];
         $nombres =$_POST['nombres'];
-        $apellidos =$_POST['apellidos'];
-        $correo =$_POST['correo'];
-        $telefono =$_POST['telefono'];
-        $sucursal = $_POST['sucursal'];
-        $tipUs = $_POST['tipUs'];
-        $contraseña = $_POST['contraseña'];
-        // echo "imprimiendo sucursal"."\n";
-        // echo $sucursal;
-        $table2 = 'persona';
-        $table3 = 'usuario';
-        $mysqli->query("INSERT INTO $table2 (nombres, apellidos, correo, telefono, idsucursal) VALUES ('$nombres','$apellidos','$correo','$telefono' ,$sucursal)");
-        // echo"se incertaron correctamente";
-        $queryPer = mysqli_query($mysqli,"SELECT idpersona,correo FROM persona WHERE correo = '$correo' ");
-        $conperso = mysqli_fetch_array($queryPer);
-        $idprs = $conperso['idpersona'];
-        $mysqli->query("INSERT INTO $table3 (idpersona,contrase,idtipousuario) VALUES ($idprs,'$contraseña',$tipUs)") ;
+        $descripcion =$_POST['descripcion'];
+        $emple =$_POST['emple'];
+        // echo "mostrando empleado:   ".$emple;
+        $table3 = 'servicio';
+        $mysqli->query("INSERT INTO $table3 (idtiposervicio,nombreSV,descripcionSV,idempleado) VALUES ($tipserv,'$nombres','$descripcion',$emple)");
     }
 ?>
 <script>

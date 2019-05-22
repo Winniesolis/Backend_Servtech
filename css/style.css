@@ -225,6 +225,9 @@ fieldset h1{
 .closse a{
     color: #ffffff;
 }
+.fa-trash-alt, .fa-edit{
+    font-size: 20px;
+}
 .fa-times:hover, .closse a:hover, .fa-trash-alt:hover{
     color: #d63636;
 }
@@ -263,7 +266,7 @@ fieldset h1{
     width: 730px;
     column-gap: 30px;
 }
-.form1 select{
+.form1 select, .form-otros select{
     width: 204px;
     height: 30px;
     border-radius: 5px;
@@ -277,7 +280,12 @@ fieldset h1{
     color: #ffffff;
     float: right;
 }
-.form1 input{
+.form-otros select{
+    float: none !important;
+    margin-top: 50px;
+    width: 304px !important; 
+}
+.form1 input, .tipoUs input, .tipoUs button , .sucursal_add button, .proveedir_add button, .tiposerv button{
     width: 206px;
     height: 30px;
     border-radius: 5px;
@@ -291,6 +299,18 @@ fieldset h1{
     color: #ffffff;
     justify-content: center;
     float: right;
+}
+.tipoUs input, .tipoUs button, .sucursal_add button, .proveedir_add button, .tiposerv button{
+    float: none;
+    color: #ffffff;
+    width: 235px !important;
+}
+.tipoUs button{
+    width: 150px !important;
+}
+.tipoUs h1{
+    margin-top: 20px;
+    font-size: 25px;
 }
 .form1 label{
     font-size: 20px;
@@ -309,9 +329,17 @@ fieldset h1{
     font-size: 18px;
     font-family: 'Quicksand', sans-serif;
 }
+.btn-table button{
+    background: none;
+    border: none;
+}
+.fa-edit, .fa-trash-alt{
+    color: #ffffff;
+    margin-right: 5px;
+}
 .btn-sv input:hover{
- background: #a7a5a5;
- color: #000000;
+    background: #a7a5a5;
+    color: #000000;
 }
 .btn-agr{
     background: none;
@@ -327,7 +355,6 @@ fieldset h1{
 .circle:hover{
     color: #a7a5a5;
 }
-
 .btnform{
     display: inline-block !important;
     margin: 10px 0px;
@@ -336,8 +363,59 @@ fieldset h1{
     margin-left: 80px;
     font-size: 20px;
 }
-
-
+.tipoUs{
+    width: 500px;
+    height: 200px;
+    border: #06A3D3 1px solid;
+    display: inline-block;
+}
+.sucursal_add{
+    border: #06A3D3;
+}
+.sucursal_add input, .proveedir_add input, .tiposerv input{
+    width: 266px;
+    height: 30px;
+    border-radius: 5px;
+    background: rgba(0,0,0,.2);
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #3fdb9d;
+    padding-left: 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 17px;
+    color: #ffffff;
+}
+.sucursal_add select, .proveedir_add select{
+    width: 275px;
+    height: 30px;
+    border-radius: 5px;
+    background: rgba(0,0,0,.2);
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #3fdb9d;
+    padding-left: 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 17px;
+    color: #ffffff;
+}
+.sucursal_add h1, .proveedir_add h1, .tiposerv h1{
+    font-size: 30px;
+    margin-left: 30px;
+}
+.tipoUs, .sucursal_add, .proveedir_add,.tiposerv{
+    border: #06A3D3 1px solid;
+    background: #06A3D3;
+    width: 500px;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 100px;
+}
+.sec1{
+    margin-bottom: 50px;
+}
+/* .sec2{
+    margin-left: -100px;
+} */
 /* end modal */
 /* altaproductos */
 /* productos */
