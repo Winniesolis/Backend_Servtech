@@ -22,7 +22,7 @@
         </section>
         <nav>
             <ul>
-               <li><a href="index.php"><i class="fas fa-home p-ico">
+               <li><a href="1index.php"><i class="fas fa-home p-ico">
                 <p>Inicio</p>
                </i></a></li>
                <li><a href="usuarios.php"><i class="fas fa-user">
