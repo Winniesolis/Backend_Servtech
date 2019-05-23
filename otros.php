@@ -1,4 +1,7 @@
+<?php
+    include ("conexion.php");
 
+?>
 
 
 
@@ -61,33 +64,57 @@
         <section class="tipoUs">
             <center>
                 <h1>Tipo de usuario</h1>
-                <form action="otros.php">
+                <form action="otros.php" method="POST">
                     <br>
-                    <input type="text" value="Nombre" >
+                    <input type="text" placeholder="Nombre" name="nombreTU" >
                     <br><br>
-                    <button type="submit">Guardar</button>
+                    <!-- <button type="submit" name="guardartipus">Guardar</button> -->
+                    <input type="submit" name="guardarTU" value="Guardar" class="btnform">
+
                 </form>
             </center>
+            <?php
+                if(isset($_POST['guardarTU']))
+                {
+                    echo "entramos isset";
+                    $nombreTU = $_POST['nombreTU'];
+                    $table4 = 'tipousuario';
+                    $mysqli->query("INSERT INTO $table4 (nombreTU) VALUES ('$nombreTU')");
+                    echo "imprimiento nombreus   ".$nombreTU;
+                }
+            ?>
         </section>
         <section class="tiposerv">
             <center>
-                <h1>Tipo de usuario</h1>
-                <form action="otros.php">
+                <h1>Tipo de </h1>
+                <form action="otros.php" method="POST">
                     <br>
-                    <input type="text" value="Nombre">
+                    <input type="text" value="Nombre" name="nombreTS">
                     <br><br>
-                    <button type="submit">Guardar</button>
+                    <input type="submit" name="guardarTS" value="Guardar" class="btnform">
                 </form>
             </center>
         </section>
     </center> 
     </section>
+    <?php
+        if(isset($_POST['guardarTS']))
+        {
+            echo "entramos isset";
+            $nombreTS = $_POST['nombreTS'];
+            $table5 = 'tiposervicio';
+            $mysqli->query("INSERT INTO $table5 (nombreTU) VALUES ('$nombreTS')");
+            echo "imprimiento nombreus   ".$nombreTU;
+        }
+    ?>
+
+    <!-- 3 -->
     <section class="sec2">
     <center>
         <section class="sucursal_add">
             <center>
                 <h1>Sucursal</h1>
-                <form action="otros.php">
+                <form action="otros.php" method="POST">
                     <br>
                     <input type="text" value="Nombre" ><br><br>
                     <input type="text" value="Direccion"><br><br>
@@ -111,7 +138,7 @@
         <section class="proveedir_add">
             <center>
                 <h1>Proveedor</h1>
-                <form action="otros.php">
+                <form action="otros.php" method="POST">
                     <br>
                     <input type="text" value="Nombre" ><br><br>
                     <input type="text" value="Telefono"><br><br>
