@@ -8,5 +8,4 @@
 ?> -->
 <?php 
    $mysqli=mysqli_connect("localhost","root","","servtech_v2");
-   echo 'Entramos';
 ?>
