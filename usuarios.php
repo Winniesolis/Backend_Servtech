@@ -34,9 +34,22 @@
             <h1>Usuarios</h1>
         </section>
         <section class="usuario">
-            <img src="img/winnie.png" alt="">
-            <p>Winnie Solis</p>
-            <p>Administrador</p>
+            <ul>
+                <li><a href=""><img src="img/winnie.png" alt=""></a>
+                    <ul class="sub-nav">
+                        <div>
+                            <div>
+                                <h5>Winnie Solis</h5>
+                                <h6>Administrador</h6>
+                            </div>
+                            <li><a href="../salir.php">Cerrar Sesion</a></li>
+                            <li><a href="">Ir al FrontEnd</a></li>
+                            <li><a href="">Cambiar imagen</a></li>
+                            <li><a href="respaldos/index-respaldo.php">Hacer Respaldo</a></li>
+                        </div>
+                    </ul>
+                </li>
+            </ul>   
         </section>
         <nav>
             <ul class="nav-icon">
