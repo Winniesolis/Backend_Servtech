@@ -350,7 +350,7 @@ fieldset h1 {
 .ventana h3 {
     font-family: 'Quicksand', sans-serif;
     font-size: 30px;
-    color: #000000;
+    color: #ffffff;
     margin-bottom: 30px;
     text-align: center;
 }
@@ -769,5 +769,178 @@ fieldset h1 {
 }
 /* respaldo */
 
+
+/*css de julio foto*/
+
+
+.ventana .prevPhoto {
+    display: flex;
+    justify-content: space-between;
+    width: 160px;
+    height: 150px;
+    border: 1px solid #CCC;
+    position: relative;
+    cursor: pointer;
+    background: url(../images/uploads/user.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    margin: auto;
+}
+.ventana .prevPhoto label{
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+.ventana .prevPhoto img{
+    width: 100%;
+    height: 100%;
+}
+.ventana .upimg, .notBlock{
+    display: none !important;
+}
+.ventana .errorArchivo{
+    font-size: 16px;
+    font-family: arial;
+    color: #cc0000;
+    text-align: center;
+    font-weight: bold; 
+    margin-top: 10px;
+}
+.ventana .delPhoto{
+    color: #FFF;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    background: red;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    z-index: 10;
+}
+.ventana #tbl_list_productos img{
+    width: 50px;
+}
+.ventana .imgProductoDelete{
+    width: 175px;
+}
+/*css julio*/
+.prevPhoto {
+    display: flex;
+    justify-content: space-between;
+    width: 160px;
+    height: 150px;
+    border: 1px solid #CCC;
+    position: relative;
+    cursor: pointer;
+    background: url(../images/uploads/user.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    margin: auto;
+}
+.prevPhoto label{
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+.prevPhoto img{
+    width: 100%;
+    height: 100%;
+}
+.upimg, .notBlock{
+    display: none !important;
+}
+.errorArchivo{
+    font-size: 16px;
+    font-family: arial;
+    color: #cc0000;
+    text-align: center;
+    font-weight: bold; 
+    margin-top: 10px;
+}
+.delPhoto{
+    color: #FFF;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    background: red;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    z-index: 10;
+}
+#tbl_list_productos img{
+    width: 50px;
+}
+.imgProductoDelete{
+    width: 175px;
+}
+/* tamaño de la imagen lista */
+.img_producto img
+{
+    width: 70px;
+    height: auto;
+    margin: auto;
+}
+/* Paginador */
+.paginador ul li
+{
+    list-style: none;
+    display: inline-block;
+ 
+
+
+
+}
+.paginador ul li a
+{
+    font-family: 'Montserrat';
+    text-decoration: none;
+    font-weight: 700;
+}
+.paginador a:hover
+{
+    background: #cfcbcb;
+
+}
+.paginador a
+{
+    padding: 10px;
+    border:2px #cfcbcb solid;  
+}
+.paginador
+{
+    margin-top: 20px;
+}
+.pageselected
+{
+    padding: 10px;
+    background: rgba(6,163,211,.5);
+    font-weight: 700;
+    border:2px #cfcbcb solid;
+}
 
 
