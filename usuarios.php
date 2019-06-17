@@ -135,17 +135,14 @@
                     {
                     ?>
                     <tr>
-                        <td><?php echo $datostable['idpersona']?></td>
+                        <td><?php echo $datostable['idusuario']?></td>
                         <td><?php echo $datostable['nombres']?></td>
                         <td><?php echo $datostable['apellidos']?></td>
                         <td><?php echo $datostable['correo']?></td>
                         <td><?php echo $datostable['telefono']?></td>
                         <td><?php echo $datostable['nombreSC']?></td>
                         <td><?php echo $datostable['nombreTU']?></td>
-                        <td class="btn-table">
-                            <button><i class="fas fa-edit"></i></button>
-                            <button><i class="fas fa-trash-alt"></i></button>
-                        </td>
+
                     </tr>
                     <?php
                     }
