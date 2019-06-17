@@ -10,9 +10,55 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Backend │ ServTech</title>
     <!-- style -->
-    <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="stylesheet" href="../">
     <!-- font-awasome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script type="text/javascript" src="jquery-1.12.0.min.js"></script>
+	<script type="text/javascript" src="dist/Chart.bundle.min.js"></script>
+    <script type="text/javascript">
+    
+        $(document).ready(functin(){
+            var datos ={
+                type: "pie",
+                data: {
+                    datasets: [{
+                        data: [
+                            5,
+                            10,
+                            40,
+                            12,
+                            23,
+                        ],
+                        backgrundColor: [
+                            "#f7464A",
+                            "#46BFBD",
+                            "#FBD45C",
+                            "#949FB1",
+                            "#4D5360",
+                        ],
+                    }],
+                    labels: [
+                        "DAtos 1",
+                        "DAtos 2",
+                        "DAtos 3",
+                        "DAtos 4",
+                        "DAtos 5",
+                    ]
+                }, 
+                options: {
+                    responsive: true;
+                }
+            };
+        });
+
+        var canvas = document.getElementById('chart').getConText('2d');
+        window.pie = new Chart(canvas, datos);
+    
+    </script>
+    
+
+
 </head>
 <body>
     <header>
@@ -29,7 +75,7 @@
                                 <h6>Administrador</h6>
                             </div>
                             <li><a href="salir.php">Cerrar Sesion</a></li>
-                            <li><a href="">Ir al FrontEnd</a></li>
+                            <li><a href="http://www.servtechweb.com.mx/">Ir al FrontEnd</a></li>
                             <li><a href="">Cambiar imagen</a></li>
                             <li><a href="respaldos/index-respaldo.php">Hacer Respaldo</a></li>
 
@@ -49,12 +95,25 @@
                <li><a href="otros.php"><i class="fas fa-ad"><br><span>Otros</span></i></a></li>
             </ul>
         </nav>
-    <!-- productos <i class="fas fa-laptop"></i> -->
-    <!-- servicios <i class="fas fa-handshake"></i> -->
-    <!-- reportes <i class="fas fa-file"></i> -->
-    <!-- usuarios <i class="fas fa-user"></i> -->
-    <!-- ubicacion <i class="fas fa-map-marker-alt"></i> -->
-    
     </header>
+        
+    <section class="content">
+        <div id="canvas-container" style="width:50%;">
+            <canvas id="chart" width="500" height="350"></canvas>
+        </div>
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

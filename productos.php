@@ -1,5 +1,11 @@
 <?php
     include ('conexion.php');
+session_start();
+    if (empty($_SESSION['active'])) {
+        // $alert = "EL usuario o contraseña es incorrecto";
+        header('location: login.php');
+    
+    }
 ?>
 
 <!DOCTYPE html>
@@ -29,9 +35,8 @@
                                 <h5>Winnie Solis</h5>
                                 <h6>Administrador</h6>
                             </div>
-                            <li><a href="../salir.php">Cerrar Sesion</a></li>
-                            <li><a href="">Ir al FrontEnd</a></li>
-                            <li><a href="">Cambiar imagen</a></li>
+                            <li><a href="salir.php">Cerrar Sesion</a></li>
+                            <li><a href="http://www.servtechweb.com.mx/">Ir al FrontEnd</a></li>
                             <li><a href="respaldos/index-respaldo.php">Hacer Respaldo</a></li>
                         </div>
                     </ul>
@@ -44,7 +49,7 @@
                <li><a href="usuarios.php" ><i class="fas fa-user"><br><span>Usuarios</span></i></a></li>
                <li><a href="productos.php"><i class="fas fa-laptop active"><br><span>Productos</span></i></a></li>
                <li><a href="servicios.php"><i class="fas fa-handshake"><br><span>Servicios</span></i></a></li>
-               <li><a href="ubicacion.php"><i class="fas fa-map-marker-alt"><br><span>Ubicacion</span></i></a></li>
+               <!-- <li><a href="ubicacion.php"><i class="fas fa-map-marker-alt"><br><span>Ubicacion</span></i></a></li> -->
                <li><a href="reportes.php"><i class="fas fa-file"><br><span>Reportes</span></i></a></li>
                <li><a href="otros.php"><i class="fas fa-ad"><br><span>Otros</span></i></a></li>
             </ul>
