@@ -25,9 +25,8 @@
                                 <h5>Winnie Solis</h5>
                                 <h6>Administrador</h6>
                             </div>
-                            <li><a href="../salir.php">Cerrar Sesion</a></li>
-                            <li><a href="">Ir al FrontEnd</a></li>
-                            <li><a href="">Cambiar imagen</a></li>
+                            <li><a href="salir.php">Cerrar Sesion</a></li>
+                            <li><a href="http://www.servtechweb.com.mx/">Ir al FrontEnd</a></li>
                             <li><a href="respaldos/index-respaldo.php">Hacer Respaldo</a></li>
                         </div>
                     </ul>

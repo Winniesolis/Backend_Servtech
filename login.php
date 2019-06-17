@@ -3,7 +3,7 @@ $alert = '';
 session_start();
 if (!empty($_SESSION['active'])) {
     // $alert = "EL usuario o contraseña es incorrecto";
-    header('location: 2index.php');
+    header('location: Graficas/Gindex.php');
 
 } else {
     if (!empty($_POST)) {
@@ -14,8 +14,9 @@ if (!empty($_SESSION['active'])) {
             require_once "conexion.php";
             $user = $_POST['usuario'];
             $pas = $_POST['clave'];
-
-            $query = mysqli_query($mysqli, "SELECT * FROM usuariolog WHERE nickName ='$user' AND pass = '$pas'");
+            $pasencrip = md5($pas);
+            echo $pasencrip."mostrando encriptacion";
+            $query = mysqli_query($mysqli, "SELECT * FROM usuariolog WHERE nickName ='$user' AND pass = '$pasencrip'");
             $result = mysqli_num_rows($query);
 
             if ($result > 0) {
@@ -25,7 +26,7 @@ if (!empty($_SESSION['active'])) {
                 $_SESSION['idUser'] = $data['idusuarioLog'];
                 $_SESSION['nickName'] = $data['nickName'];
                 echo "Entro al sistema";
-                header('location: 2index.php');
+                header('location: Graficas/Gindex.php');
             }else{
                 $alert = "El usuario o la clave son incorrectos";
             }

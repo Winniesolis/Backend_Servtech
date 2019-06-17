@@ -65,7 +65,7 @@ nav {
     display: inline-block;
     vertical-align: top;
     margin-top: 50px;
-    margin-left: -339px;
+    margin-left: -278px;
 }
 
 .nav-icon i span {
@@ -325,17 +325,16 @@ fieldset h1 {
 
 /* modal */
 .ventana {
-    background: #EDF5E0;
-    /* background: linear-gradient(to right, rgba(6,163,211,1) 0%, rgba(6,163,211,1) 14%, rgba(7,79,115,1) 100%); */
+    background: #11658E;
     width: 65%;
-    color: #074f73;
+    color: #ffffff;
     font-size: 18px;
     padding: 33px;
     min-height: 250px;
     border-radius: 22px;
     position: absolute;
     left: 15%;
-    top: 31%;
+    top: 25%;
     display: none;
 }
 
@@ -350,7 +349,7 @@ fieldset h1 {
 .ventana h3 {
     font-family: 'Quicksand', sans-serif;
     font-size: 30px;
-    color: #000000;
+    color: #ffffff;
     margin-bottom: 30px;
     text-align: center;
 }
@@ -368,17 +367,16 @@ fieldset h1 {
     width: 204px;
     height: 30px;
     border-radius: 5px;
-    background: rgba(0, 0, 0, .2);
+    background: rgba(0, 110, 255, .8);
     border: none;
     outline: none;
     border-bottom: 2px solid #3fdb9d;
     padding-left: 10px;
     font-family: 'Quicksand', sans-serif;
     font-size: 17px;
-    color: #074f73;
+    color: #ffffff;
     float: right;
 }
-
 .form-otros select {
     float: none !important;
     margin-top: 50px;
@@ -391,7 +389,7 @@ fieldset h1 {
 .sucursal_add button,
 .proveedir_add button,
 .tiposerv button {
-    width: 150px;
+    width: 195px;
     height: 30px;
     border-radius: 5px;
     background: rgba(0, 0, 0, .2);
@@ -401,7 +399,7 @@ fieldset h1 {
     padding-left: 10px;
     font-family: 'Quicksand', sans-serif;
     font-size: 17px;
-    color: #074f73;
+    color: #ffffff;
     justify-content: center;
     float: right;
 }
@@ -416,6 +414,10 @@ fieldset h1 {
     width: 235px !important;
 }
 
+.btnform:hover{
+    background: #a7a5a5;
+    color: #000000;
+}
 .tipoUs button {
     width: 150px !important;
 }
@@ -530,7 +532,7 @@ fieldset h1 {
 .departamento {
     border: #06A3D3 1px solid;
     background: #d5daeb;
-    ;
+    border-radius: 26px;
     width: 500px;
     display: inline-block;
     vertical-align: top;
@@ -769,5 +771,151 @@ fieldset h1 {
 }
 /* respaldo */
 
+/* GRAFICAS */
+.contenedor-graf, .contenedor-graf3{
+    display: inline-block;
+    margin-left: 100px;
+    margin-bottom: 100px;
+}
+.contenedor-graf2, .contenedor-graf4{
+    display: inline-block;
+    margin-left: 150px;
+   
+}
+.tabedit {
+    border: 3px   #3fdb9d  solid;
+    border-radius: 20px;
+    background: #074f73;
+    width: 600px;
+    height: 700px;
+    margin: auto;
 
+}
+.form-editus{
+    width: 400px;
+    margin:auto;
+    margin-top: 50px;
+}
+.form-editus label{
+    font-size: 20px;
+}
+.form-editus label, .form-editus input, .form-editus select{
+    width: 380px;
+    height: 30px;
+    color: #3fdb9d;
+}
+.form-editus input, .form-editus select{
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 1);
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #3fdb9d;
+    padding-left: 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 17px;
+    color: #000000;
+    justify-content: center;
+}
+.tabedit h1{
+    text-align: center;
+    margin-top: 30px;
+    font-size: 30px;
+    font-family: 'Montserrat', sans-serif;
+    color: #3fdb9d
+}
+.form-editus section input{
+    width: 150px;
+    background: #3fdb9d;
+    display: inline-block !important;
+    color: #000000;
+    margin-top: 30px;
+    margin-left: 10px;
+    border-bottom: 2px solid #000000;
 
+}
+.form-editus section input:hover{
+    background: #06A3D3;
+    border-bottom: 2px solid #000000;
+
+}
+.form-editus section{
+    columns: 2;
+}
+.notItemOne option:first-child{
+    display: none;
+}
+.disp-none{
+    display: none;
+}
+.content_delete{
+    margin-top: 20px;
+}
+.content_delete .fa-user-circle{
+    font-size: 120px;
+    margin-bottom: 30px;
+    color: #06A3D3;
+}
+.content_delete p{
+    font-size: 17px;
+    font-family: 'Montserrat', sans-serif;
+    margin: 15px 0px;
+}
+.content_delete p span{
+    color: red;
+}
+.content_delete form a{
+    background: #074f73;
+    padding:9px;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    margin: 20px 10px 0px -40px;
+}
+.content_delete form button{
+    width: 92px;
+    background: #074f73;
+    padding: 9px;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    border: none;
+    margin: 20px 0px;
+    cursor: pointer;
+}
+.content_delete form button:hover , .content_delete form a:hover{
+    background: #cfcbcb !important;
+    color: #000000;
+    border: #06A3D3 1px solid;
+}
+.bord-profile{
+    width: 800px;
+    height: 800px;
+    border: #06A3D3 1px solid;
+    margin: auto;
+}
+.bord-profile p{
+    font-size: 25px;
+    margin: 20px;
+}
+.bord-profile .fa-user-circle{
+    font-size: 150px;
+    width: 150px;
+    margin-left: 43%;
+    margin-top: 50px;
+    
+}
+/* graficas */
+.grafica1 h1, .grafica2 h1, .grafica3 h1, .grafica4h1{
+    font-size:35px;
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top: 50px;
+
+    /* color: #074f73; */
+}
+.bg-g{
+    color: #09ee70; b
+}
+/* graficas */

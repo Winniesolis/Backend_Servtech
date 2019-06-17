@@ -1,6 +1,18 @@
 <?php
+session_start();
+
+if (empty($_SESSION['active'])) {
+    header('location: login.php');
+} 
+
+    if(isset($_GET['id']))
+    {
+        $claveid = $_GET['id'];
+        
+    }
+
     include('conexion.php');
-    $query = mysqli_query($mysqli,"SELECT idsucursal, nombre FROM sucursal ORDER BY `idsucursal` ASC");
+    $query = mysqli_query($mysqli,"SELECT idsucursal, nombreSC FROM sucursal ORDER BY `idsucursal` ASC");
     if(isset($_POST['sucursal']))
     {
         $sucursal =$_POST['sucursal'];
@@ -42,9 +54,9 @@
                                 <h5>Winnie Solis</h5>
                                 <h6>Administrador</h6>
                             </div>
-                            <li><a href="../salir.php">Cerrar Sesion</a></li>
-                            <li><a href="">Ir al FrontEnd</a></li>
-                            <li><a href="">Cambiar imagen</a></li>
+                            <li><a href="perfil.php">Ver Perfil</a></li>
+                            <li><a href="salir.php">Cerrar Sesion</a></li>
+                            <li><a href="http://www.servtechweb.com.mx/">Ir al FrontEnd</a></li>
                             <li><a href="respaldos/index-respaldo.php">Hacer Respaldo</a></li>
                         </div>
                     </ul>
@@ -53,11 +65,11 @@
         </section>
         <nav>
             <ul class="nav-icon">
-               <li><a href="2index.php"><i class="fas fa-home p-ico"><br><span>Inicio</span></i></a></li>
+               <li><a href="Graficas/Gindex.php"><i class="fas fa-home p-ico"><br><span>Inicio</span></i></a></li>
                <li><a href="usuarios.php" ><i class="fas fa-user active"><br><span>Usuarios</span></i></a></li>
                <li><a href="productos.php"><i class="fas fa-laptop"><br><span>Productos</span></i></a></li>
                <li><a href="servicios.php"><i class="fas fa-handshake"><br><span>Servicios</span></i></a></li>
-               <li><a href="ubicacion.php"><i class="fas fa-map-marker-alt"><br><span>Ubicacion</span></i></a></li>
+               <!-- <li><a href="ubicacion.php"><i class="fas fa-map-marker-alt"><br><span>Ubicacion</span></i></a></li> -->
                <li><a href="reportes.php"><i class="fas fa-file"><br><span>Reportes</span></i></a></li>
                <li><a href="otros.php"><i class="fas fa-ad"><br><span>Otros</span></i></a></li>
             </ul>
@@ -77,24 +89,27 @@
                 <input type="text" placeholder="Apellido(s)" name="apellidos">
                 <br> <br>
                 <label for="">Correo</label>
-                <input type="text" placeholder="correo" name="correo">
+                <input type="email" placeholder="correo" name="correo">
                 <br> <br>
                 <label for="">Telefono:</label>
-                <input type="text" placeholder="telefono" name="telefono">
+                <input type="tel" placeholder="telefono" name="telefono">
+                <br> <br>
+                <label for="">NickName:</label>
+                <input type="text" placeholder="NickName" name="NickName">
                 <br> <br>
                 <label for="">Contraseña:</label>
-                <input type="text" placeholder="Contraseña" name="contraseña">
+                <input type="password" placeholder="Contraseña" name="contraseña">
                 <br> <br>
                 <label for="">Contraseña:</label>
-                <input type="text" placeholder="Confirme su contraseña" name="conf-contra">
+                <input type="password" placeholder="Confirme su contraseña" name="conf-contra">
                 <br> <br>
                 <label for="">Sucursal: </label>
                 <select name="sucursal" id="">
                     <?php
-                        while ($datos = mysqli_fetch_array($query))
+                        while ($datossc = mysqli_fetch_array($query))
                         {
                     ?>
-                    <option value="<?php echo$datos['idsucursal']?>"><?php echo $datos['nombre']?></option>
+                    <option value="<?php echo$datossc['idsucursal']?>"><?php echo $datossc['nombreSC']?></option>
                     <?php
                         }
                     ?>
@@ -130,7 +145,7 @@
                     <td></td>
                 </tr>
                 <?php
-                    $query3 = mysqli_query($mysqli,"SELECT * FROM persona INNER JOIN usuario ON persona.idpersona = usuario.idpersona INNER JOIN sucursal ON sucursal.idsucursal = persona.idsucursal INNER JOIN tipousuario ON usuario.idtipousuario = tipousuario.idtipousuario");
+                    $query3 = mysqli_query($mysqli,"SELECT * FROM persona INNER JOIN usuariolog ON persona.idpersona = usuariolog.idpersona INNER JOIN sucursal ON sucursal.idsucursal = persona.idsucursal INNER JOIN tipousuario ON usuariolog.idtipousuario = tipousuario.idtipousuario");
                     while($datostable = mysqli_fetch_array($query3))
                     {
                     ?>
@@ -143,8 +158,8 @@
                         <td><?php echo $datostable['nombreSC']?></td>
                         <td><?php echo $datostable['nombreTU']?></td>
                         <td class="btn-table">
-                            <button><i class="fas fa-edit"></i></button>
-                            <button><i class="fas fa-trash-alt"></i></button>
+                            <a href="edit-us.php?id=<?php echo $datostable['idpersona']?>"><button><i class="fas fa-edit"></i></button></a>
+                            <a href="elim-us.php?id=<?php echo $datostable['idpersona']?>"><button><i class="fas fa-trash-alt"></i></button></a>
                         </td>
                     </tr>
                     <?php
@@ -156,7 +171,7 @@
 <?php
     if(isset($_POST['guardar_us']))
     {
-        echo"entro aqui"."\n";
+        // echo"entro aqui"."\n";
         $nombres =$_POST['nombres'];
         $apellidos =$_POST['apellidos'];
         $correo =$_POST['correo'];
@@ -164,16 +179,26 @@
         $sucursal = $_POST['sucursal'];
         $tipUs = $_POST['tipUs'];
         $contraseña = $_POST['contraseña'];
+        $contraenv = md5($contraseña);
+        $contraseña2 = $_POST['conf-contra'];
+        $nick = $_POST['NickName'];
         // echo "imprimiendo sucursal"."\n";
         // echo $sucursal;
         $table2 = 'persona';
-        $table3 = 'usuario';
-        $mysqli->query("INSERT INTO $table2 (nombres, apellidos, correo, telefono, idsucursal) VALUES ('$nombres','$apellidos','$correo','$telefono' ,$sucursal)");
-        // echo"se incertaron correctamente";
-        $queryPer = mysqli_query($mysqli,"SELECT idpersona,correo FROM persona WHERE correo = '$correo' ");
-        $conperso = mysqli_fetch_array($queryPer);
-        $idprs = $conperso['idpersona'];
-        $mysqli->query("INSERT INTO $table3 (idpersona,contrase,idtipousuario) VALUES ($idprs,'$contraseña',$tipUs)") ;
+        $table3 = 'usuariolog';
+        if($contraseña == $contraseña2){
+            $mysqli->query("INSERT INTO $table2 (nombres, apellidos, correo, telefono, idsucursal) VALUES ('$nombres','$apellidos','$correo','$telefono' ,$sucursal)");
+            // echo"se incertaron correctamente";
+            $queryPer = mysqli_query($mysqli,"SELECT idpersona,correo FROM persona WHERE correo = '$correo' ");
+            $conperso = mysqli_fetch_array($queryPer);
+            $idprs = $conperso['idpersona'];
+            $mysqli->query("INSERT INTO $table3 (idpersona,nickName,pass,idtipousuario) VALUES ($idprs,'$nick','$contraenv',$tipUs)") ;
+            
+        }else{
+            echo "<script>alert('Las contraseñas no coinciden');</script>";
+
+        }
+       
     }
 ?>
 <script>
