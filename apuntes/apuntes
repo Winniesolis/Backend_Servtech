@@ -1,0 +1,24 @@
+DEPARTAMENTO
+     <select name="emple" id="">
+                    <?php
+                        while ($datos1 = mysqli_fetch_array($query1))
+                        {
+                    ?>
+                    <option value="<?php echo$datos1['iddepartamento']?>"><?php echo $datos1['nombreDP']?></option>
+                    <?php
+                        }
+                    ?>
+                </select>
+
+
+<script>alert('Datos incompletos');</script>
+
+SELECT * FROM empleado INNER JOIN persona ON empleado.idpersona = persona.idpersona INNER JOIN departamento on departamento.iddepartamento = empleado.iddepartamento INNER JOIN servicio ON servicio.idempleado = empleado.idempleado INNER JOIN tiposervicio ON tiposervicio.idtiposervicio = servicio.idtiposervicio 
+
+//editar usuarios
+SELECT * FROM persona INNER JOIN usuariolog ON persona.idpersona = usuariolog.idpersona INNER JOIN tipousuario ON usuariolog.idtipousuario = tipousuario.idtipousuario WHERE persona.idpersona = 7
+
+
+
+estado
+queryus = mysqli_query($mysqli, "SELECT * FROM persona INNER JOIN usuariolog ON persona.idpersona = usuariolog.idpersona INNER JOIN tipousuario ON usuariolog.idtipousuario = tipousuario.idtipousuario INNER JOIN sucursal ON persona.idsucursal = sucursal.idsucursal INNER JOIN estado ON sucursal.idestado = estado.idestado WHERE persona.idpersona = $claveid ");
