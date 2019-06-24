@@ -202,6 +202,25 @@ if (empty($_SESSION['active'])) {
         $contraenv = md5($contraseña);
         $contraseña2 = $_POST['conf-contra'];
         $nick = $_POST['NickName'];
+
+        $foto       = $_FILES['foto'];
+        $nom_foto   = $foto['name'];
+        $type       = $foto['type'];
+        $url_temp   = $foto['tmp_name'];
+
+        $imgUsuario = 'usuario.png';
+            if ($nom_foto != '') 
+            {
+                $destino        = 'img/uploads/';
+                $img_nombre     = 'img_'.md5(date('d-m-Y H:m:s' ));
+                $imgUsuario    = $img_nombre.'.jpg';
+                $src            = $destino.$imgUsuario;
+            }
+
+
+
+        print_r($_FILES) ;
+        print_r($_POST);
         // echo "imprimiendo sucursal"."\n";
         // echo $sucursal;
         $table2 = 'persona';
@@ -212,7 +231,11 @@ if (empty($_SESSION['active'])) {
             $queryPer = mysqli_query($mysqli,"SELECT idpersona,correo FROM persona WHERE correo = '$correo' ");
             $conperso = mysqli_fetch_array($queryPer);
             $idprs = $conperso['idpersona'];
-            $mysqli->query("INSERT INTO $table3 (idpersona,nickName,pass,idtipousuario,foto) VALUES ($idprs,'$nick','$contraenv',$tipUs,'usuario.png')") ;
+            $mysqli->query("INSERT INTO $table3 (idpersona,nickName,pass,idtipousuario,foto) VALUES ($idprs,'$nick','$contraenv',$tipUs,'$imgUsuario')") ;
+
+            if ($nom_foto != '') {
+                    move_uploaded_file($url_temp, $src);
+                }
             
         }else{
             echo "<script>alert('Las contraseñas no coinciden');</script>";
