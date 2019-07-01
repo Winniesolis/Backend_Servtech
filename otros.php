@@ -4,7 +4,6 @@ session_start();
 if (empty($_SESSION['active'])) {
     // $alert = "EL usuario o contraseña es incorrecto";
     header('location: login.php');
-
 }
 include("conexion.php");
 $queryEst = mysqli_query($mysqli, "SELECT idestado, nombreES FROM estado ORDER BY `idestado` ASC");
@@ -33,7 +32,7 @@ if (isset($_POST['guardarTS'])) {
 
 // Sucursal
 if (isset($_POST['guardarSuc'])) {
-    echo "Entramos sucursal";
+    // echo "Entramos sucursal";
     $NombreSC = $_POST['NombreSC'];
     $direccionSC = $_POST['direccionSC'];
     $telefonoSC = $_POST['telefonoSC'];
@@ -80,6 +79,7 @@ if (isset($_POST['guardar_emp'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,14 +87,15 @@ if (isset($_POST['guardar_emp'])) {
     <title>Backend │ ServTech</title>
     <!-- style -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/lg1/ico-vent3.ico" />
     <!-- font-awasome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
 <body>
-<header>
+    <header>
         <section class="principal">
-            <img src="img/logo-ST.PNG" alt="">
+            <img src="img/lg1/logoj2.png" alt="">
         </section>
         <section class="usuario">
             <ul>
@@ -111,17 +112,17 @@ if (isset($_POST['guardar_emp'])) {
                         </div>
                     </ul>
                 </li>
-            </ul>   
+            </ul>
         </section>
         <nav>
             <ul class="nav-icon">
-               <li><a href="2index.php"><i class="fas fa-home p-ico"><br><span>Inicio</span></i></a></li>
-               <li><a href="usuarios.php" ><i class="fas fa-user"><br><span>Usuarios</span></i></a></li>
-               <li><a href="productos.php"><i class="fas fa-laptop"><br><span>Productos</span></i></a></li>
-               <li><a href="servicios.php"><i class="fas fa-handshake"><br><span>Servicios</span></i></a></li>
-               <!-- <li><a href="ubicacion.php"><i class="fas fa-map-marker-alt"><br><span>Ubicacion</span></i></a></li> -->
-               <li><a href="reportes.php"><i class="fas fa-file"><br><span>Reportes</span></i></a></li>
-               <li><a href="otros.php"><i class="fas fa-ad active"><br><span>Otros</span></i></a></li>
+                <li><a href="Graficas/Gindex.php"><i class="fas fa-home p-ico"><br><span>Inicio</span></i></a></li>
+                <li><a href="usuarios.php"><i class="fas fa-user"><br><span>Usuarios</span></i></a></li>
+                <li><a href="clientes.php"><i class="fas fa-user-tie"><br><span>Clientes</span></i></a></li>
+                <li><a href="productos.php"><i class="fas fa-laptop"><br><span>Productos</span></i></a></li>
+                <li><a href="servicios.php"><i class="fas fa-handshake"><br><span>Servicios</span></i></a></li>
+                <li><a href="reportes.php"><i class="fas fa-file"><br><span>Reportes</span></i></a></li>
+                <li><a href="otros.php"><i class="fas fa-ad active"><br><span>Otros</span></i></a></li>
             </ul>
         </nav>
     </header>
@@ -159,9 +160,7 @@ if (isset($_POST['guardar_emp'])) {
                                 </section>
                             </section> 
                     ';
-
                         break;
-
                     case "succursal":
                         echo '
                             <section class="sucursal_add">
@@ -175,7 +174,6 @@ if (isset($_POST['guardar_emp'])) {
                                     <input type="text" placeholder="Codigo postal" name="codigopostalSC"><br><br>
                                     <select name="tipSuc" id="">
                         ';
-
                         while ($datosEst = mysqli_fetch_array($queryEst)) {
                             ?>
                         <option value="<?php echo $datosEst['idestado'] ?>"><?php echo $datosEst['nombreES'] ?></option>
@@ -190,7 +188,6 @@ if (isset($_POST['guardar_emp'])) {
                                 </center>
                             </section>    
                         ';
-
                 break;
             case "prov":
                 echo '
@@ -212,7 +209,6 @@ if (isset($_POST['guardar_emp'])) {
                     <?php
 
                 }
-
                 echo '
                             </select>
                             <br><br>
@@ -222,8 +218,6 @@ if (isset($_POST['guardar_emp'])) {
                 </section>
                 ';
                 break;
-
-
             case "tipserv":
                 echo '
                     <section class="sec1">
@@ -262,8 +256,6 @@ if (isset($_POST['guardar_emp'])) {
                     </section> 
                     ';
                 break;
-
-
             case "empleado":
                 echo '
             <center>
@@ -306,4 +298,5 @@ if (isset($_POST['guardar_emp'])) {
     ?>
     </section>
 </body>
+
 </html>

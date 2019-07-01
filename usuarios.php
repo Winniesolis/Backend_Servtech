@@ -36,17 +36,14 @@ if (empty($_SESSION['active'])) {
     <title> Usuarios │ ServTech</title>
     <!-- style -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/J-style.css">
-    <!-- font-awasome -->
-    <script type="text/javascript" src="js/jquery-1.12.0.min.js"></script><!-- Importa la libreria -->
-    <script type="text/javascript" src="js/functions.js"></script><!-- Llama a la funcion -->
+    <link rel="icon" href="img/lg1/ico-vent3.ico"/>
     <!-- font-awasome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
     <header>
         <section class="principal">
-            <img src="img/logo-ST.PNG" alt="">
+            <img src="img/lg1/logoj2.png" alt="">
             <h1>Usuarios</h1>
         </section>
         <section class="usuario">
@@ -71,6 +68,7 @@ if (empty($_SESSION['active'])) {
             <ul class="nav-icon">
                <li><a href="Graficas/Gindex.php"><i class="fas fa-home p-ico"><br><span>Inicio</span></i></a></li>
                <li><a href="usuarios.php" ><i class="fas fa-user active"><br><span>Usuarios</span></i></a></li>
+               <li><a href="clientes.php"><i class="fas fa-user-tie"><br><span>Clientes</span></i></a></li>
                <li><a href="productos.php"><i class="fas fa-laptop"><br><span>Productos</span></i></a></li>
                <li><a href="servicios.php"><i class="fas fa-handshake"><br><span>Servicios</span></i></a></li>
                <!-- <li><a href="ubicacion.php"><i class="fas fa-map-marker-alt"><br><span>Ubicacion</span></i></a></li> -->
@@ -85,7 +83,7 @@ if (empty($_SESSION['active'])) {
         <a href="javascript:Cerrar()"><i class="fas fa-times"></i></a>
         <h3>Alta de Usuario</h3>
         <a href="usuarios.php"></i></a>
-        <form action="usuarios.php" method="POST"  class="form1" enctype="multipart/form-data">
+        <form action="usuarios.php" method="POST"  class="form1">
                 <label for="">Nombre(s):</label>
                 <input type="text" placeholder="Nombre(s)" name="nombres">
                 <br> <br>
@@ -106,7 +104,7 @@ if (empty($_SESSION['active'])) {
                 <br> <br>
                 <label for="">Contraseña:</label>
                 <input type="password" placeholder="Confirme su contraseña" name="conf-contra">
-                <br> <br><br><br>
+                <br> <br>
                 <label for="">Sucursal: </label>
                 <select name="sucursal" id="">
                     <?php
@@ -131,19 +129,6 @@ if (empty($_SESSION['active'])) {
                     ?>
                 </select>
                 <br><br>
-                 <!--Foto-->
-                <div class="photo">
-                        <label for="foto">Foto</label>
-                        <div class="prevPhoto">
-                        <span class="delPhoto notBlock">X</span>
-                        <label for="foto"></label>
-                        </div>
-                        <div class="upimg">
-                        <input type="file" name="foto" id="foto">
-                        </div>
-                        <div id="form_alert"></div>
-                </div>
-                <!--Foto-->
                 <input type="submit" name="guardar_us" value="Guardar" class="btnform">
                 <input type="submit" href="javascript:Cerrar()" name="cerrar" value="Cerrar" class="btnform">
             </center>
@@ -159,14 +144,12 @@ if (empty($_SESSION['active'])) {
                     <td>Telefono</td>
                     <td>Sucursal</td>
                     <td>Tipo de usuario</td>
-                    <td>Foto</td>
                     <td></td>
                 </tr>
                 <?php
                     $query3 = mysqli_query($mysqli,"SELECT * FROM persona INNER JOIN usuariolog ON persona.idpersona = usuariolog.idpersona INNER JOIN sucursal ON sucursal.idsucursal = persona.idsucursal INNER JOIN tipousuario ON usuariolog.idtipousuario = tipousuario.idtipousuario");
                     while($datostable = mysqli_fetch_array($query3))
                     {
-                        $foto = 'img/uploads/'.$datostable ['foto'];
                     ?>
                     <tr>
                         <td><?php echo $datostable['idpersona']?></td>
@@ -176,7 +159,6 @@ if (empty($_SESSION['active'])) {
                         <td><?php echo $datostable['telefono']?></td>
                         <td><?php echo $datostable['nombreSC']?></td>
                         <td><?php echo $datostable['nombreTU']?></td>
-                        <td class="img_producto"><img src="<?php echo $foto; ?>" alt=""></td>
                         <td class="btn-table">
                             <a href="edit-us.php?id=<?php echo $datostable['idpersona']?>"><button><i class="fas fa-edit"></i></button></a>
                             <a href="elim-us.php?id=<?php echo $datostable['idpersona']?>"><button><i class="fas fa-trash-alt"></i></button></a>
@@ -202,25 +184,6 @@ if (empty($_SESSION['active'])) {
         $contraenv = md5($contraseña);
         $contraseña2 = $_POST['conf-contra'];
         $nick = $_POST['NickName'];
-
-        $foto       = $_FILES['foto'];
-        $nom_foto   = $foto['name'];
-        $type       = $foto['type'];
-        $url_temp   = $foto['tmp_name'];
-
-        $imgUsuario = 'usuario.png';
-            if ($nom_foto != '') 
-            {
-                $destino        = 'img/uploads/';
-                $img_nombre     = 'img_'.md5(date('d-m-Y H:m:s' ));
-                $imgUsuario    = $img_nombre.'.jpg';
-                $src            = $destino.$imgUsuario;
-            }
-
-
-
-        print_r($_FILES) ;
-        print_r($_POST);
         // echo "imprimiendo sucursal"."\n";
         // echo $sucursal;
         $table2 = 'persona';
@@ -231,11 +194,7 @@ if (empty($_SESSION['active'])) {
             $queryPer = mysqli_query($mysqli,"SELECT idpersona,correo FROM persona WHERE correo = '$correo' ");
             $conperso = mysqli_fetch_array($queryPer);
             $idprs = $conperso['idpersona'];
-            $mysqli->query("INSERT INTO $table3 (idpersona,nickName,pass,idtipousuario,foto) VALUES ($idprs,'$nick','$contraenv',$tipUs,'$imgUsuario')") ;
-
-            if ($nom_foto != '') {
-                    move_uploaded_file($url_temp, $src);
-                }
+            $mysqli->query("INSERT INTO $table3 (idpersona,nickName,pass,idtipousuario) VALUES ($idprs,'$nick','$contraenv',$tipUs)") ;
             
         }else{
             echo "<script>alert('Las contraseñas no coinciden');</script>";

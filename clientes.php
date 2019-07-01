@@ -32,7 +32,7 @@ if (empty($_SESSION['active'])) {
 <body>
     <header>
         <section class="principal">
-            <img src="img/logoj2.png" alt="">
+            <img src="img/lg1/logoj2.png" alt="">
             <h1>Clientes</h1>
         </section>
         <section class="usuario">

@@ -16,14 +16,15 @@ if (empty($_SESSION['active'])) {
     <title> Productos │ ServTech</title>
     <!-- style -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/lg1/ico-vent3.ico"/>
     <!-- font-awasome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
     <header>
         <section class="principal">
-            <img src="img/logo-ST.PNG" alt="">
-            <h1>Productos</h1>
+            <img src="img/lg1/logoj2.png" alt="">
+            <!-- <h1>Productos</h1> -->
         </section>
         <section class="usuario">
             <ul>
@@ -44,18 +45,25 @@ if (empty($_SESSION['active'])) {
         </section>
         <nav>
             <ul class="nav-icon">
-               <li><a href="2index.php"><i class="fas fa-home p-ico"><br><span>Inicio</span></i></a></li>
+               <li><a href="Graficas/Gindex.php"><i class="fas fa-home p-ico"><br><span>Inicio</span></i></a></li>
                <li><a href="usuarios.php" ><i class="fas fa-user"><br><span>Usuarios</span></i></a></li>
+                <li><a href="clientes.php"><i class="fas fa-user-tie"><br><span>Clientes</span></i></a></li>
                <li><a href="productos.php"><i class="fas fa-laptop"><br><span>Productos</span></i></a></li>
                <li><a href="servicios.php"><i class="fas fa-handshake"><br><span>Servicios</span></i></a></li>
-               <!-- <li><a href="ubicacion.php"><i class="fas fa-map-marker-alt"><br><span>Ubicacion</span></i></a></li> -->
                <li><a href="reportes.php"><i class="fas fa-file active"><br><span>Reportes</span></i></a></li>
                <li><a href="otros.php"><i class="fas fa-ad"><br><span>Otros</span></i></a></li>
             </ul>
         </nav>
     </header>
     <section class="content">
-        <section class="table1">
+    <section class="mantenimiento">
+        <i class="fas fa-band-aid"></i>
+        <h1>En mantenimiento</h1>
+    </section>
+
+
+
+        <!-- <section class="table1">
             <table>
                 <tr class="tab-princ">
                     <td>Imagen</td>
@@ -119,7 +127,7 @@ if (empty($_SESSION['active'])) {
                     </td>
                 </tr>
             </table>
-        </section>
+        </section> -->
     </section>
 
 
