@@ -34,7 +34,6 @@ if (empty($_SESSION['active'])) {
                 $imgProducto    = $img_nombre.'.jpg';
                 $src            = $destino.$imgProducto;
             }
-            echo $precio;
             $query_insert = mysqli_query($mysqli, "INSERT INTO producto (nombrePD, descripcionPD, precioPD, idproveedor, Cantidad, foto) VALUES ('$nomprod', '$desc', '$precio', '$proveedor', $cantidad,'$imgProducto')");
             if ($query_insert) {
                 if ($nom_foto != '') {
@@ -58,6 +57,7 @@ if (empty($_SESSION['active'])) {
     <!-- style -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/J-style.css">
+    <link rel="icon" href="img/lg1/ico-vent3.ico"/>
     <!-- script´s -->
     <script type="text/javascript" src="js/jquery-1.12.0.min.js"></script><!-- Importa la libreria -->
     <script type="text/javascript" src="js/functions.js"></script><!-- Llama a la funcion -->
@@ -67,7 +67,7 @@ if (empty($_SESSION['active'])) {
 <body>
     <header>
         <section class="principal">
-            <img src="img/logo-ST.PNG" alt="">
+            <img src="img/lg1/logoj2.png" alt="">
             <h1>Producto</h1>
         </section>
         <section class="usuario">
@@ -90,11 +90,11 @@ if (empty($_SESSION['active'])) {
         </section>
         <nav>
             <ul class="nav-icon">
-               <li><a href="2index.php"><i class="fas fa-home p-ico"><br><span>Inicio</span></i></a></li>
+               <li><a href="Graficas/Gindex.php"><i class="fas fa-home p-ico"><br><span>Inicio</span></i></a></li>
                <li><a href="usuarios.php" ><i class="fas fa-user"><br><span>Usuarios</span></i></a></li>
-               <li><a href="1productos.php"><i class="fas fa-laptop active"><br><span>Productos</span></i></a></li>
+               <li><a href="clientes.php"><i class="fas fa-user-tie"><br><span>Clientes</span></i></a></li>
+               <li><a href="productos.php"><i class="fas fa-laptop active"><br><span>Productos</span></i></a></li>
                <li><a href="servicios.php"><i class="fas fa-handshake"><br><span>Servicios</span></i></a></li>
-               <li><a href="ubicacion.php"><i class="fas fa-map-marker-alt"><br><span>Ubicacion</span></i></a></li>
                <li><a href="reportes.php"><i class="fas fa-file"><br><span>Reportes</span></i></a></li>
                <li><a href="otros.php"><i class="fas fa-ad"><br><span>Otros</span></i></a></li>
             </ul>

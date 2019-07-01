@@ -102,7 +102,7 @@ if (isset($_POST['elim'])) {
                 <p>Telefono: <span><?php echo $data_srv['telefonoC'];  ?></span></p>
                 <form action="" method="post">
                     <input type="hidden" name="idus" value="<?php echo $idus; ?>">
-                    <a href=clientes.php" class="btn-cancel">Cancelar</a>
+                    <a href="clientes.php" class="btn-cancel">Cancelar</a>
                     <button type="submit" name="elim" class="btn-eli">Eliminar</button>
                 </form>
             </section>

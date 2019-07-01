@@ -52,8 +52,8 @@ header {
 }
 
 .principal img {
-    width: 43%;
-    margin: 20px 20px 20px 50px;
+   width: 76%;
+    margin: 14px 20px 20px 14px;
 }
 
 .principal h1 {
@@ -69,7 +69,7 @@ nav {
 }
 
 .nav-icon i span {
-    font-size: 25px !important;
+    font-size: 21px !important;
 }
 
 .active {
@@ -85,7 +85,7 @@ nav li {
 
 nav li i {
     color: #ffffff;
-    font-size: 35px;
+    font-size: 30px;
 }
 
 nav li i:hover,
@@ -334,7 +334,7 @@ fieldset h1 {
     border-radius: 22px;
     position: absolute;
     left: 15%;
-    top: 25%;
+    top: 20%;
     display: none;
 }
 
@@ -916,6 +916,13 @@ fieldset h1 {
     /* color: #074f73; */
 }
 .bg-g{
-    color: #09ee70; b
+    color: #09ee70; 
 }
 /* graficas */
+/* reportes */
+.mantenimiento{
+    width:  60%;
+    margin: 80px auto;
+    text-align: center;
+    font-size: 70px;
+}
