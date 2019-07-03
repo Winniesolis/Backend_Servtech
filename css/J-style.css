@@ -10,7 +10,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    margin: auto;
+    margin-left: 150px;
 }
 .prevPhoto label{
     cursor: pointer;
@@ -61,7 +61,13 @@
     width: 175px;
 }
 /* tamaño de la imagen lista */
-.img_producto img
+.img_producto img 
+{
+    width: 70px;
+    height: auto;
+    margin: auto;
+}
+.img_usuario img
 {
     width: 70px;
     height: auto;
