@@ -4,6 +4,9 @@ if (empty($_SESSION['active'])) {
     // $alert = "EL usuario o contraseña es incorrecto";
     header('location: login.php');
 }
+if($_SESSION['tpus'] != 2 && $_SESSION['tpus'] != 3){
+    header("location: Graficas/Gindex.php");
+}     
 include 'conexion.php';
 //CONSULTAS 
 $query4 = mysqli_query($mysqli, "SELECT idempresa, nombreE FROM empresa");
@@ -59,8 +62,8 @@ if (isset($_POST['cerrar'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> Editar cliente │ ServTech</title>
-    <link rel="icon" href="img/ico-vent3.ico" />
+    <title> Clientes │ ServTech</title>
+    <link rel="icon" href="img/ico-vent3.ico"/>
     <!-- style -->
     <link rel="stylesheet" href="css/style.css">
     <!-- font-awasome -->
@@ -70,11 +73,13 @@ if (isset($_POST['cerrar'])) {
 <body>
     <header>
         <section class="principal">
-            <img src="img/logoj2.png" alt="">
+            <img src="img/lg1/logoj2.png" alt="">
         </section>
         <section class="usuario">
             <ul>
                 <li><a href=""><img src="img/winnie.png" alt=""></a>
+                <span><?php echo $_SESSION['nickName']; ?></span>
+
                     <ul class="sub-nav">
                         <div>
                             <div>

@@ -2,9 +2,7 @@
 $alert = '';
 session_start();
 if (!empty($_SESSION['active'])) {
-    // $alert = "EL usuario o contraseña es incorrecto";
     header('location: Graficas/Gindex.php');
-
 } else {
     if (!empty($_POST)) {
         if (empty($_POST['usuario']) || empty($_POST['clave'])) {
@@ -21,23 +19,26 @@ if (!empty($_SESSION['active'])) {
 
             if ($result > 0) {
                 $data = mysqli_fetch_array($query);
-               
+                print_r ($data);
                 $_SESSION['active'] = true;
                 $_SESSION['idUser'] = $data['idusuarioLog'];
                 $_SESSION['nickName'] = $data['nickName'];
-                echo "Entro al sistema";
-                header('location: Graficas/Gindex.php');
+                $_SESSION['tpus'] = $data['idtipousuario'];
+                print_r ($_SESSION['tpus']);
+                if($_SESSION['tpus'] == 1){
+                    header("location: http://servtechweb.com.mx/FrontEnd/");
+                }else{
+                    header('location: Graficas/Gindex.php');
+                }
             }else{
                 $alert = "El usuario o la clave son incorrectos";
             }
         }
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,7 +49,6 @@ if (!empty($_SESSION['active'])) {
     <!-- font-awasome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
-
 <body>
     <div class="contenedor">
         <section class="sec-login">
@@ -64,11 +64,5 @@ if (!empty($_SESSION['active'])) {
             <a href="sing-up.php">Registrarse</a>
         </section>
     </div>
-
-
-
-
-
 </body>
-
 </html>

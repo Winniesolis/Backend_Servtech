@@ -110,7 +110,6 @@ nav li p {
 .usuario img {
     width: 30%;
     margin-left: 57px;
-    margin-top: 20px;
     display: inline-block;
 }
 
@@ -121,6 +120,12 @@ nav li p {
 .usuario li{
     text-decoration: none;
     list-style: none;
+}
+.usuario span{
+    color: #ffffff;
+    font-size: 1em;
+    font-family: 'Montserrat', sans-serif; 
+    margin-left: 47px;
 }
 .sub-nav li{
     width: 205px;
@@ -389,7 +394,7 @@ fieldset h1 {
 .sucursal_add button,
 .proveedir_add button,
 .tiposerv button {
-    width: 195px;
+    width: 204px;
     height: 30px;
     border-radius: 5px;
     background: rgba(0, 0, 0, .2);

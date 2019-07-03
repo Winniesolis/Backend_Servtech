@@ -101,7 +101,14 @@ if (empty($_SESSION['active'])) {
         </nav>
     </header>
     <section class="content">
-        <a href="javascript:Abrir()"><i class="fas fa-plus-square"> Nuevo</i></a> <!-- BOTON NUEVO QUE ABRE VENTANA  -->
+       <!-- <a href="javascript:Abrir()"><i class="fas fa-plus-square"> Nuevo</i></a> -->
+       <?php
+        if ($_SESSION['tpus'] != 2 && $_SESSION['tpus'] != 3) {
+            echo "<br><br><br><br>";
+        } else {
+            echo "<a href='javascript:Abrir()'><i class='fas fa-plus-square'> Nuevo</i></a>";
+        }
+        ?>
         <div class="ventana" id="vent">
         <a href="javascript:Cerrar()"><i class="fas fa-times"></i></a>
         <h3>Alta de Productos</h3>
@@ -207,6 +214,14 @@ if (empty($_SESSION['active'])) {
                         <td><?php echo $data["nombrePV"]; ?></td>
                         <td><?php echo $data["cantidad"]; ?></td>
                         <td class="img_producto"><img src="<?php echo $foto; ?>" alt=""></td>
+                        <!-- <td class="btn-table <?php if ($_SESSION['tpus'] != 2 && $_SESSION['tpus'] != 3) {
+                                                    echo "disp--none";
+                                                } ?>" id="btn-ed">
+                            <a href="edit-us.php?id=<?php echo $datostable['idproducto'] ?>"><button><i class="fas fa-edit"></i></button></a>
+                            <a class="<?php if ($_SESSION['tpus'] != 2) {
+                                            echo "disp--none";
+                                        } ?>" href="elim-us.php?id=<?php echo $datostable['idpersona'] ?>"><button><i class="fas fa-trash-alt"></i></button></a>
+                        </td> -->
                         <td class="btn-table">
                             <button><i class="fas fa-edit"></i></button>
                             <button><i class="fas fa-trash-alt"></i></button>

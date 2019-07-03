@@ -6,6 +6,9 @@ if (empty($_SESSION['active'])) {
     header('location: login.php');
 
 }
+if($_SESSION['tpus'] != 2 && $_SESSION['tpus'] != 3){
+    header("location: Graficas/Gindex.php");
+} 
     include 'conexion.php';
 
 //CONSULTAS 
