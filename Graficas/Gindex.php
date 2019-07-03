@@ -70,7 +70,7 @@ while($datostable9 = mysqli_fetch_array($query9)){
     <script type="text/javascript" src="dist/Chart.bundle.min.js"></script>
      <!-- font-awasome -->
      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css"> 
 	<script type="text/javascript">
 	$(document).ready(function(){
 		var datos = {
@@ -282,7 +282,9 @@ while($datostable9 = mysqli_fetch_array($query9)){
         </section>
         <section class="usuario">
             <ul>
-                <li><a href=""><img src="../img/winnie.png" alt=""></a>
+				<li><a href=""><img src="../img/winnie.png" alt=""></a>
+				<br>
+				<span><?php echo $_SESSION['nickName']; ?></span>
                     <ul class="sub-nav">
                         <div>
                             <div>

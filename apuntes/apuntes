@@ -22,3 +22,21 @@ SELECT * FROM persona INNER JOIN usuariolog ON persona.idpersona = usuariolog.id
 
 estado
 queryus = mysqli_query($mysqli, "SELECT * FROM persona INNER JOIN usuariolog ON persona.idpersona = usuariolog.idpersona INNER JOIN tipousuario ON usuariolog.idtipousuario = tipousuario.idtipousuario INNER JOIN sucursal ON persona.idsucursal = sucursal.idsucursal INNER JOIN estado ON sucursal.idestado = estado.idestado WHERE persona.idpersona = $claveid ");
+
+
+
+
+<!-- <?php echo"<a href='edit-us.php?id='?>" ?>
+                        <?php echo $datostable['idpersona']?>"
+                        <?php echo "><button><i class='fas ?
+                         fa-edit'></i></button></a>" ?> -->
+
+
+                         <a href="edit-us.php?id=<?php echo $datostable['idpersona']?>"><button><i class="fas <?php if($_SESSION['tpus'] != 2 && $_SESSION['tpus'] != 3){ echo "disp--none";} ?> fa-edit"></i></button></a>
+
+
+
+                          <td class="btn-table">
+                            <a href="edit-srv.php?id=<?php echo $datostable2['idservicio']?>"><button><i class="fas fa-edit"></i></button></a>
+                            <a href="elim-srv.php?id=<?php echo $datostable2['idservicio']?>"><button><i class="fas fa-trash-alt"></i></button></a>
+                        </td>

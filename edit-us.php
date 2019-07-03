@@ -5,6 +5,9 @@ if (empty($_SESSION['active'])) {
     // $alert = "EL usuario o contraseña es incorrecto";
     header('location: login.php');
 }
+if($_SESSION['tpus'] != 2 && $_SESSION['tpus'] != 3){
+    header("location: Graficas/Gindex.php");
+}             
 
 if (isset($_GET['id'])) {
     $claveid = $_GET['id'];
@@ -98,6 +101,7 @@ $querytipus = mysqli_query($mysqli, "SELECT * FROM tipousuario WHERE idpersona =
         <section class="usuario">
             <ul>
                 <li><a href=""><img src="img/winnie.png" alt=""></a>
+                <span><?php echo $_SESSION['nickName']; ?></span>
                     <ul class="sub-nav">
                         <div>
                             <div>

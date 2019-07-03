@@ -4,14 +4,11 @@ session_start();
 if (empty($_SESSION['active'])) {
     // $alert = "EL usuario o contraseña es incorrecto";
     header('location: login.php');
-
 }
 include('conexion.php');
-    if(isset($_GET['id']))
-        {
-            $claveid = $_GET['id'];
-            
-        }
+if (isset($_GET['id'])) {
+    $claveid = $_GET['id'];
+}
 
 $query4 = mysqli_query($mysqli, "SELECT idtiposervicio, nombreTS FROM tiposervicio ORDER BY `idtiposervicio` ASC");
 if (isset($_POST['tipserv'])) {
@@ -35,7 +32,7 @@ if (isset($_POST['emple'])) {
     <title> Servicios │ ServTech</title>
     <!-- style -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="img/lg1/ico-vent3.ico"/>
+    <link rel="icon" href="img/lg1/ico-vent3.ico" />
     <!-- font-awasome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
@@ -49,6 +46,7 @@ if (isset($_POST['emple'])) {
         <section class="usuario">
             <ul>
                 <li><a href=""><img src="img/winnie.png" alt=""></a>
+                    <span><?php echo $_SESSION['nickName']; ?></span>
                     <ul class="sub-nav">
                         <div>
                             <div>
@@ -76,7 +74,14 @@ if (isset($_POST['emple'])) {
         </nav>
     </header>
     <section class="content">
-        <a href="javascript:Abrir()"><i class="fas fa-plus-square"> Nuevo</i></a> <!-- BOTON NUEVO QUE ABRE VENTANA  -->
+        <!-- <a href="javascript:Abrir()"><i class="fas fa-plus-square"> Nuevo</i></a> -->
+        <?php
+        if ($_SESSION['tpus'] != 2 && $_SESSION['tpus'] != 3) {
+            echo "<br><br><br><br>";
+        } else {
+            echo "<a href='javascript:Abrir()'><i class='fas fa-plus-square'> Nuevo</i></a>";
+        }
+        ?>
         <div class="ventana" id="vent">
             <a href="javascript:Cerrar()"><i class="fas fa-times"></i></a>
             <h3>Alta de Servicios</h3>
@@ -89,8 +94,8 @@ if (isset($_POST['emple'])) {
                         ?>
                         <option value="<?php echo $datos['idtiposervicio'] ?>"><?php echo $datos['nombreTS'] ?></option>
                     <?php
-                }
-                ?>
+                    }
+                    ?>
                 </select>
                 <br><br>
                 <label for="">Nombre:</label>
@@ -106,8 +111,8 @@ if (isset($_POST['emple'])) {
                         ?>
                         <option value="<?php echo $datos1['idempleado'] ?>"><?php echo $datos1['nombres'] ?></option>
                     <?php
-                }
-                ?>
+                    }
+                    ?>
                 </select>
                 <br><br>
                 <input type="submit" name="guardar_us" value="Guardar" class="btnform">
@@ -135,17 +140,22 @@ if (isset($_POST['emple'])) {
                         <td><?php echo $datostable2['nombreSV'] ?></td>
                         <td><?php echo $datostable2['descripcionSV'] ?></td>
                         <td><?php echo $datostable2['nombres'] ?></td>
-                        <td class="btn-table">
-                            <a href="edit-srv.php?id=<?php echo $datostable2['idservicio']?>"><button><i class="fas fa-edit"></i></button></a>
-                            <a href="elim-srv.php?id=<?php echo $datostable2['idservicio']?>"><button><i class="fas fa-trash-alt"></i></button></a>
+                        <td class="btn-table <?php if ($_SESSION['tpus'] != 2 && $_SESSION['tpus'] != 3) {
+                                                    echo "disp--none";
+                                                } ?>" id="btn-ed">
+                            <a href="edit-srv.php?id=<?php echo $datostable['idservicio'] ?>"><button><i class="fas fa-edit"></i></button></a>
+                            <a class="<?php if ($_SESSION['tpus'] != 2) {
+                                            echo "disp--none";
+                                        } ?>" href="elim-srv.php?id=<?php echo $datostable['idservicio'] ?>"><button><i class="fas fa-trash-alt"></i></button></a>
                         </td>
+
                         <?php
                         $id_serv = $datostable2['idservicio'];
                         ?>
                     </tr>
                 <?php
-            }
-            ?>
+                }
+                ?>
             </table>
         </section>
     </section>

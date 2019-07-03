@@ -4,6 +4,9 @@ if (empty($_SESSION['active'])) {
     // $alert = "EL usuario o contraseña es incorrecto";
     header('location: login.php');
 }
+if ($_SESSION['tpus'] != 2) {
+    header("location: Graficas/Gindex.php");
+}
 if (isset($_GET['id'])) {
     $claveid = $_GET['id'];
 }
@@ -45,22 +48,22 @@ if (isset($_POST['elim'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> Eliminar clientes │ServTech</title>
-    <link rel="icon" href="img/ico-vent3.ico" />
+    <title>Eliminar Usuario │ServTech</title>
+    <link rel="icon" href="img/ico-vent3.ico"/>
     <!-- style -->
     <link rel="stylesheet" href="css/style.css">
     <!-- font-awasome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
-
 <body>
-    <header>
+<header>
         <section class="principal">
-            <img src="img/logoj2.png" alt="">
+            <img src="img/lg1/logoj2.png" alt="">
         </section>
         <section class="usuario">
             <ul>
                 <li><a href=""><img src="img/winnie.png" alt=""></a>
+                <span><?php echo $_SESSION['nickName']; ?></span>
                     <ul class="sub-nav">
                         <div>
                             <div>
