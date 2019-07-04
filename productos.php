@@ -10,7 +10,8 @@ if (empty($_SESSION['active'])) {
     if (!empty($_POST)) 
     {
         $alert='';
-        if(empty($_POST['nomprod']) || empty($_POST['desc']) || empty($_POST['precio']) || $_POST['precio'] <= 0 || empty($_POST['proveedor']) || empty($_POST['cantidad']) || $_POST['cantidad'] <= 0)
+
+        if(empty($_POST['nomprod']) || empty($_POST['desc']) || empty($_POST['precio']) || empty($_POST['precio'] <= 0) || empty($_POST['proveedor']) || empty($_POST['cantidad']) || empty($_POST['cantidad'] <= 0))
         {
         $alert='<p class="msg_error">Faltaron algunos campos.</p>';
         }
@@ -34,6 +35,9 @@ if (empty($_SESSION['active'])) {
                 $imgProducto    = $img_nombre.'.jpg';
                 $src            = $destino.$imgProducto;
             }
+
+            echo $precio;
+
             $query_insert = mysqli_query($mysqli, "INSERT INTO producto (nombrePD, descripcionPD, precioPD, idproveedor, Cantidad, foto) VALUES ('$nomprod', '$desc', '$precio', '$proveedor', $cantidad,'$imgProducto')");
             if ($query_insert) {
                 if ($nom_foto != '') {
@@ -57,7 +61,9 @@ if (empty($_SESSION['active'])) {
     <!-- style -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/J-style.css">
+
     <link rel="icon" href="img/lg1/ico-vent3.ico"/>
+
     <!-- script´s -->
     <script type="text/javascript" src="js/jquery-1.12.0.min.js"></script><!-- Importa la libreria -->
     <script type="text/javascript" src="js/functions.js"></script><!-- Llama a la funcion -->
@@ -67,6 +73,7 @@ if (empty($_SESSION['active'])) {
 <body>
     <header>
         <section class="principal">
+
             <img src="img/lg1/logoj2.png" alt="">
             <h1>Producto</h1>
         </section>
@@ -101,6 +108,7 @@ if (empty($_SESSION['active'])) {
         </nav>
     </header>
     <section class="content">
+
        <!-- <a href="javascript:Abrir()"><i class="fas fa-plus-square"> Nuevo</i></a> -->
        <?php
         if ($_SESSION['tpus'] != 2 && $_SESSION['tpus'] != 3) {
@@ -192,7 +200,6 @@ if (empty($_SESSION['active'])) {
                     }
                     $desde = ($pagina - 1) * $por_pagina;
                     $tolalpagina = ceil($total_registro / $por_pagina);
-
                     $query = mysqli_query($mysqli, "SELECT producto.idproducto, producto.nombrePD, producto.descripcionPD, producto.precioPD, proveedor.nombrePV, producto.cantidad, producto.foto FROM producto INNER JOIN proveedor ON producto.idproveedor = proveedor.idproveedor ORDER BY 1 desc LIMIT $desde, $por_pagina");
                     $result = mysqli_num_rows($query);
                     if ($result > 0) {
@@ -214,6 +221,8 @@ if (empty($_SESSION['active'])) {
                         <td><?php echo $data["nombrePV"]; ?></td>
                         <td><?php echo $data["cantidad"]; ?></td>
                         <td class="img_producto"><img src="<?php echo $foto; ?>" alt=""></td>
+
+
                         <!-- <td class="btn-table <?php if ($_SESSION['tpus'] != 2 && $_SESSION['tpus'] != 3) {
                                                     echo "disp--none";
                                                 } ?>" id="btn-ed">
