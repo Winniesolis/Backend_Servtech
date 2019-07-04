@@ -24,7 +24,7 @@ if (empty($_REQUEST['id'])) {
         header("location: usuarios.php");
     }
 }
-$queryus = mysqli_query($mysqli, "SELECT * FROM persona INNER JOIN usuariolog ON persona.idpersona = usuariolog.idpersona INNER JOIN tipousuario ON usuariolog.idtipousuario = tipousuario.idtipousuario INNER JOIN sucursal ON persona.idsucursal = sucursal.idsucursal WHERE persona.idpersona = $claveid ");
+$queryus = mysqli_query($mysqli, "SELECT * FROM persona INNER JOIN usuariolog ON persona.idpersona = usuariolog.idpersona INNER JOIN tipousuario ON usuariolog.idtipousuario = tipousuario.idtipousuario INNER JOIN sucursal ON persona.idsucursal = sucursal.idsucursal WHERE usuariolog.idpersona = $claveid ");
 
 $result_usuario = mysqli_num_rows($queryus);
 if ($result_usuario > 0) {
@@ -36,7 +36,7 @@ if ($result_usuario > 0) {
 if (isset($_POST['elim'])) {
     $alert = '';
 
-    $mysqli->query("DELETE FROM persona WHERE persona.idpersona =  $claveid ");
+    $mysqli->query("DELETE FROM usuariolog WHERE usuariolog.idusuarioLog =  $claveid ");
 
     if ($mysqli) {
         echo "<script>alert('Se ha eliminado el registro satisfactoriamente');</script>";

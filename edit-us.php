@@ -55,6 +55,7 @@ if (isset($_POST['edtit-us'])) {
     } else {
         $claveid = $_POST['id'];
         $codus = $_POST['id'];
+        $nick = $_POST['nickName'];
         $nomb = $_POST['nombres'];
         $ape = $_POST['apellidos'];
         $cor = $_POST['correo'];
@@ -62,7 +63,8 @@ if (isset($_POST['edtit-us'])) {
         $suc = $_POST['sucursal'];
         $tipus = $_POST['tipUs'];
 
-        $mysqli->query("UPDATE persona INNER JOIN usuariolog ON persona.idpersona = usuariolog.idpersona SET persona.nombres = '$nomb', persona.apellidos = '$ape', persona.correo = '$cor', persona.telefono = '$tel', persona.idsucursal = $suc, usuariolog.idtipousuario = $tipus WHERE persona.idpersona = $claveid");
+        $mysqli->query("UPDATE persona INNER JOIN usuariolog ON persona.idpersona = usuariolog.idpersona SET persona.nombres = '$nomb', persona.apellidos = '$ape', persona.correo = '$cor', persona.telefono = '$tel', persona.idsucursal = $suc, usuariolog.idtipousuario = $tipus, usuariolog.nickName = '$nick' WHERE persona.idpersona = $claveid ");
+        // $mysqli->query("UPDATE persona INNER JOIN usuariolog ON persona.idpersona = usuariolog.idpersona SET persona.nombres = '$nomb', persona.apellidos = '$ape', persona.correo = '$cor', persona.telefono = '$tel', persona.idsucursal = $suc, usuariolog.idtipousuario = $tipus WHERE persona.idpersona = $claveid");
         // $mysqli->query("UPDATE persona SET nombres = '$nomb', apellidos = '$ape', correo = '$cor', telefono ='$tel', idsucursal = $suc , idtipousuario = $tipus WHERE idpersona = $claveid");
         if ($mysqli) {
             header("location: usuarios.php");
@@ -133,8 +135,9 @@ $querytipus = mysqli_query($mysqli, "SELECT * FROM tipousuario WHERE idpersona =
             <h1>Editar usuario</h1>
             <form action="edit-us.php" method="post" name="form-editus" class="form-editus">
                 <input type="text" placeholder="id" name="id" class="disp-none" require value="<?php echo $data_usuario['idpersona'] ?>">
-
-
+                <label for="">NickName:</label>
+                <input type="text" placeholder="NickName" name="nickName" require value="<?php echo $data_usuario['nickName'] ?>">>
+                <br> <br>
                 <label for="">Nombre(s)</label>
                 <br>
                 <input type="text" placeholder="Nombre(s)" name="nombres" require value="<?php echo $data_usuario['nombres'] ?>">

@@ -148,7 +148,6 @@ if (isset($_POST['emple'])) {
                                             echo "disp--none";
                                         } ?>" href="elim-srv.php?id=<?php echo $datostable['idservicio'] ?>"><button><i class="fas fa-trash-alt"></i></button></a>
                         </td>
-
                         <?php
                         $id_serv = $datostable2['idservicio'];
                         ?>

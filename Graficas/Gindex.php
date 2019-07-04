@@ -1,5 +1,8 @@
 <?php
 	session_start();
+	if ($_SESSION['tpus'] ==1) {
+		header("location: http://servtechweb.com.mx/FrontEnd/");
+	} 
 	include '../conexion.php';
 	// invitado
 	$querycont1= mysqli_query($mysqli,"SELECT count(*) FROM usuariolog WHERE usuariolog.idtipousuario = 1");

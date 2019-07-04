@@ -249,7 +249,7 @@ table {
     width: 100%;
     background: #ffffff;
     color: #000000;
-    font-size: 20px;
+    font-size: 16px;
     font-family: 'Montserrat', sans-serif;
     text-align: center;
 }
@@ -931,3 +931,41 @@ fieldset h1 {
     text-align: center;
     font-size: 70px;
 }
+/* busqueda */
+    .form_search{
+        width: 25%;
+        height: 30px;
+        display: flex;
+        float: right;
+        background: initial;
+        padding: 10px;
+        border-radius: 10px;
+        border: rgb(226, 225, 225) 1px solid;
+        margin-top: 50px;
+    }
+    .form_search input{
+        margin-top: 2px;
+        border-radius: 50px;
+
+    }
+    .form_search .btn_search{
+        height: 95%;
+        background: #1faac8;
+        color: #ffffff;
+        padding: 0 20px;
+        border: 0;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+    .form_search .inp_search{
+        width: 100%;
+        height: 85%;
+        padding-left: 8px;
+    }
+    .txt_busq{
+        padding-left: 20px;
+        font-size: 36px !important;
+    }
+    
+
+/* busqueda */
