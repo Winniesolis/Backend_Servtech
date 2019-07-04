@@ -24,6 +24,7 @@ if (!empty($_SESSION['active'])) {
                 $_SESSION['idUser'] = $data['idusuarioLog'];
                 $_SESSION['nickName'] = $data['nickName'];
                 $_SESSION['tpus'] = $data['idtipousuario'];
+                $_SESSION['fot'] = $data['foto'];
                 print_r ($_SESSION['tpus']);
                 if($_SESSION['tpus'] == 1){
                     header("location: http://servtechweb.com.mx/FrontEnd/");

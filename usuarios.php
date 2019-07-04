@@ -10,13 +10,13 @@ if (isset($_GET['id'])) {
 }
 
 include('conexion.php');
-$query = mysqli_query($mysqli, "SELECT idsucursal, nombreSC FROM sucursal ORDER BY `idsucursal` ASC");
+$query = mysqli_query($mysqli, "SELECT idsucursal, nombreSC FROM sucursal ORDER BY `idsucursal` DESC");
 if (isset($_POST['sucursal'])) {
     $sucursal = $_POST['sucursal'];
     // echo $sucursal;
 }
 // tipo de usuario
-$query1 = mysqli_query($mysqli, "SELECT idtipousuario, nombreTU FROM tipousuario ORDER BY `idtipousuario` ASC");
+$query1 = mysqli_query($mysqli, "SELECT idtipousuario, nombreTU FROM tipousuario ORDER BY `idtipousuario` DESC");
 
 if (isset($_POST['tipUs'])) {
     $tipUs = $_POST['tipUs'];
@@ -42,11 +42,12 @@ if (isset($_POST['tipUs'])) {
     <header>
         <section class="principal">
             <img src="img/lg1/logoj2.png" alt="">
-            <h1>Usuarios</h1>
+            <h1> Usuarios</h1>
         </section>
         <section class="usuario">
             <ul>
-                <li><a href=""><img src="img/winnie.png" alt=""></a>
+                <!-- <li><a href=""><img src="img/winnie.png" alt=""></a> -->
+                <li><a href=""><img src="img/uploads/<?php echo $_SESSION['fot'];?>" alt=""></a>
                     <span><?php echo $_SESSION['nickName']; ?></span>
                     <ul class="sub-nav">
                         <div>
@@ -138,10 +139,30 @@ if (isset($_POST['tipUs'])) {
                 </center>
             </form>
         </div>
+<!-- busqueda -->
+                <form action="busquedas/buscar_usuario.php" method="get" class="form_search">
+                    <input type="text" name="busqueda" id="busqueda" placeholder="Buscar" class="inp_search">
+                    <input type="submit" value="Buscar" class="btn_search">
+                </form>
+
+
+<!-- busqueda -->
+
+
+
+
+
+
+
+
+
+
+
         <section class="table1">
             <table>
                 <tr class="tab-princ">
                     <td>ID</td>
+                    <td>Usuario</td>
                     <td>Nombres</td>
                     <td>Apellidos</td>
                     <td>Correo</td>
@@ -151,11 +172,12 @@ if (isset($_POST['tipUs'])) {
                     <td></td>
                 </tr>
                 <?php
-                $query3 = mysqli_query($mysqli, "SELECT * FROM persona INNER JOIN usuariolog ON persona.idpersona = usuariolog.idpersona INNER JOIN sucursal ON sucursal.idsucursal = persona.idsucursal INNER JOIN tipousuario ON usuariolog.idtipousuario = tipousuario.idtipousuario");
+                $query3 = mysqli_query($mysqli, "SELECT * FROM persona INNER JOIN usuariolog ON persona.idpersona = usuariolog.idpersona INNER JOIN sucursal ON sucursal.idsucursal = persona.idsucursal INNER JOIN tipousuario ON usuariolog.idtipousuario = tipousuario.idtipousuario ORDER BY `idusuarioLog` DESC ");
                 while ($datostable = mysqli_fetch_array($query3)) {
                     ?>
                     <tr>
-                        <td><?php echo $datostable['idpersona'] ?></td>
+                        <td><?php echo $datostable['idusuarioLog'] ?></td>
+                        <td><?php echo $datostable['nickName'] ?></td>
                         <td><?php echo $datostable['nombres'] ?></td>
                         <td><?php echo $datostable['apellidos'] ?></td>
                         <td><?php echo $datostable['correo'] ?></td>
@@ -166,9 +188,9 @@ if (isset($_POST['tipUs'])) {
                                                     echo "disp--none";
                                                 } ?>" id="btn-ed">
                             <a href="edit-us.php?id=<?php echo $datostable['idpersona'] ?>"><button><i class="fas fa-edit"></i></button></a>
-                            <a class="<?php if ($_SESSION['tpus'] != 2) {
-                                            echo "disp--none";
-                                        } ?>" href="elim-us.php?id=<?php echo $datostable['idpersona'] ?>"><button><i class="fas fa-trash-alt"></i></button></a>
+
+                            <a class="<?php if ($_SESSION['tpus'] != 2) { echo "disp--none";
+                            } ?>" href="elim-us.php?id=<?php echo $datostable['idusuarioLog']; ?>"><button><i class="fas fa-trash-alt"></i></button></a>
                         </td>
                     </tr>
                 <?php
