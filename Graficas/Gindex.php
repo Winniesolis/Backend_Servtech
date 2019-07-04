@@ -65,11 +65,12 @@ while($datostable9 = mysqli_fetch_array($query9)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Backend │ ServTech</title>
+	<link rel="icon" href="../img/lg1/ico-vent3.ico"/>
 	<script type="text/javascript" src="jquery-1.12.0.min.js"></script>
     <script type="text/javascript" src="dist/Chart.bundle.min.js"></script>
      <!-- font-awasome -->
      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css"> 
 	<script type="text/javascript">
 	$(document).ready(function(){
 		var datos = {
@@ -272,21 +273,18 @@ while($datostable9 = mysqli_fetch_array($query9)){
 
 
     });
-
-
-
-
-
 	</script>
 </head>
 <body>
 <header>
         <section class="principal">
-            <img src="../img/logo-ST.PNG" alt="">
+            <img src="../img/lg1/logoj2.png" alt="">
         </section>
         <section class="usuario">
             <ul>
-                <li><a href=""><img src="../img/winnie.png" alt=""></a>
+				<li><a href=""><img src="../img/winnie.png" alt=""></a>
+				<br>
+				<span><?php echo $_SESSION['nickName']; ?></span>
                     <ul class="sub-nav">
                         <div>
                             <div>
@@ -304,11 +302,11 @@ while($datostable9 = mysqli_fetch_array($query9)){
         </section>
         <nav>
         	<ul class="nav-icon">
-            	<li><a href="Findex.php"><i class="fas fa-home p-ico active"><br><span>Inicio</span></i></a></li>
-            	<li><a href="../usuarios.php" ><i class="fas fa-user"><br><span>Usuarios</span></i></a></li>
+            	<li><a href="Gindex.php"><i class="fas fa-home p-ico active"><br><span>Inicio</span></i></a></li>
+				<li><a href="../usuarios.php" ><i class="fas fa-user"><br><span>Usuarios</span></i></a></li>
+				<li><a href="../clientes.php"><i class="fas fa-user-tie"><br><span>Clientes</span></i></a></li>
             	<li><a href="../productos.php"><i class="fas fa-laptop"><br><span>Productos</span></i></a></li>
             	<li><a href="../servicios.php"><i class="fas fa-handshake"><br><span>Servicios</span></i></a></li>
-            	<!-- <li><a href="../ubicacion.php"><i class="fas fa-map-marker-alt"><br><span>Ubicacion</span></i></a></li> -->
             	<li><a href="../reportes.php"><i class="fas fa-file"><br><span>Reportes</span></i></a></li>
             	<li><a href="../otros.php"><i class="fas fa-ad"><br><span>Otros</span></i></a></li>
             </ul>

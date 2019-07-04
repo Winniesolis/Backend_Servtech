@@ -10,6 +10,7 @@ if (empty($_SESSION['active'])) {
     if (!empty($_POST)) 
     {
         $alert='';
+
         if(empty($_POST['nomprod']) || empty($_POST['desc']) || empty($_POST['precio']) || empty($_POST['precio'] <= 0) || empty($_POST['proveedor']) || empty($_POST['cantidad']) || empty($_POST['cantidad'] <= 0))
         {
         $alert='<p class="msg_error">Faltaron algunos campos.</p>';
@@ -34,7 +35,9 @@ if (empty($_SESSION['active'])) {
                 $imgProducto    = $img_nombre.'.jpg';
                 $src            = $destino.$imgProducto;
             }
+
             echo $precio;
+
             $query_insert = mysqli_query($mysqli, "INSERT INTO producto (nombrePD, descripcionPD, precioPD, idproveedor, Cantidad, foto) VALUES ('$nomprod', '$desc', '$precio', '$proveedor', $cantidad,'$imgProducto')");
             if ($query_insert) {
                 if ($nom_foto != '') {
@@ -58,6 +61,9 @@ if (empty($_SESSION['active'])) {
     <!-- style -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/J-style.css">
+
+    <link rel="icon" href="img/lg1/ico-vent3.ico"/>
+
     <!-- script´s -->
     <script type="text/javascript" src="js/jquery-1.12.0.min.js"></script><!-- Importa la libreria -->
     <script type="text/javascript" src="js/functions.js"></script><!-- Llama a la funcion -->
@@ -67,7 +73,8 @@ if (empty($_SESSION['active'])) {
 <body>
     <header>
         <section class="principal">
-            <img src="img/logo-ST.PNG" alt="">
+
+            <img src="img/lg1/logoj2.png" alt="">
             <h1>Producto</h1>
         </section>
         <section class="usuario">
@@ -90,18 +97,26 @@ if (empty($_SESSION['active'])) {
         </section>
         <nav>
             <ul class="nav-icon">
-               <li><a href="2index.php"><i class="fas fa-home p-ico"><br><span>Inicio</span></i></a></li>
+               <li><a href="Graficas/Gindex.php"><i class="fas fa-home p-ico"><br><span>Inicio</span></i></a></li>
                <li><a href="usuarios.php" ><i class="fas fa-user"><br><span>Usuarios</span></i></a></li>
-               <li><a href="1productos.php"><i class="fas fa-laptop active"><br><span>Productos</span></i></a></li>
+               <li><a href="clientes.php"><i class="fas fa-user-tie"><br><span>Clientes</span></i></a></li>
+               <li><a href="productos.php"><i class="fas fa-laptop active"><br><span>Productos</span></i></a></li>
                <li><a href="servicios.php"><i class="fas fa-handshake"><br><span>Servicios</span></i></a></li>
-               <li><a href="ubicacion.php"><i class="fas fa-map-marker-alt"><br><span>Ubicacion</span></i></a></li>
                <li><a href="reportes.php"><i class="fas fa-file"><br><span>Reportes</span></i></a></li>
                <li><a href="otros.php"><i class="fas fa-ad"><br><span>Otros</span></i></a></li>
             </ul>
         </nav>
     </header>
     <section class="content">
-        <a href="javascript:Abrir()"><i class="fas fa-plus-square"> Nuevo</i></a> <!-- BOTON NUEVO QUE ABRE VENTANA  -->
+
+       <!-- <a href="javascript:Abrir()"><i class="fas fa-plus-square"> Nuevo</i></a> -->
+       <?php
+        if ($_SESSION['tpus'] != 2 && $_SESSION['tpus'] != 3) {
+            echo "<br><br><br><br>";
+        } else {
+            echo "<a href='javascript:Abrir()'><i class='fas fa-plus-square'> Nuevo</i></a>";
+        }
+        ?>
         <div class="ventana" id="vent">
         <a href="javascript:Cerrar()"><i class="fas fa-times"></i></a>
         <h3>Alta de Productos</h3>
@@ -206,9 +221,19 @@ if (empty($_SESSION['active'])) {
                         <td><?php echo $data["nombrePV"]; ?></td>
                         <td><?php echo $data["cantidad"]; ?></td>
                         <td class="img_producto"><img src="<?php echo $foto; ?>" alt=""></td>
+
+
+                        <!-- <td class="btn-table <?php if ($_SESSION['tpus'] != 2 && $_SESSION['tpus'] != 3) {
+                                                    echo "disp--none";
+                                                } ?>" id="btn-ed">
+                            <a href="edit-us.php?id=<?php echo $datostable['idproducto'] ?>"><button><i class="fas fa-edit"></i></button></a>
+                            <a class="<?php if ($_SESSION['tpus'] != 2) {
+                                            echo "disp--none";
+                                        } ?>" href="elim-us.php?id=<?php echo $datostable['idpersona'] ?>"><button><i class="fas fa-trash-alt"></i></button></a>
+                        </td> -->
                         <td class="btn-table">
-                             <a href="edit-pro.php?id=<?php echo $data['idproducto']?>"><button><i class="fas fa-edit"></i></button></a>
-                            <a href="elim-pro.php?id=<?php echo $data['idproducto']?>"><button><i class="fas fa-trash-alt"></i></button></a>
+                            <button><i class="fas fa-edit"></i></button>
+                            <button><i class="fas fa-trash-alt"></i></button>
                         </td>
                     </tr> 
                     <?php

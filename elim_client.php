@@ -1,53 +1,49 @@
 <?php
-
 session_start();
-
 if (empty($_SESSION['active'])) {
     // $alert = "EL usuario o contraseña es incorrecto";
     header('location: login.php');
 }
-
 if ($_SESSION['tpus'] != 2) {
     header("location: Graficas/Gindex.php");
 }
-
 if (isset($_GET['id'])) {
     $claveid = $_GET['id'];
 }
 include('conexion.php');
 if (empty($_REQUEST['id'])) {
-    header("location: usuarios.php");
+    header("location: clientes.php");
 } else {
     $claveid = $_REQUEST['id'];
     if (!is_numeric($claveid)) {
 
-        header("location: usuarios.php");
+        header("location: clientes.php");
     }
 }
-$queryus = mysqli_query($mysqli, "SELECT * FROM persona INNER JOIN usuariolog ON persona.idpersona = usuariolog.idpersona INNER JOIN tipousuario ON usuariolog.idtipousuario = tipousuario.idtipousuario INNER JOIN sucursal ON persona.idsucursal = sucursal.idsucursal WHERE persona.idpersona = $claveid ");
-
-$result_usuario = mysqli_num_rows($queryus);
-if ($result_usuario > 0) {
-    $data_usuario = mysqli_fetch_assoc($queryus);
-
-    // print_r($data_usuario);
+$querysrv = mysqli_query($mysqli, "SELECT * FROM cliente INNER JOIN empresa ON cliente.idempresa = empresa.idempresa   WHERE cliente.idcliente = $claveid ");
+$result_serv = mysqli_num_rows($querysrv);
+if ($result_serv > 0) {
+    $data_srv = mysqli_fetch_assoc($querysrv);
+    // print_r($data_srv);
 }
-
 if (isset($_POST['elim'])) {
     $alert = '';
 
-    $mysqli->query("DELETE FROM persona WHERE persona.idpersona =  $claveid ");
+    $mysqli->query("DELETE FROM cliente WHERE cliente.idcliente =  $claveid ");
 
     if ($mysqli) {
         echo "<script>alert('Se ha eliminado el registro satisfactoriamente');</script>";
-        header("location: usuarios.php");
+        header("location: clientes.php");
     } else {
         echo "<script>alert('Error al eliminar datos');</script>";
     }
 }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,7 +56,7 @@ if (isset($_POST['elim'])) {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
-    <header>
+<header>
         <section class="principal">
             <img src="img/lg1/logoj2.png" alt="">
         </section>
@@ -85,10 +81,10 @@ if (isset($_POST['elim'])) {
         <nav>
             <ul class="nav-icon">
                 <li><a href="2index.php"><i class="fas fa-home p-ico"><br><span>Inicio</span></i></a></li>
-                <li><a href="usuarios.php"><i class="fas fa-user active"><br><span>Usuarios</span></i></a></li>
+                <li><a href="usuarios.php"><i class="fas fa-user "><br><span>Usuarios</span></i></a></li>
+                <li><a href="clientes.php"><i class="fas fa-user-tie active"><br><span>Clientes</span></i></a></li>
                 <li><a href="productos.php"><i class="fas fa-laptop"><br><span>Productos</span></i></a></li>
-                <li><a href="servicios.php"><i class="fas fa-handshake"><br><span>Servicios</span></i></a></li>
-                <li><a href="ubicacion.php"><i class="fas fa-map-marker-alt"><br><span>Ubicacion</span></i></a></li>
+                <li><a href="servicios.php"><i class="fas fa-handshake "><br><span>Servicios</span></i></a></li>
                 <li><a href="reportes.php"><i class="fas fa-file"><br><span>Reportes</span></i></a></li>
                 <li><a href="otros.php"><i class="fas fa-ad"><br><span>Otros</span></i></a></li>
             </ul>
@@ -98,28 +94,23 @@ if (isset($_POST['elim'])) {
         <?php include "conexion.php"; ?>
         <center>
             <section class="content_delete">
-                <i class="fas fa-user-circle"></i>
+                <div class="img-profile">
+                    <i class="fas fa-user-circle"></i>
+                </div>
                 <h3>¿Está seguro que desea eliminar el siguiente registro?</h3>
                 <br>
-                <p>Nombre del usuario: <span><?php echo $data_usuario['nombres'];  ?></span></p>
-                <p>Apellido del usuario: <span><?php echo $data_usuario['apellidos'];  ?></span></p>
-                <p>Sucursal del usuario: <span><?php echo $data_usuario['nombreSC'];  ?></span></p>
-                <p>NicName <span><?php echo $data_usuario['nickName'] ?></span></p>
+                <p>Nombre del cliente: <span><?php echo $data_srv['nombreC'];  ?></span></p>
+                <p>Empresa: <span><?php echo $data_srv['nombreE'];  ?></span></p>
+                <p>RFC: <span><?php echo $data_srv['RFC'];  ?></span></p>
+                <p>Telefono: <span><?php echo $data_srv['telefonoC'];  ?></span></p>
                 <form action="" method="post">
                     <input type="hidden" name="idus" value="<?php echo $idus; ?>">
-                    <a href="usuarios.php" class="btn-cancel">Cancelar</a>
+                    <a href="clientes.php" class="btn-cancel">Cancelar</a>
                     <button type="submit" name="elim" class="btn-eli">Eliminar</button>
                 </form>
-
             </section>
         </center>
     </section>
-
-
-
-    //
-
-
 </body>
 
 </html>

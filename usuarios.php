@@ -3,39 +3,36 @@ session_start();
 
 if (empty($_SESSION['active'])) {
     header('location: login.php');
-} 
+}
 
-    if(isset($_GET['id']))
-    {
-        $claveid = $_GET['id'];
-        
-    }
+if (isset($_GET['id'])) {
+    $claveid = $_GET['id'];
+}
 
-    include('conexion.php');
-    $query = mysqli_query($mysqli,"SELECT idsucursal, nombreSC FROM sucursal ORDER BY `idsucursal` ASC");
-    if(isset($_POST['sucursal']))
-    {
-        $sucursal =$_POST['sucursal'];
-        // echo $sucursal;
-    }
-    // tipo de usuario
-    $query1 = mysqli_query($mysqli,"SELECT idtipousuario, nombreTU FROM tipousuario ORDER BY `idtipousuario` ASC");
-
-    if(isset($_POST['tipUs']))
-    {
-        $tipUs =$_POST['tipUs'];
-        // echo $tipUs;
-    }
+include('conexion.php');
+$query = mysqli_query($mysqli, "SELECT idsucursal, nombreSC FROM sucursal ORDER BY `idsucursal` ASC");
+if (isset($_POST['sucursal'])) {
+    $sucursal = $_POST['sucursal'];
+    // echo $sucursal;
+}
+// tipo de usuario
+$query1 = mysqli_query($mysqli, "SELECT idtipousuario, nombreTU FROM tipousuario ORDER BY `idtipousuario` ASC");
 
 
+if (isset($_POST['tipUs'])) {
+    $tipUs = $_POST['tipUs'];
+    // echo $tipUs;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> Usuarios │ ServTech</title>
+    <link rel="icon" href="img/lg1/ico-vent3.ico" />
     <!-- style -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/J-style.css">
@@ -45,15 +42,17 @@ if (empty($_SESSION['active'])) {
     <!-- font-awasome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
+
 <body>
     <header>
         <section class="principal">
-            <img src="img/logo-ST.PNG" alt="">
+            <img src="img/lg1/logoj2.png" alt="">
             <h1>Usuarios</h1>
         </section>
         <section class="usuario">
             <ul>
                 <li><a href=""><img src="img/winnie.png" alt=""></a>
+                    <span><?php echo $_SESSION['nickName']; ?></span>
                     <ul class="sub-nav">
                         <div>
                             <div>
@@ -67,22 +66,30 @@ if (empty($_SESSION['active'])) {
                         </div>
                     </ul>
                 </li>
-            </ul>   
+            </ul>
         </section>
         <nav>
             <ul class="nav-icon">
-               <li><a href="Graficas/Gindex.php"><i class="fas fa-home p-ico"><br><span>Inicio</span></i></a></li>
-               <li><a href="usuarios.php" ><i class="fas fa-user active"><br><span>Usuarios</span></i></a></li>
-               <li><a href="productos.php"><i class="fas fa-laptop"><br><span>Productos</span></i></a></li>
-               <li><a href="servicios.php"><i class="fas fa-handshake"><br><span>Servicios</span></i></a></li>
-               <!-- <li><a href="ubicacion.php"><i class="fas fa-map-marker-alt"><br><span>Ubicacion</span></i></a></li> -->
-               <li><a href="reportes.php"><i class="fas fa-file"><br><span>Reportes</span></i></a></li>
-               <li><a href="otros.php"><i class="fas fa-ad"><br><span>Otros</span></i></a></li>
+                <li><a href="Graficas/Gindex.php"><i class="fas fa-home p-ico"><br><span>Inicio</span></i></a></li>
+                <li><a href="usuarios.php"><i class="fas fa-user active"><br><span>Usuarios</span></i></a></li>
+                <li><a href="clientes.php"><i class="fas fa-user-tie"><br><span>Clientes</span></i></a></li>
+                <li><a href="productos.php"><i class="fas fa-laptop"><br><span>Productos</span></i></a></li>
+                <li><a href="servicios.php"><i class="fas fa-handshake"><br><span>Servicios</span></i></a></li>
+                <!-- <li><a href="ubicacion.php"><i class="fas fa-map-marker-alt"><br><span>Ubicacion</span></i></a></li> -->
+                <li><a href="reportes.php"><i class="fas fa-file"><br><span>Reportes</span></i></a></li>
+                <li><a href="otros.php"><i class="fas fa-ad"><br><span>Otros</span></i></a></li>
             </ul>
         </nav>
     </header>
     <section class="content">
-        <a href="javascript:Abrir()"><i class="fas fa-plus-square"> Nuevo</i></a> <!-- BOTON NUEVO QUE ABRE VENTANA  -->
+        <!-- <a href="javascript:Abrir()"><i class="fas fa-plus-square"> Nuevo</i></a> -->
+        <?php
+        if ($_SESSION['tpus'] != 2 && $_SESSION['tpus'] != 3) {
+            echo "<br><br><br><br>";
+        } else {
+            echo "<a href='javascript:Abrir()'><i class='fas fa-plus-square'> Nuevo</i></a>";
+        }
+        ?>
         <div class="ventana" id="vent">
         <a href="javascript:Cerrar()"><i class="fas fa-times"></i></a>
         <h3>Alta de Usuario</h3>
@@ -112,24 +119,22 @@ if (empty($_SESSION['active'])) {
                 <label for="">Sucursal: </label>
                 <select name="sucursal" id="">
                     <?php
-                        while ($datossc = mysqli_fetch_array($query))
-                        {
-                    ?>
-                    <option value="<?php echo$datossc['idsucursal']?>"><?php echo $datossc['nombreSC']?></option>
+                    while ($datossc = mysqli_fetch_array($query)) {
+                        ?>
+                        <option value="<?php echo $datossc['idsucursal'] ?>"><?php echo $datossc['nombreSC'] ?></option>
                     <?php
-                        }
+                    }
                     ?>
                 </select>
                 <br><br>
                 <label for="">Tipo de usuario: </label>
                 <select name="tipUs" id="">
                     <?php
-                        while ($datos1 = mysqli_fetch_array($query1))
-                        {
-                    ?>
-                    <option value="<?php echo$datos1['idtipousuario']?>"><?php echo $datos1['nombreTU']?></option>
+                    while ($datos1 = mysqli_fetch_array($query1)) {
+                        ?>
+                        <option value="<?php echo $datos1['idtipousuario'] ?>"><?php echo $datos1['nombreTU'] ?></option>
                     <?php
-                        }
+                    }
                     ?>
                 </select>
                 <br><br>
@@ -148,9 +153,9 @@ if (empty($_SESSION['active'])) {
                 <!--Foto-->
                 <input type="submit" name="guardar_us" value="Guardar" class="btnform">
                 <input type="submit" href="javascript:Cerrar()" name="cerrar" value="Cerrar" class="btnform">
-            </center>
-        </form>
-    </div>
+                </center>
+            </form>
+        </div>
         <section class="table1">
             <table>
                 <tr class="tab-princ">
@@ -165,6 +170,7 @@ if (empty($_SESSION['active'])) {
                     <td></td>
                 </tr>
                 <?php
+
                 //inicial el conteo del paginador
                     include("conexion.php");
                     $sql_numr = mysqli_query($mysqli,"SELECT count(*) as total FROM usuariolog");
@@ -243,14 +249,13 @@ if (empty($_SESSION['active'])) {
             <!--paginador-->
         </section>
     </section>
-<?php
-    if(isset($_POST['guardar_us']))
-    {
+    <?php
+    if (isset($_POST['guardar_us'])) {
         // echo"entro aqui"."\n";
-        $nombres =$_POST['nombres'];
-        $apellidos =$_POST['apellidos'];
-        $correo =$_POST['correo'];
-        $telefono =$_POST['telefono'];
+        $nombres = $_POST['nombres'];
+        $apellidos = $_POST['apellidos'];
+        $correo = $_POST['correo'];
+        $telefono = $_POST['telefono'];
         $sucursal = $_POST['sucursal'];
         $tipUs = $_POST['tipUs'];
         $contraseña = $_POST['contraseña'];
@@ -280,10 +285,10 @@ if (empty($_SESSION['active'])) {
         // echo $sucursal;
         $table2 = 'persona';
         $table3 = 'usuariolog';
-        if($contraseña == $contraseña2){
+        if ($contraseña == $contraseña2) {
             $mysqli->query("INSERT INTO $table2 (nombres, apellidos, correo, telefono, idsucursal) VALUES ('$nombres','$apellidos','$correo','$telefono' ,$sucursal)");
             // echo"se incertaron correctamente";
-            $queryPer = mysqli_query($mysqli,"SELECT idpersona,correo FROM persona WHERE correo = '$correo' ");
+            $queryPer = mysqli_query($mysqli, "SELECT idpersona,correo FROM persona WHERE correo = '$correo' ");
             $conperso = mysqli_fetch_array($queryPer);
             $idprs = $conperso['idpersona'];
             $mysqli->query("INSERT INTO $table3 (idpersona,nickName,pass,idtipousuario,foto) VALUES ($idprs,'$nick','$contraenv',$tipUs,'$imgUsuario')") ;
@@ -293,25 +298,34 @@ if (empty($_SESSION['active'])) {
                 }
             
         }else{
+
             echo "<script>alert('Las contraseñas no coinciden');</script>";
-
         }
-       
     }
-?>
-<script>
-    function Abrir(){
-        document.getElementById("vent").style.display="block";
-    }
-    function Cerrar(){
-        document.getElementById("vent").style.display="none";
-    }
-    function AbTip(){
-        document.getElementById("vent").style.display="none";
-        document.getElementById("vent-us").style.display="block";
+    ?>
+    <script>
+        function Abrir() {
+            document.getElementById("vent").style.display = "block";
+        }
 
 
-    }
+
+    
 </script>
+
+        function Cerrar() {
+            document.getElementById("vent").style.display = "none";
+        }
+
+        function AbTip() {
+            document.getElementById("vent").style.display = "none";
+            document.getElementById("vent-us").style.display = "block";
+        }
+
+        function prueb() {
+            document.getElementById("btn-ed").style.display = "none";
+        }
+    </script>
 </body>
+
 </html>
