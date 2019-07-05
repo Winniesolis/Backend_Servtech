@@ -55,7 +55,7 @@
         $nickName =$_POST['nickName'];
         $pass =$_POST['pass'];
         $passenc = md5($pass);
-        $mysqli->query("INSERT INTO usuarioLog (idpersona,nickName,pass,idtipousuario) VALUES ($persona,'$nickName','$passenc',1)");
+        $mysqli->query("INSERT INTO usuarioLog (idpersona,nickName,pass,idtipousuario, foto) VALUES ($persona,'$nickName','$passenc',1,'usuario.png')");
     }else{
         echo "<script>alert('Datos incompletos');</script>";
     }

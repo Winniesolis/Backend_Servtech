@@ -59,7 +59,7 @@ if (isset($_POST['tipUs'])) {
                                 <h5>Winnie Solis</h5>
                                 <h6>Administrador</h6>
                             </div>
-                            <li><a href="perfil.php">Ver Perfil</a></li>
+                            <li><a href="perfil.php?id=<?php echo $_SESSION['idUser']; ?>">Ver Perfil</a></li>
                             <li><a href="salir.php">Cerrar Sesion</a></li>
                             <li><a href="http://www.servtechweb.com.mx/">Ir al FrontEnd</a></li>
                             <li><a href="respaldos/index-respaldo.php">Hacer Respaldo</a></li>
@@ -164,17 +164,6 @@ if (isset($_POST['tipUs'])) {
 
 
 <!-- busqueda -->
-
-
-
-
-
-
-
-
-
-
-
         <section class="table1">
             <table>
                 <tr class="tab-princ">

@@ -181,14 +181,14 @@ $querytipus = mysqli_query($mysqli, "SELECT * FROM tipousuario WHERE idpersona =
         </nav>
     </header>
     <section class="content">
-        <section class="tabedit">
+        <section class="tabedit tabedit2">
             <h1>Editar usuario</h1>
             <form action="edit-us.php" method="post" name="form-editus" class="form-editus" enctype="multipart/form-data">
                 <input type="text" placeholder="id" name="id" class="disp-none" require value="<?php echo $data_usuario['idpersona'] ?>">
                  <input type="hidden" id="foto_actualus"name="foto_actualus"value="<?php echo $data_usuario['foto']; ?>">
                 <input type="hidden" id="foto_removeus"name="foto_removeus"value="<?php echo $data_usuario['foto']; ?>">
                 <label for="">NickName:</label>
-                <input type="text" placeholder="NickName" name="nickName" require value="<?php echo $data_usuario['nickName'] ?>">>
+                <input type="text" placeholder="NickName" name="nickName" require value="<?php echo $data_usuario['nickName'] ?>">
                 <br> <br>
                 <label for="">Nombre(s)</label>
                 <br>
