@@ -24,12 +24,14 @@ if (empty($_REQUEST['id'])) {
         header("location: usuarios.php");
     }
 }
-$queryus = mysqli_query($mysqli, "SELECT * FROM persona INNER JOIN usuariolog ON persona.idpersona = usuariolog.idpersona INNER JOIN tipousuario ON usuariolog.idtipousuario = tipousuario.idtipousuario INNER JOIN sucursal ON persona.idsucursal = sucursal.idsucursal WHERE usuariolog.idpersona = $claveid ");
+$queryus = mysqli_query($mysqli, "SELECT * FROM persona INNER JOIN usuariolog ON persona.idpersona = usuariolog.idpersona INNER JOIN tipousuario ON usuariolog.idtipousuario = tipousuario.idtipousuario INNER JOIN sucursal ON persona.idsucursal = sucursal.idsucursal WHERE usuariolog.idusuarioLog = $claveid ");
+
+echo "SELECT * FROM persona INNER JOIN usuariolog ON persona.idpersona = usuariolog.idpersona INNER JOIN tipousuario ON usuariolog.idtipousuario = tipousuario.idtipousuario INNER JOIN sucursal ON persona.idsucursal = sucursal.idsucursal WHERE usuariolog.idusuarioLog = $claveid";
 
 $result_usuario = mysqli_num_rows($queryus);
 if ($result_usuario > 0) {
     $data_usuario = mysqli_fetch_assoc($queryus);
-
+    $foto = '<img class = "imgproeli" id="img" src="img/uploads/'.$data_usuario['foto'].'"alt="Producto">';
     // print_r($data_usuario);
 }
 
@@ -56,6 +58,7 @@ if (isset($_POST['elim'])) {
     <link rel="icon" href="img/ico-vent3.ico"/>
     <!-- style -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/J-style.css">
     <!-- font-awasome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
@@ -101,10 +104,12 @@ if (isset($_POST['elim'])) {
                 <i class="fas fa-user-circle"></i>
                 <h3>¿Está seguro que desea eliminar el siguiente registro?</h3>
                 <br>
-                <p>Nombre del usuario: <span><?php echo $data_usuario['nombres'];  ?></span></p>
-                <p>Apellido del usuario: <span><?php echo $data_usuario['apellidos'];  ?></span></p>
-                <p>Sucursal del usuario: <span><?php echo $data_usuario['nombreSC'];  ?></span></p>
                 <p>NicName <span><?php echo $data_usuario['nickName'] ?></span></p>
+                <p>Tipo Usuario: <span><?php echo $data_usuario['nombreTU'];  ?></span></p>
+                <p>Contraseña: <span>******</span></p>
+                <p>Sucursal del usuario: <span><?php echo $data_usuario['nombreSC'];  ?></span></p>
+                
+                <p><span><?php echo $foto; ?></span></p>
                 <form action="" method="post">
                     <input type="hidden" name="idus" value="<?php echo $idus; ?>">
                     <a href="usuarios.php" class="btn-cancel">Cancelar</a>
