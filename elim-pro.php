@@ -16,33 +16,32 @@ if (isset($_GET['id'])) {
 }
 include('conexion.php');
 if (empty($_REQUEST['id'])) {
-    header("location: usuarios.php");
+    header("location: productos.php");
 } else {
     $claveid = $_REQUEST['id'];
     if (!is_numeric($claveid)) {
 
-        header("location: usuarios.php");
+        header("location: productos.php");
     }
 }
-$queryus = mysqli_query($mysqli, "SELECT * FROM persona INNER JOIN usuariolog ON persona.idpersona = usuariolog.idpersona INNER JOIN tipousuario ON usuariolog.idtipousuario = tipousuario.idtipousuario INNER JOIN sucursal ON persona.idsucursal = sucursal.idsucursal WHERE usuariolog.idusuarioLog = $claveid ");
+$queryus = mysqli_query($mysqli, "SELECT producto.idproducto, producto.nombrePD, producto.descripcionPD, producto.precioPD, proveedor.nombrePV, producto.cantidad, producto.foto, producto.idproveedor FROM producto INNER JOIN proveedor ON producto.idproveedor = proveedor.idproveedor WHERE producto.idproducto = $claveid");
 
-echo "SELECT * FROM persona INNER JOIN usuariolog ON persona.idpersona = usuariolog.idpersona INNER JOIN tipousuario ON usuariolog.idtipousuario = tipousuario.idtipousuario INNER JOIN sucursal ON persona.idsucursal = sucursal.idsucursal WHERE usuariolog.idusuarioLog = $claveid";
+$result_producto = mysqli_num_rows($queryus);
 
-$result_usuario = mysqli_num_rows($queryus);
-if ($result_usuario > 0) {
-    $data_usuario = mysqli_fetch_assoc($queryus);
-    $foto = '<img class = "imgproeli" id="img" src="img/uploads/'.$data_usuario['foto'].'"alt="Producto">';
+if ($result_producto > 0) {
+    $data_producto = mysqli_fetch_assoc($queryus);
+    $foto = '<img class = "imgproeli" id="img" src="img/uploads/'.$data_producto['foto'].'"alt="Producto">';
     // print_r($data_usuario);
 }
 
 if (isset($_POST['elim'])) {
     $alert = '';
 
-    $mysqli->query("DELETE FROM usuariolog WHERE usuariolog.idusuarioLog =  $claveid ");
+    $mysqli->query("DELETE FROM producto WHERE producto.idproducto =  $claveid ");
 
     if ($mysqli) {
         echo "<script>alert('Se ha eliminado el registro satisfactoriamente');</script>";
-        header("location: usuarios.php");
+        header("location: productos.php");
     } else {
         echo "<script>alert('Error al eliminar datos');</script>";
     }
@@ -88,8 +87,8 @@ if (isset($_POST['elim'])) {
         <nav>
             <ul class="nav-icon">
                 <li><a href="2index.php"><i class="fas fa-home p-ico"><br><span>Inicio</span></i></a></li>
-                <li><a href="usuarios.php"><i class="fas fa-user active"><br><span>Usuarios</span></i></a></li>
-                <li><a href="productos.php"><i class="fas fa-laptop"><br><span>Productos</span></i></a></li>
+                <li><a href="usuarios.php"><i class="fas fa-user"><br><span>Usuarios</span></i></a></li>
+                <li><a href="productos.php"><i class="fas fa-laptop active"><br><span>Productos</span></i></a></li>
                 <li><a href="servicios.php"><i class="fas fa-handshake"><br><span>Servicios</span></i></a></li>
                 <li><a href="ubicacion.php"><i class="fas fa-map-marker-alt"><br><span>Ubicacion</span></i></a></li>
                 <li><a href="reportes.php"><i class="fas fa-file"><br><span>Reportes</span></i></a></li>
@@ -104,15 +103,15 @@ if (isset($_POST['elim'])) {
                 <i class="fas fa-user-circle"></i>
                 <h3>¿Está seguro que desea eliminar el siguiente registro?</h3>
                 <br>
-                <p>NicName <span><?php echo $data_usuario['nickName'] ?></span></p>
-                <p>Tipo Usuario: <span><?php echo $data_usuario['nombreTU'];  ?></span></p>
-                <p>Contraseña: <span>******</span></p>
-                <p>Sucursal del usuario: <span><?php echo $data_usuario['nombreSC'];  ?></span></p>
-                
+                <p>Producto: <span><?php echo $data_producto['nombrePD'];  ?></span></p>
+                <p>Descripcion: <span><?php echo $data_producto['descripcionPD'];  ?></span></p>
+                <p>Precio: <span><?php echo $data_producto['precioPD'];  ?></span></p>
+                <p>Cantidad: <span><?php echo $data_producto['cantidad'];  ?></span></p>
+                <p>ID <span><?php echo $data_producto['idproducto'] ?></span></p>
                 <p><span><?php echo $foto; ?></span></p>
                 <form action="" method="post">
-                    <input type="hidden" name="idus" value="<?php echo $idus; ?>">
-                    <a href="usuarios.php" class="btn-cancel">Cancelar</a>
+                    <input type="hidden" name="idus" value="<?php echo $idproducto; ?>">
+                    <a href="producto.php" class="btn-cancel">Cancelar</a>
                     <button type="submit" name="elim" class="btn-eli">Eliminar</button>
                 </form>
 
