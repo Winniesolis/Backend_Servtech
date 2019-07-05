@@ -223,8 +223,8 @@ if (empty($_SESSION['active'])) {
                                         } ?>" href="elim-us.php?id=<?php echo $datostable['idpersona'] ?>"><button><i class="fas fa-trash-alt"></i></button></a>
                         </td> -->
                         <td class="btn-table">
-                            <button><i class="fas fa-edit"></i></button>
-                            <button><i class="fas fa-trash-alt"></i></button>
+                            <a href="edit-pro.php?id=<?php echo $data['idproducto']?>"><button><i class="fas fa-edit"></i></button></a>
+                            <a href="elim-pro.php?id=<?php echo $data['idproducto']?>"><button><i class="fas fa-trash-alt"></i></button>
                         </td>
                     </tr> 
                     <?php

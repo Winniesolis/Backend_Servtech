@@ -37,7 +37,14 @@ $(document).ready(function(){
     	$('#foto').val('');
     	$(".delPhoto").addClass('notBlock');
     	$("#img").remove();
-
+        if ($("#foto_actual") && $("foto_remove")) 
+        {
+            $("#foto_remove").val('img_producto.png');
+        }
+        if ($("#foto_actualus") && $("foto_removeus")) 
+        {
+            $("#foto_removeus").val('usuario.png');
+        }
     });
 
 });
