@@ -33,7 +33,11 @@ if (isset($_POST['tipUs'])) {
     <title> Usuarios │ ServTech</title>
     <!-- style -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/J-style.css">
     <link rel="icon" href="img/lg1/ico-vent3.ico" />
+     <!-- script´s -->
+    <script type="text/javascript" src="js/jquery-1.12.0.min.js"></script><!-- Importa la libreria -->
+    <script type="text/javascript" src="js/functions.js"></script><!-- Llama a la funcion -->
     <!-- font-awasome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
@@ -48,14 +52,14 @@ if (isset($_POST['tipUs'])) {
             <ul>
                 <!-- <li><a href=""><img src="img/winnie.png" alt=""></a> -->
                 <li><a href=""><img src="img/uploads/<?php echo $_SESSION['fot'];?>" alt=""></a>
-                    <span><?php echo $_SESSION['nickName']; ?></span>
+                    <span><?php echo $_SESSION['tpus']; ?></span>
                     <ul class="sub-nav">
                         <div>
                             <div>
                                 <h5>Winnie Solis</h5>
                                 <h6>Administrador</h6>
                             </div>
-                            <li><a href="perfil.php">Ver Perfil</a></li>
+                            <li><a href="perfil.php?id=<?php echo $_SESSION['idUser']; ?>">Ver Perfil</a></li>
                             <li><a href="salir.php">Cerrar Sesion</a></li>
                             <li><a href="http://www.servtechweb.com.mx/">Ir al FrontEnd</a></li>
                             <li><a href="respaldos/index-respaldo.php">Hacer Respaldo</a></li>
@@ -90,7 +94,7 @@ if (isset($_POST['tipUs'])) {
             <a href="javascript:Cerrar()"><i class="fas fa-times"></i></a>
             <h3>Alta de Usuario</h3>
             <a href="usuarios.php"></i></a>
-            <form action="usuarios.php" method="POST" class="form1">
+            <form action="usuarios.php" method="POST" class="form1" enctype="multipart/form-data">
                 <label for="">Nombre(s):</label>
                 <input type="text" placeholder="Nombre(s)" name="nombres">
                 <br> <br>
@@ -111,7 +115,7 @@ if (isset($_POST['tipUs'])) {
                 <br> <br>
                 <label for="">Contraseña:</label>
                 <input type="password" placeholder="Confirme su contraseña" name="conf-contra">
-                <br> <br>
+                <br> <br><br><br>
                 <label for="">Sucursal: </label>
                 <select name="sucursal" id="">
                     <?php
@@ -134,6 +138,19 @@ if (isset($_POST['tipUs'])) {
                     ?>
                 </select>
                 <br><br>
+                <!--Foto-->
+                <div class="photo">
+                        <label for="foto">Foto</label>
+                        <div class="prevPhoto">
+                        <span class="delPhoto notBlock">X</span>
+                        <label for="foto"></label>
+                        </div>
+                        <div class="upimg">
+                        <input type="file" name="foto" id="foto">
+                        </div>
+                        <div id="form_alert"></div>
+                </div>
+                <!--Foto-->
                 <input type="submit" name="guardar_us" value="Guardar" class="btnform">
                 <input type="submit" href="javascript:Cerrar()" name="cerrar" value="Cerrar" class="btnform">
                 </center>
@@ -147,17 +164,6 @@ if (isset($_POST['tipUs'])) {
 
 
 <!-- busqueda -->
-
-
-
-
-
-
-
-
-
-
-
         <section class="table1">
             <table>
                 <tr class="tab-princ">
@@ -169,11 +175,13 @@ if (isset($_POST['tipUs'])) {
                     <td>Telefono</td>
                     <td>Sucursal</td>
                     <td>Tipo de usuario</td>
-                    <td></td>
+                    <td>Foto</td>
+                    <td>Acciones</td>
                 </tr>
                 <?php
                 $query3 = mysqli_query($mysqli, "SELECT * FROM persona INNER JOIN usuariolog ON persona.idpersona = usuariolog.idpersona INNER JOIN sucursal ON sucursal.idsucursal = persona.idsucursal INNER JOIN tipousuario ON usuariolog.idtipousuario = tipousuario.idtipousuario ORDER BY `idusuarioLog` DESC ");
                 while ($datostable = mysqli_fetch_array($query3)) {
+                    $foto = 'img/uploads/'.$datostable['foto'];
                     ?>
                     <tr>
                         <td><?php echo $datostable['idusuarioLog'] ?></td>
@@ -184,6 +192,7 @@ if (isset($_POST['tipUs'])) {
                         <td><?php echo $datostable['telefono'] ?></td>
                         <td><?php echo $datostable['nombreSC'] ?></td>
                         <td><?php echo $datostable['nombreTU'] ?></td>
+                        <td class="img_producto"><img src="<?php echo $foto; ?>" alt=""></td>
                         <td class="btn-table <?php if ($_SESSION['tpus'] != 2 && $_SESSION['tpus'] != 3) {
                                                     echo "disp--none";
                                                 } ?>" id="btn-ed">
@@ -216,13 +225,37 @@ if (isset($_POST['tipUs'])) {
         // echo $sucursal;
         $table2 = 'persona';
         $table3 = 'usuariolog';
+
+        //variables de la foto
+        $foto       = $_FILES['foto'];
+            $nom_foto   = $foto['name'];
+            $type       = $foto['type'];
+            $url_temp   = $foto['tmp_name'];
+
+            $imgUsuario = 'usuario.png';
+            if ($nom_foto != '') 
+            {
+                $destino        = 'img/uploads/';
+                $img_nombre     = 'img_'.md5(date('d-m-Y H:m:s' ));
+                $imgUsuario    = $img_nombre.'.jpg';
+                $src            = $destino.$imgUsuario;
+            }
+        //variables de la foto
+
         if ($contraseña == $contraseña2) {
             $mysqli->query("INSERT INTO $table2 (nombres, apellidos, correo, telefono, idsucursal) VALUES ('$nombres','$apellidos','$correo','$telefono' ,$sucursal)");
             // echo"se incertaron correctamente";
             $queryPer = mysqli_query($mysqli, "SELECT idpersona,correo FROM persona WHERE correo = '$correo' ");
             $conperso = mysqli_fetch_array($queryPer);
             $idprs = $conperso['idpersona'];
-            $mysqli->query("INSERT INTO $table3 (idpersona,nickName,pass,idtipousuario) VALUES ($idprs,'$nick','$contraenv',$tipUs)");
+            $mysqli->query("INSERT INTO $table3 (idpersona,nickName,pass,idtipousuario, foto) VALUES ($idprs,'$nick','$contraenv',$tipUs ,'$imgUsuario')");
+            if ($mysqli) {
+                if ($nom_foto != '') {
+                    move_uploaded_file($url_temp, $src);
+                }
+                $alert='<p class="msg_save">Producto guardado corectamente.</p>';
+            }
+
         } else {
             echo "<script>alert('Las contraseñas no coinciden');</script>";
         }

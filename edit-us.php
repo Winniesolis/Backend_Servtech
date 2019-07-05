@@ -39,10 +39,16 @@ if (empty($_REQUEST['id'])) {
     }
 }
 $queryus = mysqli_query($mysqli, "SELECT * FROM persona INNER JOIN usuariolog ON persona.idpersona = usuariolog.idpersona INNER JOIN tipousuario ON usuariolog.idtipousuario = tipousuario.idtipousuario INNER JOIN sucursal ON persona.idsucursal = sucursal.idsucursal WHERE persona.idpersona = $claveid ");
-
+    $foto = '';
+    $classRemove= 'notBlock';
 $result_usuario = mysqli_num_rows($queryus);
 if ($result_usuario > 0) {
     $data_usuario = mysqli_fetch_assoc($queryus);
+     if ($data_usuario ['foto'] != 'usuario.png') 
+     {
+            $foto = '<img id="img" src="img/uploads/'.$data_usuario['foto'].'"alt="Usuario">';
+            $classRemove= '';
+        }
 
     // print_r($data_usuario);
 }
@@ -63,11 +69,51 @@ if (isset($_POST['edtit-us'])) {
         $suc = $_POST['sucursal'];
         $tipus = $_POST['tipUs'];
 
-        $mysqli->query("UPDATE persona INNER JOIN usuariolog ON persona.idpersona = usuariolog.idpersona SET persona.nombres = '$nomb', persona.apellidos = '$ape', persona.correo = '$cor', persona.telefono = '$tel', persona.idsucursal = $suc, usuariolog.idtipousuario = $tipus, usuariolog.nickName = '$nick' WHERE persona.idpersona = $claveid ");
+            $imgUsuario        = $_POST['foto_actualus'];
+            $imgRemove          = $_POST['foto_removeus'];
+
+            $foto       = $_FILES['foto'];
+            $nom_foto   = $foto['name'];
+            $type       = $foto['type'];
+            $url_temp   = $foto['tmp_name'];
+
+            $upd = '';
+            if ($nom_foto != '') 
+            {
+                $destino        = 'img/uploads/';
+                $img_nombre     = 'img_'.md5(date('d-m-Y H:m:s' ));
+                $imgUsuario    = $img_nombre.'.jpg';
+                $src            = $destino.$imgUsuario;
+            }
+            else
+            {
+                if ($_POST['foto_actualus'] != $_POST['foto_removeus']) {
+                       $imgUsuario = 'usuario.png';
+                   }   
+            }
+        
+
+
+
+
+        $mysqli->query("UPDATE persona INNER JOIN usuariolog ON persona.idpersona = usuariolog.idpersona SET persona.nombres = '$nomb', persona.apellidos = '$ape', persona.correo = '$cor', persona.telefono = '$tel', persona.idsucursal = $suc, usuariolog.idtipousuario = $tipus, usuariolog.nickName = '$nick', usuariolog.foto = '$imgUsuario' WHERE persona.idpersona = $claveid ");
         // $mysqli->query("UPDATE persona INNER JOIN usuariolog ON persona.idpersona = usuariolog.idpersona SET persona.nombres = '$nomb', persona.apellidos = '$ape', persona.correo = '$cor', persona.telefono = '$tel', persona.idsucursal = $suc, usuariolog.idtipousuario = $tipus WHERE persona.idpersona = $claveid");
         // $mysqli->query("UPDATE persona SET nombres = '$nomb', apellidos = '$ape', correo = '$cor', telefono ='$tel', idsucursal = $suc , idtipousuario = $tipus WHERE idpersona = $claveid");
         if ($mysqli) {
             header("location: usuarios.php");
+            if (($nom_foto != '' && ($_POST['foto_actualus'] != 'imgUsuario.png')) || ($_POST['foto_actualus'] != $_POST['foto_removeus'])) 
+                {
+                    if ($_POST['foto_actualus'] == 'usuario.png') {
+                        # code...
+                    }
+                    else{
+                        unlink('img/uploads/'.$_POST['foto_actualus']);
+                    }
+                    
+                }
+                if ($nom_foto != '') {
+                    move_uploaded_file($url_temp, $src);
+                }
         } else {
             echo "<script>alert('Error al editar datos');</script>";
         }
@@ -92,6 +138,10 @@ $querytipus = mysqli_query($mysqli, "SELECT * FROM tipousuario WHERE idpersona =
     <link rel="icon" href="img/lg1/ico-vent3.ico" />
     <!-- style -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/J-style.css">
+     <!-- script´s -->
+    <script type="text/javascript" src="js/jquery-1.12.0.min.js"></script><!-- Importa la libreria -->
+    <script type="text/javascript" src="js/functions.js"></script><!-- Llama a la funcion -->
     <!-- font-awasome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
@@ -131,12 +181,14 @@ $querytipus = mysqli_query($mysqli, "SELECT * FROM tipousuario WHERE idpersona =
         </nav>
     </header>
     <section class="content">
-        <section class="tabedit">
+        <section class="tabedit tabedit2">
             <h1>Editar usuario</h1>
-            <form action="edit-us.php" method="post" name="form-editus" class="form-editus">
+            <form action="edit-us.php" method="post" name="form-editus" class="form-editus" enctype="multipart/form-data">
                 <input type="text" placeholder="id" name="id" class="disp-none" require value="<?php echo $data_usuario['idpersona'] ?>">
+                 <input type="hidden" id="foto_actualus"name="foto_actualus"value="<?php echo $data_usuario['foto']; ?>">
+                <input type="hidden" id="foto_removeus"name="foto_removeus"value="<?php echo $data_usuario['foto']; ?>">
                 <label for="">NickName:</label>
-                <input type="text" placeholder="NickName" name="nickName" require value="<?php echo $data_usuario['nickName'] ?>">>
+                <input type="text" placeholder="NickName" name="nickName" require value="<?php echo $data_usuario['nickName'] ?>">
                 <br> <br>
                 <label for="">Nombre(s)</label>
                 <br>
@@ -178,6 +230,20 @@ $querytipus = mysqli_query($mysqli, "SELECT * FROM tipousuario WHERE idpersona =
                 }
                 ?>
                 </select>
+                 <!--Foto-->
+                <div class="photo">
+                        <label for="foto">Foto</label>
+                        <div class=" prevPhoto prevPhotopro">
+                        <span class="delPhoto <?php echo $classRemove;?>">X</span>
+                        <label for="foto"></label>
+                        <?php echo $foto; ?>
+                        </div>
+                        <div class="upimg">
+                        <input type="file" name="foto" id="foto">
+                        </div>
+                        <div id="form_alert"></div>
+                </div>
+                <!--Foto-->
                 <section>
                     <input type="submit" name="edtit-us" value="Guardar" class="btnform">
                     <input type="submit" name="cerrar" value="Cerrar" class="btnform">
