@@ -14,6 +14,8 @@ include('conexion.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> Usuarios │ ServTech</title>
+    <link rel="icon" href="img/lg1/ico-vent3.ico" />
+
     <!-- style -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/J-style.css">
@@ -24,78 +26,81 @@ include('conexion.php');
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
-    <header>
-        <section class="principal">
-            <img src="img/logo-ST.PNG" alt="">
-            <!-- <h1>Usuarios</h1> -->
-        </section>
-        <section class="usuario">
-            <ul>
-                <li><a href=""><img src="img/winnie.png" alt=""></a>
-                    <ul class="sub-nav">
-                        <div>
-                            <div>
-                                <h5>Winnie Solis</h5>
-                                <h6>Administrador</h6>
-                            </div>
-                            <li><a href="salir.php">Cerrar Sesion</a></li>
-                            <li><a href="http://www.servtechweb.com.mx/">Ir al FrontEnd</a></li>
-                            <li><a href="respaldos/index-respaldo.php">Hacer Respaldo</a></li>
-                        </div>
-                    </ul>
-                </li>
-            </ul>   
-        </section>
-        <nav>
-            <ul class="nav-icon">
-               <li><a href="Graficas/Gindex.php"><i class="fas fa-home p-ico"><br><span>Inicio</span></i></a></li>
-               <li><a href="usuarios.php" ><i class="fas fa-user active"><br><span>Usuarios</span></i></a></li>
-               <li><a href="productos.php"><i class="fas fa-laptop"><br><span>Productos</span></i></a></li>
-               <li><a href="servicios.php"><i class="fas fa-handshake"><br><span>Servicios</span></i></a></li>
-               <!-- <li><a href="ubicacion.php"><i class="fas fa-map-marker-alt"><br><span>Ubicacion</span></i></a></li> -->
-               <li><a href="reportes.php"><i class="fas fa-file"><br><span>Reportes</span></i></a></li>
-               <li><a href="otros.php"><i class="fas fa-ad"><br><span>Otros</span></i></a></li>
-            </ul>
-        </nav>
-    </header>
-    <section class="content">
-        <h1>Datos del cliente</h1>
-    <label for="">cliente</label>
-    <select name="" id="">
-        <option value="">julio</option>
-        <option value="">winnie</option>
-        <option value="">otros</option>
-    </select>
-    <label for="">RFC:</label>
-    <input type="text" value="prueba"> 
-    <label for="">Direciion:</label>
-    <input type="text" value="prueba">
-    <label for="">Telefono: </label>
-    <input type="text" value="prueba"> 
-    <br><br>
-    <h1>Vendedor</h1>
-    <label for="">Julio</label><br><br>
-    <button>Buscar Producto</button>
-    <br><br>
-    <table>
-        <tr class="tab-princ">
-                    <td>ID</td>
-                    <td>Producto</td>
-                    <td>Descripcion</td>
-                    <td>Precio</td>
-                    <td>Cantidad</td>
-                    <td>Acciones</td>
-                </tr>
-    </table>
-    <label for="">Subtotal</label>
-    <input type="text">
-    <br>
-    <label for="">IVa</label>
-    <input type="text">
-    <br>
-    <label for="">Total</label>
-    <input type="text">
+ <?php
+include ('header1.php');
+ ?>
+    
+    <section class="content vent">
+        <form action="" class="form-venta">
+        <h3>Vendedor:</h3>
+            <select name="" id="">
+                <option value="Julio"></option>
+                <option value="Winnie"></option>
+                <option value="Chucho"></option>
+                <option value="Pastrana"></option>
+                <option value="Crespo"></option>
+            </select>
+            <br><br>
+            <section class="cliente">
+                <div class="col1">
+                    <h4>Datos del cliente</h4>
+                    <hr>
+                    <br>
+                    <label for="">Cliente:</label>
+                    <select name="" id="">
+                        <option value="">julio</option>
+                        <option value="">winnie</option>
+                        <option value="">otros</option>
+                    </select>
+                    <br><br>
+                    <label for="">RFC:</label>
+                    <input type="text" value="prueba"> 
+                    <br><br>
+                    <label for="">Direción:</label>
+                    <input type="text" value="prueba">
+                    <br><br>
+                    <label for="">Teléfono: </label>
+                    <input type="text" value="prueba"> 
+                    <br><br>
+                </div>
+                <div class="prod">
+                <button>Cargar Producto</button>
+                </div>
+            </section>
+            <table>
+            <tr class="tab-princ">
+                <td>ID</td>
+                <td>Producto</td>
+                <td>Descripcion</td>
+                <td>Precio</td>
+                <td>Cantidad</td>
+                <td>Acciones</td>
+            </tr>
+        </table>
+        <div class="coltot">
+                <hr>
+                <label for="">Subtotal</label>
+                <input type="text">
+                <br><br>
+                <label for="">IVa</label>
+                <input type="text">
+                <br><br>
+                <label for="">Total</label>
+                <input type="text">
+                <br><br>
+            </div>
+         
+            <button class="btn-gd">Guardar</button>
+        
+        </form>
+
+
+
+
     </section>
-    </section>
+
+
+
+
 </body>
 </html>
