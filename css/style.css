@@ -1,3 +1,4 @@
+
 /*COLORES:
 1) AZUL FUERTE: #074f73;
 2) AZUL BAJO: #06A3D3;
@@ -1060,5 +1061,1060 @@ fieldset h1 {
 {
     margin-top: -200px !important;
     position: absolute;
+}
+/*COLORES:
+1) AZUL FUERTE: #074f73;
+2) AZUL BAJO: #06A3D3;
+3) VERDE AQUA: #3FDB9D;
+4) NEGRO: #000000;
+5) HUESO: #EDF5E0;
+6) BLANCO: #FFFFFF; 
+7) VERDE FUERTE: #36f510;
+
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+/* font-family: 'Roboto', sans-serif; */
+/* font-family: oranienbaum; */
+/* font-family: 'Montserrat', sans-serif; */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/* generales */
+.disp--none {
+    display: none;
+}
+
+.content {
+    margin: 20px 20px 20px 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+body {
+    overflow-x: hidden;
+    background: #EDF5E0;
+}
+
+/* generales */
+/* header */
+header {
+    background: linear-gradient(to right, rgba(6, 163, 211, 1) 0%, rgba(6, 163, 211, 1) 14%, rgba(7, 79, 115, 1) 100%);
+    width: 100%;
+    height: 150px;
+}
+
+.principal {
+    display: inline-block;
+    width: 20%;
+}
+
+.principal img {
+   width: 76%;
+    margin: 14px 20px 20px 14px;
+}
+
+.principal h1 {
+    font-size: 40px;
+    margin: 30px;
+}
+
+nav {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 50px;
+    margin-left: -278px;
+}
+
+.nav-icon i span {
+    font-size: 21px !important;
+}
+
+.active {
+    color: #09ee70 !important;
+}
+
+nav li {
+    list-style: none;
+    text-align: center;
+    display: inline-block;
+    margin: 0px 20px;
+}
+
+nav li i {
+    color: #ffffff;
+    font-size: 30px;
+}
+
+nav li i:hover,
+nav li p:hover {
+    color: #09ee70;
+}
+
+nav li p {
+    color: #ffffff;
+    font-size: 25px;
+}
+
+.usuario {
+    display: inline-block !important;
+    width: 20%;
+    vertical-align: top;
+    position: relative;
+    top: 20px;
+    left: 64%;
+}
+
+.usuario img {
+    width: 30%;
+    margin-left: 57px;
+    display: inline-block;
+}
+
+.usuario p {
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff
+}
+.usuario li{
+    text-decoration: none;
+    list-style: none;
+}
+.usuario span{
+    color: #ffffff;
+    font-size: 1em;
+    font-family: 'Montserrat', sans-serif; 
+    margin-left: 47px;
+}
+.sub-nav li{
+    width: 205px;
+    height: 40px;
+    font-size: 20px;
+}
+.sub-nav li a{
+    padding-left: 20px;
+}
+.sub-nav li:hover{
+    background: #074f73;
+}
+.sub-nav{
+    display: none;
+    position: absolute;
+    min-width: 140px;
+}
+li:hover > ul{
+    display: block;
+}
+.sub-nav li a{
+    color: #ffffff !important;
+    text-decoration: none;
+}
+.sub-nav div{
+    width: 205px;
+    height: 229px;
+    background: #06A3D3;
+}
+.sub-nav div div{
+    width: 205px;
+    height: 70px;
+    background: #d5daeb;
+}
+.sub-nav div div h5, .sub-nav div div h6{
+    text-align: center;
+    font-size: 20px !important;
+}
+.sub-nav div div h5{
+    padding-top: 10px;
+}
+
+/* nav */
+/* header */
+/* usuarios */
+.usu {
+    padding-top: 23px;
+    margin-left: 30px;
+    font-size: 30px;
+}
+
+.fa-plus-square {
+    color: #074f73;
+    font-size: 30px;
+    margin-bottom: 30px;
+    margin-left: 50px;
+    margin-top: 70px;
+}
+
+.fa-plus-square:hover {
+    color: #06A3D3;
+}
+
+form {
+    margin-left: 44px;
+    margin-bottom: 50px;
+}
+
+.combo {
+    margin: 0px 0px 20px 30px;
+    width: 410px;
+}
+
+/* select option{
+    background: #074f73;
+} */
+.bann-art {
+    background: linear-gradient(to right, rgba(6, 163, 211, 1) 0%, rgba(6, 163, 211, 1) 14%, rgba(7, 79, 115, 1) 100%);
+    width: 100%;
+    height: 80px;
+}
+
+.buttons {
+    text-align: center;
+    margin-top: -48px;
+    margin-left: 60%;
+
+}
+
+.buttons a {
+    font-size: 40px;
+    color: #ffffff;
+    margin-left: 30px;
+}
+
+.butn button {
+    margin-left: 30px;
+    background: #074f73;
+    color: #3fdb9d;
+    font-size: 20px;
+    border: #3fdb9d 1px solid;
+    border-radius: 5px;
+    height: 40px;
+    width: 90px;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 10px;
+    margin-left: 85%;
+}
+
+.butn button:hover {
+    background: #06A3D3;
+    color: #000000;
+}
+
+/* usuarios */
+/* productos */
+table {
+    /* border: 1px solid #ddcdcd; */
+    border-collapse: collapse;
+    width: 100%;
+    background: #ffffff;
+    color: #000000;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+table td {
+    border-bottom: 1px solid #e2dcdc;
+    height: 40px;
+}
+
+table tr:hover {
+    background: #06A3D3;
+    color: #ffffff;
+}
+
+.tab-princ {
+    background: linear-gradient(to right, rgba(6, 163, 211, 1) 0%, rgba(6, 163, 211, 1) 14%, rgba(7, 79, 115, 1) 100%);
+    color: #ffffff;
+    font-weight: bold;
+}
+
+table tr td a {
+    color: #ffffff;
+}
+
+.fa-edit:hover {
+    color: #36f510;
+}
+
+/* altaproductos */
+fieldset h1 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.form-srv h3 {
+    font-size: 40px;
+}
+
+.form-alta {
+    margin-top: 30px;
+    text-align: center;
+    width: 88%;
+}
+
+.form-alta button {
+    border: none;
+    font-size: 40px;
+    color: #ffffff;
+    margin-right: 30px;
+    background: none;
+}
+
+.form-alta button:hover {
+    color: #06A3D3;
+}
+
+.form-srv label {
+    font-size: 25px;
+}
+
+.fa-save:hover {
+    color: #3fdb9d;
+}
+
+.closse a {
+    color: #ffffff;
+}
+
+.fa-trash-alt,
+.fa-edit {
+    font-size: 20px;
+}
+
+.fa-times:hover,
+.closse a:hover,
+.fa-trash-alt:hover {
+    color: #d63636;
+}
+
+/* modal */
+.ventana {
+    background: #11658E;
+    width: 65%;
+    color: #ffffff;
+    font-size: 18px;
+    padding: 33px;
+    min-height: 250px;
+    border-radius: 22px;
+    position: absolute;
+    left: 15%;
+    top: 20%;
+    display: none;
+}
+
+.fa-times {
+    color: #ffffff;
+    position: relative;
+    left: 97%;
+    top: -9px;
+    font-size: 30px;
+}
+
+.ventana h3 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 30px;
+    color: #ffffff;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.form1 {
+    display: inline-block;
+    vertical-align: top;
+    column-count: 2;
+    width: 730px;
+    column-gap: 30px;
+}
+
+.form1 select,
+.form-otros select {
+    width: 204px;
+    height: 30px;
+    border-radius: 5px;
+    background: rgba(0, 110, 255, .8);
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #3fdb9d;
+    padding-left: 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 17px;
+    color: #ffffff;
+    float: right;
+}
+.form-otros select {
+    float: none !important;
+    margin-top: 50px;
+    width: 304px !important;
+}
+
+.form1 input,
+.tipoUs input,
+.tipoUs button,
+.sucursal_add button,
+.proveedir_add button,
+.tiposerv button {
+    width: 204px;
+    height: 30px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, .2);
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #3fdb9d;
+    padding-left: 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 17px;
+    color: #ffffff;
+    justify-content: center;
+    float: right;
+}
+
+.tipoUs input,
+.tipoUs button,
+.sucursal_add button,
+.proveedir_add button,
+.tiposerv button {
+    float: none;
+    color: #000000;
+    width: 235px !important;
+}
+
+.btnform:hover{
+    background: #a7a5a5;
+    color: #000000;
+}
+.tipoUs button {
+    width: 150px !important;
+}
+
+.tipoUs h1 {
+    margin-top: 20px;
+    font-size: 25px;
+}
+
+.form1 label {
+    font-size: 20px;
+}
+
+.btn-sv {
+    text-align: center;
+}
+
+.btn-sv input {
+    width: 100px;
+    height: 40px;
+    margin: 10px 30px 0px 0px;
+    text-align: center;
+    background: #074f73;
+    border: #3fdb9d 1px solid;
+    color: #ffffff;
+    font-size: 18px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.btn-table button {
+    background: none;
+    border: none;
+}
+
+.fa-edit,
+.fa-trash-alt {
+    color: #000000;
+    margin-right: 5px;
+}
+
+.btn-sv input:hover {
+    background: #a7a5a5;
+    color: #000000;
+}
+
+.btnform {
+    display: inline-block !important;
+    margin: 10px 0px;
+}
+
+.fa-plus-square {
+    margin-left: 80px;
+    font-size: 30px;
+}
+
+.tipoUs {
+    width: 500px;
+    height: 200px;
+    border: #06A3D3 1px solid;
+    display: inline-block;
+}
+
+.sucursal_add {
+    border: #06A3D3;
+}
+
+.sucursal_add input,
+.proveedir_add input,
+.tiposerv input,
+.sec1 input {
+    width: 266px;
+    height: 30px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, .2);
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #3fdb9d;
+    padding-left: 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 17px;
+    color: #000000;
+}
+
+.sucursal_add select,
+.proveedir_add select {
+    width: 275px;
+    height: 30px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, .2);
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #3fdb9d;
+    padding-left: 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 17px;
+    color: #000000;
+}
+
+.sucursal_add h1,
+.proveedir_add h1,
+.tiposerv h1 {
+    font-size: 30px;
+    margin-left: 30px;
+}
+
+.tipoUs,
+.sucursal_add,
+.proveedir_add,
+.tiposerv,
+.sec-emple,
+.tipoTS,
+.departamento {
+    border: #06A3D3 1px solid;
+    background: #d5daeb;
+    border-radius: 26px;
+    width: 500px;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 100px;
+}
+
+.selec-dep {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+}
+
+.dep {
+    position: absolute;
+    top: 75%;
+    left: 38%;
+}
+
+#selper {
+    position: absolute;
+    left: 50%;
+}
+
+.sec-emple {
+    width: 500px;
+    height: 250px;
+}
+
+.sec-emple h1 {
+    font-size: 30px;
+}
+
+.sec1 {
+    margin-bottom: 50px;
+}
+
+.sec1 h1 {
+    font-size: 30px !important;
+}
+
+.disp-none {
+    display: none;
+}
+
+.disp-block {
+    display: block !important;
+}
+
+.btnfrm2 {
+    position: absolute;
+    top: 83%;
+    left: 50%;
+}
+
+.btn-most {
+    width: 106px;
+    height: 30px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, .2);
+    border: none;
+    border-bottom-color: currentcolor;
+    border-bottom-style: none;
+    border-bottom-width: medium;
+    outline: none;
+    border-bottom: 2px solid #3fdb9d;
+    padding-left: 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 17px;
+    color: #000000;
+}
+
+.btn-most:hover {
+    background: #3fdb9d;
+    border-bottom: 2px solid #074f73;
+}
+
+/* login */
+.sec-login {
+    width: 600px;
+    height: 400px;
+    margin-top: 80px;
+    background-image: url(../img/loggin.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 30%;
+    box-shadow: 9px 5px 9px 9px rgba(0, 0, 0, 0.333), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+.sec-login input,
+.sec-login select {
+    position: absolute;
+    left: 5%;
+    margin-top: 140px;
+    width: 266px;
+    height: 30px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, .2);
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #06A3D3;
+    padding-left: 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
+    color: #000000;
+}
+
+.sec-login select {
+    width: 276px !important;
+    left: 5% !important;
+    margin-top: 100px !important;
+}
+
+.sec-login label {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
+    position: absolute;
+    left: 5%;
+    margin-top: 100px;
+    color: #a7a5a5;
+}
+
+.form-reg {
+    width: 700px !important;
+    height: 500px !important;
+    left: 25% !important;
+
+}
+
+.btn-entrar {
+    width: 206px !important;
+    left: 10% !important;
+    border-bottom: 2px solid #3fdb9d !important;
+}
+
+.btn-entrar:hover {
+    border-bottom: 2px solid #074f73 !important;
+}
+
+.sec-login a {
+    position: relative;
+    left: 20%;
+    top: 140px;
+    text-decoration: none;
+    color: #074f73;
+}
+
+.sec-login a:hover {
+    color: #3fdb9d;
+}
+
+.sec-login h1 {
+    position: absolute;
+    left: 15%;
+    top: 10%;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 45px;
+    bottom: 50px;
+}
+
+.registro {
+    left: 10% !important;
+    font-size: 38px !important;
+
+}
+.contenedor{
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 100%;
+    height: 632px;
+
+}
+
+
+/* login */
+
+/* respaldo */
+
+.ind-resp {
+    position: absolute;
+    left: 40%;
+    padding: 20px;
+    background: #06A3D3;
+    top:35%;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #074f73;
+    font-size: 20px;
+}
+.ind-resp:hover{
+    background: #cfcbcb;
+}
+
+.resp-idx label{
+    position: absolute;
+    left: 34%;
+    top: 50%;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 25px;
+}
+
+.resp-idx select{
+    position: absolute;
+    left: 40%;
+    top: 58%;
+    width: 287px;
+    height: 40px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, .2);
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #06A3D3;
+    padding-left: 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 15px;
+    color: #000000;
+}
+.resp-idx button{
+    position: absolute;
+    left: 43%;
+    top: 70%;
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, .2);
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #3fdb9d;
+    padding-left: 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 15px;
+    color: #000000;
+}
+.resp-idx button:hover{
+    background: #06A3D3;
+    border-bottom: 1px #000000 solid;
+}
+/* respaldo */
+
+/* GRAFICAS */
+.contenedor-graf, .contenedor-graf3{
+    display: inline-block;
+    margin-left: 100px;
+    margin-bottom: 100px;
+}
+.contenedor-graf2, .contenedor-graf4{
+    display: inline-block;
+    margin-left: 150px;
+   
+}
+.tabedit {
+    border: 3px   #3fdb9d  solid;
+    border-radius: 20px;
+    background: #074f73;
+    width: 600px;
+    height: 700px;
+    margin: auto;
+
+}
+.form-editus{
+    width: 400px;
+    margin:auto;
+    margin-top: 50px;
+}
+.form-editus label{
+    font-size: 20px;
+}
+.form-editus label, .form-editus input, .form-editus select{
+    width: 380px;
+    height: 30px;
+    color: #3fdb9d;
+}
+.form-editus input, .form-editus select{
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 1);
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #3fdb9d;
+    padding-left: 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 17px;
+    color: #000000;
+    justify-content: center;
+}
+.tabedit h1{
+    text-align: center;
+    margin-top: 30px;
+    font-size: 30px;
+    font-family: 'Montserrat', sans-serif;
+    color: #3fdb9d
+}
+.form-editus section input{
+    width: 150px;
+    background: #3fdb9d;
+    display: inline-block !important;
+    color: #000000;
+    margin-top: 30px;
+    margin-left: 10px;
+    border-bottom: 2px solid #000000;
+
+}
+.form-editus section input:hover{
+    background: #06A3D3;
+    border-bottom: 2px solid #000000;
+
+}
+.form-editus section{
+    columns: 2;
+}
+.notItemOne option:first-child{
+    display: none;
+}
+.disp-none{
+    display: none;
+}
+.content_delete{
+    margin-top: 20px;
+}
+.content_delete .fa-user-circle{
+    font-size: 120px;
+    margin-bottom: 30px;
+    color: #06A3D3;
+}
+.content_delete p{
+    font-size: 17px;
+    font-family: 'Montserrat', sans-serif;
+    margin: 15px 0px;
+}
+.content_delete p span{
+    color: red;
+}
+.content_delete form a{
+    background: #074f73;
+    padding:9px;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    margin: 20px 10px 0px -40px;
+}
+.content_delete form button{
+    width: 92px;
+    background: #074f73;
+    padding: 9px;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    border: none;
+    margin: 20px 0px;
+    cursor: pointer;
+}
+.content_delete form button:hover , .content_delete form a:hover{
+    background: #cfcbcb !important;
+    color: #000000;
+    border: #06A3D3 1px solid;
+}
+.bord-profile{
+    width: 800px;
+    height: 800px;
+    border: #06A3D3 1px solid;
+    margin: auto;
+}
+.bord-profile p{
+    font-size: 25px;
+    margin: 20px;
+}
+.bord-profile .fa-user-circle{
+    font-size: 150px;
+    width: 150px;
+    margin-left: 43%;
+    margin-top: 50px;
+    
+}
+/* graficas */
+.grafica1 h1, .grafica2 h1, .grafica3 h1, .grafica4h1{
+    font-size:35px;
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top: 50px;
+
+    /* color: #074f73; */
+}
+.bg-g{
+    color: #09ee70; 
+}
+/* graficas */
+/* reportes */
+.mantenimiento{
+    width:  60%;
+    margin: 80px auto;
+    text-align: center;
+    font-size: 70px;
+}
+/* busqueda */
+    .form_search{
+        width: 25%;
+        height: 30px;
+        display: flex;
+        float: right;
+        background: initial;
+        padding: 10px;
+        border-radius: 10px;
+        border: rgb(226, 225, 225) 1px solid;
+        margin-top: 50px;
+    }
+    .form_search input{
+        margin-top: 2px;
+        border-radius: 50px;
+
+    }
+    .form_search .btn_search{
+        height: 95%;
+        background: #1faac8;
+        color: #ffffff;
+        padding: 0 20px;
+        border: 0;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+    .form_search .inp_search{
+        width: 100%;
+        height: 85%;
+        padding-left: 8px;
+    }
+    .txt_busq{
+        padding-left: 20px;
+        font-size: 36px !important;
+    }
+    
+
+/* busqueda */
+/* VENTAS */
+.form-venta{
+    columns: 2;
+    margin-top: 50px;
+}
+.form-venta .cliente{
+    width: 500px;
+}
+.vent select{
+    width: 213px;
+    height: 30px;
+    border-radius: 5px;
+    background: rgba(201, 202, 204, 0.8);
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #06A3D3;
+    padding-left: 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 17px;
+    color: #000000;
+    display: inline-block;
+   
+}
+.vent h3{
+    display: inline-block;
+    font-size: 30px !important;
+    margin-bottom: 20px;
+}
+.vent h4{
+    font-size: 25px;
+    text-align: center;
+}
+.vent label{
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+.vent input{
+    width: 204px;
+    height: 30px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, .2);
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #3fdb9d;
+    padding-left: 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 17px;
+    color: #000000;
+    justify-content: center;
+    float: right;
+}
+.coltot, .col1{
+    width: 350px;
+}
+.coltot hr{
+    width: 600px;
+    margin: 30px 0px 20px 0px;
+    color: #06A3D3;
+}
+.col1 select{
+     float: right;
+}
+.prod{
+    width: 600px;
+    height: 60px;
+    background: rgba(214, 214, 214, 0.377);
+    border: 1px rgba(214, 214, 214, 0.387) solid;
+    margin: 800px 0px 10px 0px;
+}
+.prod button, .btn-gd{
+    width: 180px;
+    height: 40px;
+    margin: 12px 30px 30px 230px;
+    text-align: center;
+    background: #074f73;
+    border: #3fdb9d 1px solid;
+    color: #ffffff;
+    font-size: 18px;
+    font-family: 'Quicksand', sans-serif;
+}
+.btn-gd{
+    height: 40px !important;
+    margin-top: 50px;
 }
 /* VENTAS */
