@@ -8,12 +8,12 @@ if (isset($_GET['id'])) {
 }
 include('conexion.php');
 if (empty($_REQUEST['id'])) {
-    header("location: productos.php");
+    header("location: Graficas/Gindex.php");
 } else {
     $claveid = $_REQUEST['id'];
     if (!is_numeric($claveid)) {
 
-        header("location: productos.php");
+        header("location: Graficas/Gindex.php");
     }
 }
 $queryus = mysqli_query($mysqli, "SELECT * FROM persona INNER JOIN usuariolog ON persona.idpersona = usuariolog.idpersona INNER JOIN tipousuario ON usuariolog.idtipousuario = tipousuario.idtipousuario INNER JOIN sucursal ON persona.idsucursal = sucursal.idsucursal WHERE usuariolog.idusuarioLog = $claveid ");

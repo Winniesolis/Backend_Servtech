@@ -46,5 +46,4 @@ $(document).ready(function(){
             $("#foto_removeus").val('usuario.png');
         }
     });
-
 });
