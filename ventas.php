@@ -27,11 +27,12 @@ include('conexion.php');
 </head>
 <body>
  <?php
+ $page = 'productos';
 include ('header1.php');
  ?>
     
     <section class="content vent">
-        <form action="" class="form-venta">
+        <form action="" class="form-venta" method="POST">
         <h3>Vendedor:</h3>
             <select name="" id="">
                 <option value="Julio"></option>
@@ -89,10 +90,11 @@ include ('header1.php');
                 <input type="text">
                 <br><br>
             </div>
-         
-            <button class="btn-gd">Guardar</button>
-        
+            <button name="btn-gr" class="btn-gd">Guardar</button>
+            <br><br>
+            <button class="btn-gd">Generar Factura</button>
         </form>
+        
 
 
 

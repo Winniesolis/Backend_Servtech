@@ -43,44 +43,10 @@ if (isset($_POST['tipUs'])) {
 </head>
 
 <body>
-    <header>
-        <section class="principal">
-            <img src="img/lg1/logoj2.png" alt="">
-            <h1> Usuarios</h1>
-        </section>
-        <section class="usuario">
-            <ul>
-                <!-- <li><a href=""><img src="img/winnie.png" alt=""></a> -->
-                <li><a href=""><img src="img/uploads/<?php echo $_SESSION['fot'];?>" alt=""></a>
-                    <span><?php echo $_SESSION['tpus']; ?></span>
-                    <ul class="sub-nav">
-                        <div>
-                            <div>
-                                <h5>Winnie Solis</h5>
-                                <h6>Administrador</h6>
-                            </div>
-                            <li><a href="perfil.php?id=<?php echo $_SESSION['idUser']; ?>">Ver Perfil</a></li>
-                            <li><a href="salir.php">Cerrar Sesion</a></li>
-                            <li><a href="http://www.servtechweb.com.mx/">Ir al FrontEnd</a></li>
-                            <li><a href="respaldos/index-respaldo.php">Hacer Respaldo</a></li>
-                        </div>
-                    </ul>
-                </li>
-            </ul>
-        </section>
-        <nav>
-            <ul class="nav-icon">
-                <li><a href="Graficas/Gindex.php"><i class="fas fa-home p-ico"><br><span>Inicio</span></i></a></li>
-                <li><a href="usuarios.php"><i class="fas fa-user active"><br><span>Usuarios</span></i></a></li>
-                <li><a href="clientes.php"><i class="fas fa-user-tie"><br><span>Clientes</span></i></a></li>
-                <li><a href="productos.php"><i class="fas fa-laptop"><br><span>Productos</span></i></a></li>
-                <li><a href="servicios.php"><i class="fas fa-handshake"><br><span>Servicios</span></i></a></li>
-                <!-- <li><a href="ubicacion.php"><i class="fas fa-map-marker-alt"><br><span>Ubicacion</span></i></a></li> -->
-                <li><a href="reportes.php"><i class="fas fa-file"><br><span>Reportes</span></i></a></li>
-                <li><a href="otros.php"><i class="fas fa-ad"><br><span>Otros</span></i></a></li>
-            </ul>
-        </nav>
-    </header>
+<?php
+ $page = 'usuarios';
+include ('header1.php');
+ ?>
     <section class="content">
         <!-- <a href="javascript:Abrir()"><i class="fas fa-plus-square"> Nuevo</i></a> -->
         <?php
