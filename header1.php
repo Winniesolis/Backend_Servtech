@@ -22,7 +22,7 @@
                                 <h5>Winnie Solis</h5>
                                 <h6>Administrador</h6>
                             </div>
-                            <li><a href=" <?php if($page == 'graficas' || $page == 'respaldo'){echo '../';} ?>perfil.php">Ver Perfil</a></li>
+                            <li><a href=" <?php if($page == 'graficas' || $page == 'respaldo'){echo '../';} ?>perfil.php?id=<?php echo $_SESSION['idUser']; ?>">Ver Perfil</a></li>
                             <li><a href="<?php if($page == 'graficas' || $page == 'respaldo'){echo '../';} ?>salir.php">Cerrar Sesion</a></li>
                             <li><a href="http://www.servtechweb.com.mx/">Ir al FrontEnd</a></li>
                             <li><a href="<?php if($page == 'graficas' || $page == 'respaldo'){echo '../';} ?>respaldos/index-respaldo.php">Hacer Respaldo</a></li>

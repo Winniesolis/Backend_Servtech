@@ -72,8 +72,6 @@ if (empty($_SESSION['active'])) {
             $imgProducto        = $_POST['foto_actual'];
             $imgRemove          = $_POST['foto_remove'];
 
-            print_r($_FILES)
-
             $foto       = $_FILES['foto'];
             $nom_foto   = $foto['name'];
             $type       = $foto['type'];
