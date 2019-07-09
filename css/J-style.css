@@ -67,10 +67,11 @@
 }
 /* tamaño de la imagen lista */
 .img_producto img 
-{
+{ 
     width: 70px;
-    height: auto;
+    height: 70px;
     margin: auto;
+    border-radius: 50%;
 }
 .img_usuario img
 {
