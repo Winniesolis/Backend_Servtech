@@ -9,12 +9,12 @@
 <body>
 <header>
         <section class="principal">
-            <img src="<?php if($page == 'graficas' || $page == 'respaldo'){echo '../';} ?>img/lg1/logoj2.png" alt="">
+            <img class="redonded" src="<?php if($page == 'graficas' || $page == 'respaldo' || $page2 == 'busqueda' ){echo '../';} ?>img/lg1/logoj2.png" alt="">
         </section>
         <section class="usuario">
             <ul>
                 <!-- <li><a href=""><img src="img/winnie.png" alt=""></a> -->
-                <li><a href=""><img src="<?php if($page == 'graficas' || $page == 'respaldo'){echo '../';} ?>img/uploads/<?php echo $_SESSION['fot'];?>" alt=""></a>
+                <li><a href=""><img src="<?php if($page == 'graficas' || $page == 'respaldo' || $page2 == 'busqueda'){echo '../';} ?>img/uploads/<?php echo $_SESSION['fot'];?>" alt=""></a>
                     <span><?php echo $_SESSION['nickName']; ?></span>
                     <ul class="sub-nav">
                         <div>
@@ -22,7 +22,7 @@
                                 <h5>Winnie Solis</h5>
                                 <h6>Administrador</h6>
                             </div>
-                            <li><a href=" <?php if($page == 'graficas' || $page == 'respaldo'){echo '../';} ?>perfil.php?id=<?php echo $_SESSION['idUser']; ?>">Ver Perfil</a></li>
+                            <li><a href=" <?php if($page == 'graficas' || $page == 'respaldo'){echo '../';} ?>perfil.php">Ver Perfil</a></li>
                             <li><a href="<?php if($page == 'graficas' || $page == 'respaldo'){echo '../';} ?>salir.php">Cerrar Sesion</a></li>
                             <li><a href="http://www.servtechweb.com.mx/">Ir al FrontEnd</a></li>
                             <li><a href="<?php if($page == 'graficas' || $page == 'respaldo'){echo '../';} ?>respaldos/index-respaldo.php">Hacer Respaldo</a></li>
