@@ -1,30 +1,28 @@
 <?php
 session_start();
+
 if (empty($_SESSION['active'])) {
-    header('location: login.php');
+    header('location: ../login.php');
 }
+
 if (isset($_GET['id'])) {
     $claveid = $_GET['id'];
 }
-include('conexion.php');
-$query = mysqli_query($mysqli, "SELECT idempresa, nombreE FROM empresa");
-if (isset($_POST['empresa'])) {
-    $empresa = $_POST['empresa'];
+
+include('../conexion.php');
+$query = mysqli_query($mysqli, "SELECT idsucursal, nombreSC FROM sucursal ORDER BY `idsucursal` DESC");
+if (isset($_POST['sucursal'])) {
+    $sucursal = $_POST['sucursal'];
+    // echo $sucursal;
+}
+// tipo de usuario
+$query1 = mysqli_query($mysqli, "SELECT idtipousuario, nombreTU FROM tipousuario ORDER BY `idtipousuario` DESC");
+
+if (isset($_POST['tipUs'])) {
+    $tipUs = $_POST['tipUs'];
+    // echo $tipUs;
 }
 ?>
-    <?php
-    if (isset($_POST['guardar_us'])) {
-        $nombreC = $_POST['nombreC'];
-        $empresa = $_POST['empresa'];
-        $RFC = $_POST['RFC'];
-        $telefono = $_POST['telefono'];
-        $correo = $_POST['correo'];
-        $direccion = $_POST['direccion'];
-        print_r($empresa);
-        $table2 = 'cliente';
-        $mysqli->query("INSERT INTO $table2 (nombreC, idempresa, RFC, telefonoC, correoC, direccionC) VALUES ('$nombreC',$empresa,'$RFC','$telefono','$correo' ,'$direccion')");
-    }
-    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,10 +31,10 @@ if (isset($_POST['empresa'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> Clientes │ ServTech</title>
-     <link rel="icon" href="img/lg1/ico-vent3.ico" />
+    <link rel="icon" href="img/ico-vent3.ico" />
 
     <!-- style -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <!-- font-awasome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
@@ -44,7 +42,8 @@ if (isset($_POST['empresa'])) {
 <body>
 <?php
  $page = 'clientes';
-include ('header1.php');
+ $page2 = 'busqueda';
+include ('../header1.php');
  ?>
     <section class="content">
         <?php
@@ -91,12 +90,14 @@ include ('header1.php');
                 </div>
                 </center>
             </form>
-        <!-- busqueda -->
-        <form action="busquedas/buscar_cliente.php" method="get" class="form_search">
-            <input type="text" name="busqueda" id="busqueda" placeholder="Buscar" class="inp_search">
-            <input type="submit" value="Buscar" class="btn_search">
-        </form>
-        <!-- busqueda -->
+<!-- busqueda -->
+<form action="busquedas/buscar_cliente.php" method="get" class="form_search">
+                    <input type="text" name="busqueda" id="busqueda" placeholder="Buscar" class="inp_search">
+                    <input type="submit" value="Buscar" class="btn_search">
+                </form>
+
+
+<!-- busqueda -->
         </div>
         <section class="table1">
             <table>
@@ -137,7 +138,19 @@ include ('header1.php');
             </table>
         </section>
     </section>
-
+    <?php
+    if (isset($_POST['guardar_us'])) {
+        $nombreC = $_POST['nombreC'];
+        $empresa = $_POST['empresa'];
+        $RFC = $_POST['RFC'];
+        $telefono = $_POST['telefono'];
+        $correo = $_POST['correo'];
+        $direccion = $_POST['direccion'];
+        print_r($empresa);
+        $table2 = 'cliente';
+        $mysqli->query("INSERT INTO $table2 (nombreC, idempresa, RFC, telefonoC, correoC, direccionC) VALUES ('$nombreC',$empresa,'$RFC','$telefono','$correo' ,'$direccion')");
+    }
+    ?>
     <script>
         function Abrir() {
             document.getElementById("vent").style.display = "block";

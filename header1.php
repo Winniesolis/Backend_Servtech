@@ -9,12 +9,12 @@
 <body>
 <header>
         <section class="principal">
-            <img src="<?php if($page == 'graficas' || $page == 'respaldo'){echo '../';} ?>img/lg1/logoj2.png" alt="">
+            <img class="redonded" src="<?php if($page == 'graficas' || $page == 'respaldo' || $page2 == 'busqueda' ){echo '../';} ?>img/lg1/logoj2.png" alt="">
         </section>
         <section class="usuario">
             <ul>
                 <!-- <li><a href=""><img src="img/winnie.png" alt=""></a> -->
-                <li><a href=""><img src="<?php if($page == 'graficas' || $page == 'respaldo'){echo '../';} ?>img/uploads/<?php echo $_SESSION['fot'];?>" alt=""></a>
+                <li><a href=""><img src="<?php if($page == 'graficas' || $page == 'respaldo' || $page2 == 'busqueda'){echo '../';} ?>img/uploads/<?php echo $_SESSION['fot'];?>" alt=""></a>
                     <span><?php echo $_SESSION['nickName']; ?></span>
                     <ul class="sub-nav">
                         <div>
