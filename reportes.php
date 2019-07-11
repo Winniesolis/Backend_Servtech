@@ -6,14 +6,18 @@ if (empty($_SESSION['active'])) {
     header('location: login.php');
 
 }
+
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> Productos │ ServTech</title>
+    <title> Reportes │ ServTech</title>
     <!-- style -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="img/lg1/ico-vent3.ico"/>
@@ -27,84 +31,15 @@ include ('header1.php');
  ?>
     <section class="content">
     <section class="mantenimiento">
-        <i class="fas fa-band-aid"></i>
-        <h1>En mantenimiento</h1>
+        <label for="">Generar reporte de Productos</label>
+        <a target="_blank" href="rproducto.php"><i class="fas fa-file-pdf"></i></a>
+        <br><br>
+         <label for="">Generar reporte de Usuarios</label>
+        <a target="_blank" href="rusuario.php"><i class="fas fa-file-pdf"></i></a>
+        <br><br>
+         <label for="">Generar reporte de Servicios</label>
+        <a target="_blank" href="rservicios.php"><i class="fas fa-file-pdf"></i></a>
     </section>
-
-
-
-        <!-- <section class="table1">
-            <table>
-                <tr class="tab-princ">
-                    <td>Imagen</td>
-                    <td>Nombre</td>
-                    <td>Descipción</td>
-                    <td>Precio</td>
-                    <td>Proveedor</td>
-                    <td>Tipo de Producto</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Imagen</td>
-                    <td>Switch</td>
-                    <td>Switch Administrable</td>
-                    <td>$5220</td>
-                    <td>Dell</td>
-                    <td>Redes</td>
-                    <td> 
-                        <a href=""><i class="fas fa-plus-square"></i></a>
-                        <a href=""><i class="fas fa-edit"></i></a>
-                        <a href=""><i class="fas fa-trash-alt"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Imagen</td>
-                    <td>Switch</td>
-                    <td>Switch Administrable</td>
-                    <td>$5220</td>
-                    <td>Dell</td>
-                    <td>Redes</td>
-                    <td> 
-                        <a href=""><i class="fas fa-plus-square"></i></a>
-                        <a href=""><i class="fas fa-edit"></i></a>
-                        <a href=""><i class="fas fa-trash-alt"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Imagen</td>
-                    <td>Switch</td>
-                    <td>Switch Administrable</td>
-                    <td>$5220</td>
-                    <td>Dell</td>
-                    <td>Redes</td>
-                    <td> 
-                        <a href=""><i class="fas fa-plus-square"></i></a>
-                        <a href=""><i class="fas fa-edit"></i></a>
-                        <a href=""><i class="fas fa-trash-alt"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Imagen</td>
-                    <td>Switch</td>
-                    <td>Switch Administrable</td>
-                    <td>$5220</td>
-                    <td>Dell</td>
-                    <td>Redes</td>
-                    <td> 
-                        <a href=""><i class="fas fa-plus-square"></i></a>
-                        <a href=""><i class="fas fa-edit"></i></a>
-                        <a href=""><i class="fas fa-trash-alt"></i></a>
-                    </td>
-                </tr>
-            </table>
-        </section> -->
     </section>
-
-
-
-
-
-
-
 </body>
 </html>
