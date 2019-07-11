@@ -47,4 +47,26 @@ $(document).ready(function(){
         }
     });
 
+   
 });
+ function select_cliente()
+    {
+        var idcliente =$("#cliente").val();
+        var ob = {idcliente:idcliente};
+        
+        $.ajax({
+            type: "POST",
+            url: "ajax.php",
+            data: ob,
+            beforeSed : function(objeto){
+
+            },
+            success: function(data){
+                $("#panel_selector").html(data);
+            }
+        });
+
+
+
+
+    }

@@ -12,6 +12,19 @@ if (isset($_POST['empresa'])) {
     $empresa = $_POST['empresa'];
 }
 ?>
+    <?php
+    if (isset($_POST['guardar_us'])) {
+        $nombreC = $_POST['nombreC'];
+        $empresa = $_POST['empresa'];
+        $RFC = $_POST['RFC'];
+        $telefono = $_POST['telefono'];
+        $correo = $_POST['correo'];
+        $direccion = $_POST['direccion'];
+        print_r($empresa);
+        $table2 = 'cliente';
+        $mysqli->query("INSERT INTO $table2 (nombreC, idempresa, RFC, telefonoC, correoC, direccionC) VALUES ('$nombreC',$empresa,'$RFC','$telefono','$correo' ,'$direccion')");
+    }
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +33,7 @@ if (isset($_POST['empresa'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> Clientes │ ServTech</title>
-    <link rel="icon" href="img/ico-vent3.ico" />
+     <link rel="icon" href="img/lg1/ico-vent3.ico" />
 
     <!-- style -->
     <link rel="stylesheet" href="css/style.css">
@@ -124,19 +137,7 @@ include ('header1.php');
             </table>
         </section>
     </section>
-    <?php
-    if (isset($_POST['guardar_us'])) {
-        $nombreC = $_POST['nombreC'];
-        $empresa = $_POST['empresa'];
-        $RFC = $_POST['RFC'];
-        $telefono = $_POST['telefono'];
-        $correo = $_POST['correo'];
-        $direccion = $_POST['direccion'];
-        print_r($empresa);
-        $table2 = 'cliente';
-        $mysqli->query("INSERT INTO $table2 (nombreC, idempresa, RFC, telefonoC, correoC, direccionC) VALUES ('$nombreC',$empresa,'$RFC','$telefono','$correo' ,'$direccion')");
-    }
-    ?>
+
     <script>
         function Abrir() {
             document.getElementById("vent").style.display = "block";

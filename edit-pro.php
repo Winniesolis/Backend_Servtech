@@ -72,8 +72,6 @@ if (empty($_SESSION['active'])) {
             $imgProducto        = $_POST['foto_actual'];
             $imgRemove          = $_POST['foto_remove'];
 
-            print_r($_FILES)
-
             $foto       = $_FILES['foto'];
             $nom_foto   = $foto['name'];
             $type       = $foto['type'];
@@ -134,6 +132,7 @@ if (empty($_SESSION['active'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> Producto │ ServTech</title>
+     <link rel="icon" href="img/lg1/ico-vent3.ico" />
     <!-- script´s -->
     <script type="text/javascript" src="js/jquery-1.12.0.min.js"></script><!-- Importa la libreria -->
     <script type="text/javascript" src="js/functions.js"></script><!-- Llama a la funcion -->
@@ -144,39 +143,10 @@ if (empty($_SESSION['active'])) {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
-    <header>
-        <section class="principal">
-            <img src="img/logo-ST.PNG" alt="">
-        </section>
-        <section class="usuario">
-            <ul>
-                <li><a href=""><img src="img/winnie.png" alt=""></a>
-                    <ul class="sub-nav">
-                        <div>
-                            <div>
-                                <h5>Winnie Solis</h5>
-                                <h6>Administrador</h6>
-                            </div>
-                            <li><a href="salir.php">Cerrar Sesion</a></li>
-                            <li><a href="http://www.servtechweb.com.mx/">Ir al FrontEnd</a></li>
-                            <li><a href="respaldos/index-respaldo.php">Hacer Respaldo</a></li>
-                        </div>
-                    </ul>
-                </li>
-            </ul>   
-        </section>
-        <nav>
-            <ul class="nav-icon">
-               <li><a href="2index.php"><i class="fas fa-home p-ico"><br><span>Inicio</span></i></a></li>
-               <li><a href="usuarios.php" ><i class="fas fa-user "><br><span>Usuarios</span></i></a></li>
-               <li><a href="productos.php"><i class="fas fa-laptop active"><br><span>Productos</span></i></a></li>
-               <li><a href="servicios.php"><i class="fas fa-handshake"><br><span>Servicios</span></i></a></li>
-               <li><a href="ubicacion.php"><i class="fas fa-map-marker-alt"><br><span>Ubicacion</span></i></a></li>
-               <li><a href="reportes.php"><i class="fas fa-file"><br><span>Reportes</span></i></a></li>
-               <li><a href="otros.php"><i class="fas fa-ad"><br><span>Otros</span></i></a></li>
-            </ul>
-        </nav>
-    </header>
+    <?php
+ $page = 'clientes';
+include ('header1.php');
+ ?>
     <section class="content">
         <section class="tabedit tabedit2 ">
             <h1>Editar Producto</h1>
@@ -218,7 +188,6 @@ if (empty($_SESSION['active'])) {
                             }
                         }
                     ?>
-
                 </select>
                 <!--Foto-->
                 <div class="photo">
@@ -234,17 +203,13 @@ if (empty($_SESSION['active'])) {
                         <div id="form_alert"></div>
                 </div>
                 <!--Foto-->
-
                 <br><br>
                 <section>
                     <input type="submit" name="edit-pro" value="Guardar" class="btnform">
                     <input type="submit" name="cerrar" value="Cerrar" class="btnform">
                 </section>
             </form>
-
-
         </section>
-
     </section>
 </body>
 </html>

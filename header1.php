@@ -22,7 +22,7 @@
                                 <h5>Winnie Solis</h5>
                                 <h6>Administrador</h6>
                             </div>
-                            <li><a href=" <?php if($page == 'graficas' || $page == 'respaldo'){echo '../';} ?>perfil.php">Ver Perfil</a></li>
+                            <li><a href=" <?php if($page == 'graficas' || $page == 'respaldo'){echo '../';} ?>perfil.php?id=<?php echo $_SESSION['idUser']; ?>">Ver Perfil</a></li>
                             <li><a href="<?php if($page == 'graficas' || $page == 'respaldo'){echo '../';} ?>salir.php">Cerrar Sesion</a></li>
                             <li><a href="http://www.servtechweb.com.mx/">Ir al FrontEnd</a></li>
                             <li><a href="<?php if($page == 'graficas' || $page == 'respaldo'){echo '../';} ?>respaldos/index-respaldo.php">Hacer Respaldo</a></li>
@@ -55,6 +55,10 @@
                 <li class="<?php if ($_SESSION['tpus'] != 2) { echo "disp--none";
                 } ?>"><a href="<?php if($page == 'graficas' || $page == 'respaldo'){echo '../';} ?>otros.php"><i class="fas fa-ad <?php if($page == 'otros'){echo 'active' ;} ?>">
                 <br><span>Otros</span></i></a></li>
+
+                <li class="<?php if ($_SESSION['tpus'] != 2) { echo "disp--none";
+                } ?>"><a href="<?php if($page == 'graficas' || $page == 'respaldo'){echo '../';} ?>ventas.php"><i class="fas fa-shopping-cart <?php if($page == 'ventas'){echo 'active' ;} ?>">
+                <br><span>Ventas</span></i></a></li>
             </ul>
         </nav>
     </header>

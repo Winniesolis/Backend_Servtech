@@ -111,6 +111,9 @@ nav li p {
     width: 30%;
     margin-left: 57px;
     display: inline-block;
+
+    border-radius: 50px;
+
 }
 
 .usuario p {
@@ -583,7 +586,10 @@ fieldset h1 {
 }
 
 .disp-block {
+
+
     display: block !important;
+
 }
 
 .btnfrm2 {
@@ -928,8 +934,10 @@ fieldset h1 {
 .mantenimiento{
     width:  60%;
     margin: 80px auto;
+    
     text-align: center;
-    font-size: 70px;
+    font-size: 50px;
+
 }
 /* busqueda */
     .form_search{
@@ -1053,4 +1061,19 @@ fieldset h1 {
     height: 40px !important;
     margin-top: 50px;
 }
+
+
+.nuevo
+{
+    margin-top: -200px !important;
+    position: absolute;
+}
 /* VENTAS */
+
+.imgproeli
+{
+height: 100px;
+}
+
+/* VENTAS */
+
